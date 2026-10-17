@@ -1,0 +1,26 @@
+// Light colours (the default).
+// These replace Minimal Mistakes' own colour settings, so every part of the
+// theme (menus, buttons, footer, "On this page" box) picks them up.
+// Contrast ratios are against the page background (#fbfaf8).
+
+$theme-mode: light;
+
+$background-color: #fbfaf8;          // warm off-white
+$text-color: #494e52;                // body text, 8.1:1
+$muted-text-color: #5f6367;          // dates, footer, captions: 5.8:1 (5.3:1 on the footer)
+$heading-accent: #7b1e2e;            // burgundy H2 and H4, 9.7:1
+$primary-color: #5c6166;             // "On this page" header, buttons, quote bars
+
+$link-color: #2f6f80;                // teal, 5.4:1
+$link-color-hover: #1f4f5c;
+$link-color-visited: $link-color;    // Minimal Mistakes lightens visited links, which drops the contrast
+$focus-color: $link-color;
+
+$masthead-link-color: $text-color;
+$masthead-link-color-hover: $heading-accent;
+
+$border-color: #e2e1dd;
+$code-background-color: #f3f2ef;
+$form-background-color: #f3f2ef;
+$footer-background-color: #f1f0ec;
+$hover-background-color: #f1f0ec;    // collapsible sections and buttons on hover

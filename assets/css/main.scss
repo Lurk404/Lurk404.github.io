@@ -1,0 +1,11 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
+
+@charset "utf-8";
+
+// Light colours (the default). The dark version is main-dark.scss.
+@import "portfolio/palette-light";
+@import "minimal-mistakes"; // the theme
+@import "portfolio/custom";

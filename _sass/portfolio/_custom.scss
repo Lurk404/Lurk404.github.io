@@ -1,0 +1,388 @@
+// Extra styles for the portfolio, loaded after Minimal Mistakes.
+// Built twice: once with the light colours (main.css) and once with the dark
+// colours (main-dark.css). $theme-mode says which one this is.
+// Most of this comes from the AT User Guides site (Lurk404/assistivetech).
+
+// ==========================================================================
+// Headings: burgundy H2 and H4 in page content
+// ==========================================================================
+.page__content h2,
+.page__content h4 {
+  color: $heading-accent;
+}
+
+// "On this page" box: turned on for every page in _config.yml, but hidden
+// when a page has no headings to list (otherwise it shows an empty box)
+.sidebar__right:not(:has(.toc__menu a)) {
+  display: none;
+}
+
+// ==========================================================================
+// Collapsible sections
+// <details markdown="1"><summary>Title</summary> ... </details>
+// ==========================================================================
+.page__content details {
+  margin: 0.75rem 0;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: 0 1rem;
+}
+
+.page__content details > summary {
+  margin: 0 -1rem;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: $text-color;
+  cursor: pointer;
+}
+
+.page__content details[open] > summary {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid $border-color;
+}
+
+.page__content details > summary:hover {
+  background-color: $hover-background-color;
+}
+
+.page__content details > summary:focus-visible {
+  outline: 3px solid $focus-color;
+  outline-offset: 2px;
+}
+
+// Collapsible sections inside collapsible sections
+.page__content details details {
+  border-style: dashed;
+}
+
+// ==========================================================================
+// Buttons: "Back to top", "On this page", Dark/Light, Show preferences, Reset
+// ==========================================================================
+.page-nav-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;                  // big enough to tap
+  padding: 0 1rem;
+  font: inherit;
+  font-family: $global-font-family;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $link-color;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  background-color: $background-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    color: $link-color-hover;
+    background-color: $hover-background-color;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $focus-color;
+    outline-offset: 2px;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+// "Back to top" sits in the footer, where Minimal Mistakes greys out links
+.page__footer .page-nav-button {
+  color: $link-color;
+
+  &:hover {
+    color: $link-color-hover;
+  }
+}
+
+// ==========================================================================
+// Header: the menu on the left, the buttons on the right.
+// On narrow screens the buttons drop onto their own row under the menu.
+// (Markup in _includes/masthead.html)
+// ==========================================================================
+.masthead__inner-wrap {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
+.masthead__menu {
+  flex: 1 1 20rem;
+  width: auto;
+  min-width: 0;
+}
+
+.masthead__tools {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-inline-start: auto;
+}
+
+// ==========================================================================
+// Floating "Back to top" and "On this page" buttons
+// (markup and script in _includes/page_nav_buttons.html)
+// ==========================================================================
+.page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+// Float in the bottom-right corner, but only when the screen is tall enough.
+// On short screens or at high zoom the buttons stay at the end of the page.
+// (The 30rem must match the script in page_nav_buttons.html.)
+@media (min-height: 30rem) {
+  .page-nav-floating .page-nav {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 30;
+    margin: 0;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(0.5rem);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  }
+
+  .page-nav-floating .page-nav.is-visible {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+
+  // Room at the bottom so the buttons never cover the footer text
+  .page-nav-floating .page__footer footer {
+    padding-bottom: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-nav {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+// The "On this page" popover, just above the buttons
+.page-toc {
+  position: fixed;
+  inset: auto 1rem 4.5rem auto;
+  width: 22rem;
+  max-width: calc(100vw - 2rem);
+  max-height: 70vh;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  overflow: auto;
+  font-family: $global-font-family;
+  font-size: 0.875rem;
+  color: $text-color;
+  background-color: $background-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+
+  ul {
+    margin: 0;
+    padding-inline-start: 1.25rem;
+  }
+
+  li {
+    margin: 0.25rem 0;
+  }
+}
+
+// Links in the popover (it sits in the footer, which greys out links)
+.page__footer .page-toc a {
+  color: $link-color;
+  text-decoration: underline;
+
+  &:hover {
+    color: $link-color-hover;
+  }
+}
+
+.page-toc-title {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+}
+
+@media print {
+  .page-nav,
+  .page-toc,
+  .masthead__tools {
+    display: none !important;
+  }
+}
+
+// ==========================================================================
+// Display preferences (Fluid Infusion UI Options)
+// Markup and script in _includes/display_preferences.html. Infusion's own
+// styles (assets/infusion/) draw the panels; these fit them into the site.
+// ==========================================================================
+
+// The container Infusion needs around the header and the panel. It should add
+// nothing of its own (Infusion would give it a taupe background and a border).
+.site-prefs.fl-prefsEditor-separatedPanel {
+  display: block;
+  background-color: transparent;
+  border-bottom: 0;
+}
+
+.site-prefs .flc-slidingPanel-panel {
+  border-bottom: 1px solid $border-color;
+}
+
+.site-prefs .fl-prefsEditor {
+  background-color: $footer-background-color;   // Infusion's default is a taupe
+}
+
+// Panel headings keep the panel's own colour (not the burgundy H2)
+.site-prefs .fl-prefsEditor-panel h2 {
+  color: inherit;
+}
+
+// On wider screens the panels wrap into a grid, so all of them are visible
+// at once. On phones Infusion's own one-panel-at-a-time layout stays.
+@media screen and (min-width: 40em) {
+  .site-prefs.fl-prefsEditor-separatedPanel .fl-prefsEditor {
+    overflow-x: visible;
+  }
+
+  .site-prefs.fl-prefsEditor-separatedPanel .fl-prefsEditor-panels {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1rem;
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .site-prefs.fl-prefsEditor-separatedPanel .fl-prefsEditor-panels .fl-prefsEditor-panel {
+    display: block;
+    min-width: 0;
+    padding: 1rem;
+  }
+
+  .site-prefs.fl-prefsEditor-separatedPanel .fl-prefsEditor-panels .fl-prefsEditor-panel h2 {
+    height: auto;
+    min-height: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .site-prefs.fl-prefsEditor-separatedPanel .fl-prefsEditor-panels .fl-prefsEditor-panel h2 .fl-heading-text {
+    text-align: left;
+  }
+
+  // Contrast swatches wrap onto a second row instead of spilling out of the card
+  .site-prefs .fl-prefsEditor .fl-choices {
+    flex-wrap: wrap;
+    row-gap: 1.75rem;
+  }
+}
+
+@media print {
+  .site-prefs .flc-slidingPanel-panel {
+    display: none !important;
+  }
+}
+
+// Line spacing. Infusion sets the reader's line spacing on <body>, but
+// headings have their own fixed line height. Scale those by the reader's
+// choice too (--fl-lineSpace-factor, e.g. 1.5).
+body.fl-lineSpace-enabled .page__content {
+  h1, h2, h3, h4, h5, h6 {
+    line-height: calc(1.2 * var(--fl-lineSpace-factor, 1)) !important;
+  }
+}
+
+// Text-to-speech play button, at the top of the page content
+.page__inner-wrap > .fl-orator-controller {
+  margin-bottom: 1rem;
+}
+
+// Extra contrast theme: dark brown on sand. Its name is in
+// assets/display-preferences/contrast.json; Infusion's styles do the rest.
+// Contrast ratios against the sand background (#f9f5e9):
+// text 14.5:1, links 8.1:1, greyed-out text 6.6:1.
+.fl-theme-sand {
+  --_fl-fgColor: #2b2118;
+  --_fl-bgColor: #f9f5e9;
+  --_fl-linkFgColor: #0b4a8b;
+  --_fl-linkBgColor: #f9f5e9;
+  --_fl-disabledFgColor: #5e564a;
+  --_fl-disabledBgColor: #f9f5e9;
+  --_fl-selectedFgColor: #f9f5e9;
+  --_fl-selectedBgColor: #2b2118;
+  --_fl-buttonFgColor: #2b2118;
+  --_fl-buttonBgColor: #efe7d3;
+}
+
+// Contrast themes: Infusion recolours everything, including the burgundy
+// headings. Images get a white card so black-on-transparent logos stay visible.
+body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
+  .page__content img {
+    padding: 0.25rem;
+    background-color: #fff !important;
+    border-radius: $border-radius;
+  }
+}
+
+// ==========================================================================
+// Dark mode only
+// ==========================================================================
+@if $theme-mode == dark {
+
+  // Tell the browser the page is dark, so its own parts (scrollbars,
+  // the details arrow, form fields) switch to dark versions too.
+  :root {
+    color-scheme: dark;
+  }
+
+  // Shadows don't show on a dark page, so a lighter border marks the edges
+  .page-nav-button,
+  .page-toc {
+    border-color: #59606c;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  // Brand-coloured social icons (GitHub is near-black) vanish on dark
+  .author__urls.social-icons i,
+  .author__urls.social-icons .svg-inline--fa,
+  .page__footer-follow .social-icons i,
+  .page__footer-follow .social-icons .svg-inline--fa {
+    color: inherit;
+  }
+
+  // Search icon and menu toggle use the primary colour, too dark here
+  .search__toggle {
+    color: $text-color;
+
+    &:hover {
+      color: $heading-accent;
+    }
+  }
+
+  .greedy-nav .navicon,
+  .greedy-nav .navicon:before,
+  .greedy-nav .navicon:after {
+    background: $text-color;
+  }
+
+  // Images: logos and icons that are black on a see-through background
+  // would vanish on a dark page, so every image sits on a white card.
+  .page__content img {
+    padding: 0.25rem;
+    background-color: #fff;
+    border-radius: $border-radius;
+  }
+}

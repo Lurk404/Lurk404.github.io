@@ -1,0 +1,74 @@
+<!--
+  Extra things for every page's <head>. Minimal Mistakes includes this file
+  right after its own stylesheet link.
+-->
+
+<script>
+  /* Light/dark mode. The site has two stylesheets: main.css (light) and
+     main-dark.css (dark). Both are loaded; the one not in use has
+     media="not all", so switching is instant. If the reader chose dark on an
+     earlier visit, dark is switched on here, before the page is drawn, so they
+     don't see a flash of the light colours. The button is in
+     _includes/theme_toggle.html. */
+  (function () {
+    var dark = false;
+    try { dark = localStorage.getItem('theme') === 'dark'; } catch (e) {}
+
+    var light = document.querySelector('link[rel="stylesheet"][href$="/assets/css/main.css"]');
+    if (light) {
+      light.id = 'theme-light';
+      if (dark) light.media = 'not all';
+    }
+    document.write('<link rel="stylesheet" id="theme-dark" href="{{ '/assets/css/main-dark.css' | relative_url }}" media="' + (dark ? 'all' : 'not all') + '">');
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  })();
+</script>
+
+<script>
+  /* Open collapsed sections (<details>) when a link points to one.
+     Works for links to the section's id, or to anything inside it,
+     from the same page or another page. Also opens any sections it is nested in. */
+  (function () {
+    function openTarget() {
+      var id = decodeURIComponent(location.hash.slice(1));
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target) return;
+
+      var opened = false;
+      var section = target.tagName === 'DETAILS' ? target : target.closest('details');
+      while (section) {
+        if (!section.open) {
+          section.open = true;
+          opened = true;
+        }
+        section = section.parentElement ? section.parentElement.closest('details') : null;
+      }
+      if (opened) target.scrollIntoView();
+    }
+
+    document.addEventListener('DOMContentLoaded', openTarget);
+    window.addEventListener('hashchange', openTarget);
+
+    /* Clicking a link to the section you're already on (for example after
+       closing it) doesn't change the address, so check again after any click. */
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href*="#"]');
+      if (link && link.pathname === location.pathname) setTimeout(openTarget, 0);
+    });
+  })();
+</script>
+
+{%- comment -%}
+  Display preferences (Fluid Infusion UI Options): styles.
+  The Infusion script itself loads at the end of the page (footer/custom.html).
+  The buttons, the panel and the script that starts it are in
+  _includes/display_preferences.html. The files are in assets/infusion/
+  (see the README.txt there).
+{%- endcomment -%}
+{%- assign infusion = '/assets/infusion' | relative_url %}
+<link rel="stylesheet" href="{{ infusion }}/src/framework/core/css/fluid.css">
+<link rel="stylesheet" href="{{ infusion }}/src/framework/preferences/css/Enactors.css">
+<link rel="stylesheet" href="{{ infusion }}/src/framework/preferences/css/PrefsEditor.css">
+<link rel="stylesheet" href="{{ infusion }}/src/framework/preferences/css/SeparatedPanelPrefsEditor.css">
+<link rel="stylesheet" href="{{ infusion }}/src/components/orator/css/Orator.css">

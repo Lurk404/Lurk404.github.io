@@ -1,0 +1,12 @@
+{% include page_nav_buttons.html %}
+
+{%- comment -%}
+  Display preferences (Fluid Infusion UI Options) script. It goes here, at the
+  end of the page, rather than in the <head>:
+  - the page is drawn before this large file loads, and
+  - it must run BEFORE Minimal Mistakes' own script (which comes right after
+    this footer). Both files contain their own copy of jQuery; whichever runs
+    last owns the shared "$". Minimal Mistakes needs its copy (with its
+    plugins), and Infusion keeps working with the copy it loaded.
+{%- endcomment %}
+<script src="{{ '/assets/infusion/infusion-uio.js' | relative_url }}"></script>

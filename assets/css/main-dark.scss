@@ -1,0 +1,11 @@
+---
+search: false
+---
+
+@charset "utf-8";
+
+// Dark colours, switched in by the Dark/Light button
+// (see _includes/head/custom.html and _includes/theme_toggle.html).
+@import "portfolio/palette-dark";
+@import "minimal-mistakes"; // the theme
+@import "portfolio/custom";
