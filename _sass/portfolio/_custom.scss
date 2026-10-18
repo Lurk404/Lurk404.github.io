@@ -466,7 +466,8 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
     background-image: linear-gradient(to bottom, #41282e, $background-color) !important;
   } @else {
     background-color: #f1ede4 !important;
-  linear-gradient(to bottom, #f1ede4 0%, #f1ede4 40%, $background-color 100%)  }
+    background-image: linear-gradient(to bottom, #f1ede4 0%, #f1ede4 40%, $background-color 100%) !important; 
+  }
 
   .page__title {
     color: $heading-accent;       // burgundy: 7.5:1 on the cream, 8.3:1 on the page
