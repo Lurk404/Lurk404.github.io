@@ -153,6 +153,18 @@
   }
 }
 
+// "Back to top" sits in the footer, where Minimal Mistakes makes links grey
+// and underlines them on hover. Keep it looking like the other buttons.
+.page__footer .page-nav .page-nav-button {
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
 // ==========================================================================
 // Header: the menu on the left, the buttons on the right.
 // On narrow screens the buttons drop onto their own row under the menu.
