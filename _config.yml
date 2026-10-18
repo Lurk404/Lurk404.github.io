@@ -1,56 +1,41 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# Site settings for lurk404.github.io (Minimal Mistakes theme)
+# Jekyll only reads this file when the site builds, so changes show up after
+# the next build on GitHub (a minute or two).
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
 title: Luke McKnight
-email:
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-twitter_username: username
+description: >-
+  Digital accessibility resources for students, educators, and everyone,
+  from Luke McKnight, digital accessibility specialist.
+url: "https://lurk404.github.io"
+baseurl: ""
+locale: en-CA
 github_username: Lurk404
-minimal_mistakes_skin: default
 search: true
+breadcrumbs: true          # "Home / About me / Curriculum Vitae" above each page title
 
-# Build settings
-markdown: kramdown
+# Logo: shown when a link to the site is shared (Teams, social media)
+og_image: /assets/images/social-preview.png
+
 # Theme: Minimal Mistakes, pinned to a release so updates don't change the site
 # unexpectedly. _includes/masthead.html is a copy of this version's header.
 remote_theme: mmistakes/minimal-mistakes@4.28.1
-# Outputting
-permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
-paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+minimal_mistakes_skin: default   # colours come from _sass/portfolio/ instead
+markdown: kramdown
+
+# Reflections keep the same addresses they had on WordPress
+permalink: /:year/:month/:day/:title/
+timezone: America/Vancouver
 
 include:
   - _pages
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# Files that stay in the repository but are not part of the website
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - _maintenance
 
-# Plugins (previously gems:)
 plugins:
   - jekyll-remote-theme
   - jekyll-paginate
@@ -60,38 +45,25 @@ plugins:
   - jemoji
   - jekyll-include-cache
 
+# Left sidebar on every page
 author:
-  name   : "Luke McKnight"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  name: "Luke McKnight"
+  avatar: "/assets/images/logo.png"
+  bio: "Digital accessibility specialist and assistive technologist."
+  location: "Vancouver, BC"
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/Lurk404"
 
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/Lurk404"
 
 defaults:
-  # _posts
+  # Reflections (_posts)
   - scope:
       path: ""
       type: posts
@@ -102,10 +74,9 @@ defaults:
       toc_sticky: true
       toc_label: "On this page"
       read_time: true
-      comments: true
-      share: true
+      share: false
       related: true
-  # _pages
+  # Pages (_pages)
   - scope:
       path: "_pages"
       type: pages

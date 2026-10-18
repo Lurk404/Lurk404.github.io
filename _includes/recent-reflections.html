@@ -1,0 +1,10 @@
+{%- comment -%}
+  The five most recent reflections, newest first. Used on "Now this, I like"
+  (it replaced WordPress's "Latest posts" block).
+{%- endcomment -%}
+<ul class="recent-reflections">
+  {%- for post in site.posts limit: 5 %}
+  <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="page__meta">{{ post.date | date: "%B %-d, %Y" }}</span></li>
+  {%- endfor %}
+</ul>
+<p><a href="{{ '/reflections/' | relative_url }}">All reflections</a></p>

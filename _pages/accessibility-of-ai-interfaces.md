@@ -1,0 +1,224 @@
+---
+title: "Accessibility of AI Interfaces"
+permalink: /accessibility-of-ai-interfaces/
+sidebar:
+  nav: "accessibility"
+last_modified_at: 2025-02-18
+---
+
+The hurried spread of artificial intelligence (AI) has caused a deluge of panic. Some of the reaction to the social, technological, and economic implications of AI has been hyperbolic. Alarm in the face of new technology is not new and the [current hysteria is not unique](https://itif.org/publications/2023/05/01/panic-over-generative-ai-is-nearing-the-height-of-hysteria/). However, many criticisms of generative AI warrant careful consideration. While minor software updates and LinkedIn profiles often claim to be disruptors I am rarely awed by either. With AI however—whatever the reaction—the sheer amount of discourse proves it to be a true disruptor.
+
+Of particular interest is the cataclysmic frenzy AI has caused in education. Chatbots like ChatGPT, Bing, and Bard have dominated the discussion around AI and education. Many (legitimate) concerns have been raised about academic integrity issues when students use AI to do homework. As personal information and academic research is added to large language models concerns about privacy and copyright have spawned a plethora of writing and research.
+
+As an assistive technologist I assist students, staff, and faculty to use assistive technology and create more accessible content. My work in accessibility drives my focus on AI to consider the intersection of accessibility and AI. Frequently meeting with assistive technology users reminds me of the importance of considering who might be excluded when new tools, like AI, are incorporated into everyday practice.
+
+There has been some work done on the bias of AI and how AI could be a tool to make content more accessible. However, the accessibility of AI interfaces has been largely ignored. My intention is to provide meaningful discussion on how accessible AI interfaces are to users of assistive technology. This is important because dataset inclusivity and the possible applications of a tool are irrelevant if not everyone—including the people excluded from the data and/or potentially assisted by the technology—can use the tools in an equitable way. I seek to understand whether people using assistive technology can meaningfully engage and independently interact with AI interfaces and if the outputs of AI are accessible to all users. Ultimately, any conversation around disability and the inclusivity of AI must ask, ‘can everyone use this tool?’ With chatbots and generative AI, the answer is no.
+
+## Disability, Accessibility, and the Law
+
+The rights of persons with disabilities are a neglected–yet growing–concern. In education, reactive accommodations, such as alternate formats and extra time, are used to ensure equivalent access. Recently, accessibility has gained prominence as a proactive approach which works to ensure that content, platforms, and communications are ‘born accessible’ and can be used by the greatest number of users in its default format. Accessibility cannot replace accommodation; they exist and work in tandem. However, improved accessibility reduces the need for accommodation. Reducing accommodations enhances democratic access to information; increases equity, inclusivity, and diversity; increases independence by reducing barriers; is easier to share and remix; and is less work for creators, facilitators, and consumers.
+
+The [United States](https://www.section508.gov/manage/laws-and-policies/), the [European Union](https://ec.europa.eu/social/main.jsp?catId=1202&intPageId=5581&langId=en), and [Ontario](http://www.ontario.ca/page/accessibility-in-ontario) have regulations and laws governing accessibility. British Columbia, where I live and work, has recently passed the [Accessible British Columbia Act](https://www2.gov.bc.ca/gov/content/governments/about-the-bc-government/accessibility/legislation). Accessibility legislation is designed to create a base level of accessibility. By meeting those standards, the greatest number of “people can take part in their communities… [by] removing barriers and increasing inclusion and independence for everyone.” Legislation and the potential risks associated with noncompliance have spurred discussion and policy. But ultimately, everyone should strive to be more accessible because it is the right thing to do.
+
+## AI and Accessibility
+
+The implicit bias in AI and large language models (LLMs) has been analyzed and discussed in many forums. [Bias against people with disabilities](https://news.harvard.edu/gazette/story/2022/01/why-disability-bias-is-a-particularly-stubborn-problem/) has long been an issue in all facets of society. [AI models have been shown to exhibit bias](https://news.mit.edu/2023/large-language-models-are-biased-can-logic-help-save-them-0303) against many minority groups, reflecting the data the LLM was trained on. Unfortunately--but by design--AI includes and perpetuates [negative legacy biases](https://www.infoworld.com/article/3607748/3-kinds-of-bias-in-ai-models-and-how-we-can-address-them.html) against people with disabilities.
+
+Another consideration is the value of AI as a tool to enhance content for people who use assistive technology. Of note are the recent improvements in automatic speech recognition (ASR) and AI generated image descriptions. ASR has seen a significant increase in accuracy from 2022 to 2023. [3Play Media](https://go.3playmedia.com/hubfs/WP%20PDFs/2023%20State%20of%20ASR.pdf) notes that due to AI, results from their annual evaluation of machine-generated closed captions are “some of the most complex and disruptive we have ever seen. Accuracy is higher, and error rates are lower.” [AI generated image descriptions](http://openai.com/customer-stories/be-my-eyes) have increased in complexity and accuracy. These technological advances can greatly assist people with hearing and vision loss, respectively. AI also shows promise as a tool to assist cognitive disabilities by providing summaries, prompts, and organizational tools. Increasingly accurate and lifelike speech synthesizers could assist individuals with speech disabilities. AI has many applications, and the number of available tools is expanding exponentially.
+
+AI bias does not only affect people with disabilities but is a concern. Similarly, there is exciting work being done to increase access and accessibility of content using AI. However, the most important consideration for AI and accessibility is whether everyone can use these new tools.
+
+---
+
+## Testing
+
+To test the accessibility of AI platforms, I used a proprietary evaluation method based on the acronym FAST (Function, Appearance, Structure, Text Equivalents).[^1]
+
+As a brief introduction to FAST:
+
+- Function examines how the platform works with different inputs, such as mouse, keyboard, or voice input, and on different devices, such as a laptop, tablet, or phone. Function tests whether the content works for everyone.
+- Appearance considers visual elements and styling, such as colour contrast, font size and style, and hover and focus states. Appearance tests consider whether those who consume content visually will have an easy time doing so.
+- Structure looks for proper use of HTML as waypoints and navigation. For example, coded titles, headings, and landmarks or regions are essential for many to navigate content.
+- Text equivalents examines things like (but not limited to) alternative text (coded image descriptions), descriptive links and labels, and closed captioning. These criteria are essential to ensure someone who does not consume content visually is not excluded.
+
+With testing organized in such a way, my method involves both automated and manual testing. The key indicator of accessibility is the ability of assistive technology users to independently use, interact with, and understand a website, platform, or software. I have used this method on 58 educational technologies ranging from courseware to student response systems and now AI interfaces. I believe this method provides an accurate assessment of both technical accessibility and functional usability for users of assistive technology.
+
+### Automated Testing
+
+Since the AI tools under investigation are accessed via web interfaces, the testing process begins by running the [WAVE Web Accessibility Evaluation Tools](https://wave.webaim.org/), [ANDI](https://www.ssa.gov/accessibility/andi/help/install.html), and [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/), Chrome’s built-in accessibility tool. Tested criteria are checked off a list, results are compiled, compared for anomalies, and documented.[^2] Automated tests work by querying code and prompting pass or fail questions based on expected patterns. These tools note coding errors such as empty link text, missing alternative text, insufficient colour contrast, and missing button and form labels. Code errors may indicate an accessibility issue, but no automated tests can emulate the experience of assistive technology users. For example, from [The Chang School, Toronto Metropolitan University](https://pressbooks.library.torontomu.ca/pwaa/chapter/limitations-of-automated-web-accessibility-checkers):
+
+Think of an automated accessibility checker like a spell checker in a word processor. Though a good start for identifying misspelled words, a person must still read through the text to ensure words have been used correctly (e.g., where “there” is used in place of “their”).
+
+Some of the issues automated checkers cannot test for include:
+
+- Whether the reading order of content matches the visual order.
+- If the tab order is logical and follows an expected path.
+- Keyboard accessibility of all elements.
+- Accuracy of alt text and captions.
+- Accuracy and usefulness of button labels.
+- Meaningfulness of links.
+
+According to Level Access, [automated scans only check 20 to 25% of web content](http://www.levelaccess.com/blog/automated-accessibility-testing-tools-how-much-do-scans-catch/) accessibility guideline (WCAG) criteria. That leaves many important accessibility considerations untested.
+
+### Manual Testing
+
+The results of the automated tests are used as pathfinders for manual testing. For example, when an automated test returns many unlabeled buttons, I spend extra time examining each button during manual testing, either illuminating a serious error or identifying a false-positive.
+
+Ideally, manual testing would be done by people who use assistive technology fulltime. While I do not require assistive technology to use a computer, I am an expert user of several assistive technologies, use them frequently, and train others in their use.
+
+Manual testing includes:
+
+- [Keyboard only navigation](https://webaim.org/techniques/keyboard/).
+  - Used to verify logical tab order, hover state appearance, skip links, predictable menu behaviour, and media player accessibility.
+  - Keyboard accessibility is a good indicator of switch and sip device accessibility as well.
+- Screen reader ([JAWS](https://www.freedomscientific.com/products/software/jaws/), [NVDA](https://www.nvaccess.org/) and/or [VoiceOver](https://support.apple.com/en-ca/guide/voiceover/vo2682/mac)).
+  - Used to verify issues with link, button, form labels, tables, heading and region or landmark structure, and alternative text.
+- Text-to-speech tools ([ReadSpeaker](https://www.readspeaker.com/solutions/text-to-speech-online/readspeaker-textaid/), [Kurzweil Read the Web](https://chrome.google.com/webstore/detail/read-the-web/hdgegmlancchhhlkkddoiedlklgocffm), and/or [Read&Write](https://www.texthelp.com/products/read-and-write-education/for-google-chrome/).
+  - Used to verify text is machine readable and reading order is logical.
+  - Generally, text-to-speech tools work, but it is also important to note the amount of intervention required by a user to read what they want.
+- Voice control ([Dragon](https://www.nuance.com/dragon/business-solutions/dragon-professional.html), [Voice Control](https://support.apple.com/en-ca/HT210539)).
+  - Used to verify interactive labels (links, forms, buttons).
+  - Test text entry fields for proper focus.
+- Resizing browser window to 200% to verify reflow and alignment.
+  - [According to WCAG](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html), a web interface should zoom to 200% without loss of content or functionality.
+
+If significant reflow issues are detected (or suspected) the platform will be checked on a mobile device to investigate further. Using multiple software and tools of the same type (multiple screen readers, for example) ensures that a detected issue is not caused by a specific software.
+
+Use of plain language, ensuring there is no auto-playing or flashing media, checking for visually distinct and meaningful links, and ensuring no information relies on colour alone are also documented. Results of automated and manual tests are documented under the FAST criteria mentioned above. Audit date, platform type, VPAT links, owner, and additional notes are also documented.
+
+## Artificial Intelligence Interfaces Tested
+
+In July 2023 I tested 9 AI interfaces:
+
+- Bard
+- Bing.com Chat
+- Bing Discover AI
+- ChatGPT 4
+- Claude
+- Dall-E
+- Perplexity
+- Pi.AI
+- Riff bot
+
+The total number of accessibility issues numbered in the hundreds. In many cases, the issues were minor code errors. Conversely, some platforms were effectively inoperable with assistive technology.
+
+---
+
+## FAST Results
+
+### Function
+
+In terms of function, most interfaces have inconsistent keyboard navigation including illogical tab order, inaccessible interactive elements, and missing focus indicators. One tool has a keyboard trap that requires a user to reload the page to exit the trap. Some tools have broken menus that cannot be opened by keyboard.
+
+The most prevalent and experience-breaking problem is the inability, or extreme difficultly encountered, to read the AI responses to prompts. Screen reader users must navigate to the top of the page and read through menus, sidebars, and other distractions simply to be able to read the answer to their prompt. This could easily be solved with skip links, headings, regions, or by having focus move to the answer automatically. Keep in mind, I have full vision and I still struggled to use a screen reader to complete the relatively basic function of having the AI’s response read back to me. Consider that a blind or visually impaired user may have an even more difficult time with these platforms than my testing reveals.
+
+Some platforms include a built-in text-to-speech tool. However, one browser’s built-in text-to-speech tool does not work with the AI interface produced by that same company. One AI interface is completely unusable without a mouse, which would exclude many assistive technology users.
+
+### Appearance
+
+Regarding appearance, many platforms have colour contrast issues, and some struggle with zoom and reflow. This may exclude many with colour vision deficiencies or visual impairments.
+
+### Structure
+
+Analyzing the structure of these platforms revealed issues with headings, particularly a lack thereof. Some platforms lack page titles, and few effectively use regions or landmarks. This presents barriers to many users but breaks the experience for screen reader users.
+
+### Text Equivalents
+
+Considering the text equivalents of AI interfaces, most include meaningful link text albeit inconsistently. Many interfaces lack labels on buttons, or much more confusingly, inconsistent labelling of buttons and menus, resulting in users only being able to meaningfully identify and interact with a random selection of buttons and menus. This makes navigating using voice control or using a screen reader infuriating and impossible, respectively. These are basic coding errors in which buttons are not given names or values. Some platforms accept image uploads and can describe them back to users. Dall-E, an AI image generator, uses the image prompt as alt text which could be useful depending on the prompt.
+
+## Quantifying Results
+
+With the testing complete, a determination about the platform’s accessibility is made. Digital accessibility is not a binary of inaccessible to accessible but rather a continuum from less to more accessible. As such, the results of testing do not produce a label of ‘accessible’ or ‘inaccessible.’ Instead, I attempt to answer: “Is this platform understandable?” “Does this platform work?” and “For everyone?”
+
+However, there must be some consistent method of documenting the results. A score of 0-3 is given to each of Function, Appearance, Structure, Text Equivalents, and Assistive Technology Experience. A score of 3 would indicate no documented issues for that criterion and 0 would indicate experience-breaking issues (refer to Appendix for rubric).
+
+To summarize the results, I use the overall score to determine level of concern.
+
+<table>
+  <tr>
+    <th scope="row">Overall Score</th>
+    <td>0-7</td>
+    <td>8-11</td>
+    <td>12-14</td>
+    <td>15</td>
+  </tr>
+  <tr>
+    <th scope="row">Concern</th>
+    <td><strong>Serious</strong></td>
+    <td><strong>Moderate</strong></td>
+    <td><strong>Minor</strong></td>
+    <td><strong>None</strong></td>
+  </tr>
+</table>
+
+The level of concern informs my recommendation on use of the tool. A tool with **Serious** concerns should be avoided at all costs. A tool labeled **None** or **Minor** should be useable by all students with the understanding that guidance or additional time may be needed.
+
+## Does AI Work? For Everyone?
+
+Of the platforms evaluated, Bard scored the highest at 14. Bard could have received a categorization of “No concern”. However, one of Bard’s most intriguing features (describing uploaded images) requires use of a menu and button that is not accessible without a mouse, thus excluding screen reader users that could greatly benefit from such a tool. Bard revealed no other functional, appearance, structural, or text equivalent issues. Bard worked well with multiple assistive technologies and includes a built-in text-to-speech tool. Of the 58 tools evaluated using the FAST critera, less than 10 have received a label of **None.**
+
+Bing.com Chat also scored well. Despite the significant number of errors (including odd tab order, strange reflow behaviour, and out of order headings), few were considered experience-breaking for users of assistive technology.
+
+If AI is going to be incorporated into your teaching and learning, I recommend Bard or Bing.com Chat to ensure maximum inclusion. Bard, however, is currently not available in Canada.
+
+Our testing revealed moderate concerns about ChatGPT and Bing Discover AI in Microsoft Edge. While ChatGPT has many basic coding issues, it was one of the few AI interfaces whose response was easily read by a screen reader. ChatGPT’s interface has improper and missing labels, odd focus order (specifically automatic focus on edit field on page load), contrast errors, and non-descriptive and duplicate link text. Bing Discover AI suffers from poor tab order, odd reflow behaviour, lack of structure, and inconsistent use of hyperlink text. I would recommend these platforms with the understanding an alternative assessment, additional time, or individual guidance may be required.
+
+The remaining interfaces tested: Claude, Dall-E, Perplexity, Pi.AI, and Riff bot[^3] all prompted Serious concern about their accessibility and usability. They should not be used.
+
+| Platform | Concerns | FAST Score |
+| --- | --- | --- |
+| Bard | **Minor** | 14 |
+| Bing Chat | **Minor** | 12 |
+| Bing Discover | **Moderate** | 10 |
+| ChatGPT | **Moderate** | 9 |
+| Claude | **Serious** | 6 |
+| Dall-E | **Serious** | 7 |
+| Perplexity | **Serious** | 6 |
+| Riff Bot | **Serious** | 6 |
+| Pi.AI | **Serious** | 6 |
+
+*Table 1: Summary results of testing*
+
+## Conclusion
+
+Generally, the errors present in AI platforms are not uncommon in web content. However, the errors are often basic coding errors and omissions. Given that the web interfaces of these AI tools are generally not that complex, the number of errors is an anomaly. There appears to have been little thought or care put into building these web interfaces. I have assumed, as have colleagues I spoke to, that this is due to the rush to make these platforms available after ChatGPT started an AI arms race. That is not an excuse.
+
+I have been intentionally sparse explaining my findings as I do not believe massive corporations during a figurative gold rush should benefit from my labour. If any AI companies wish to improve the accessibility of their interfaces (and I would hope that they should), there are companies that [employ people with disabilities to audit digital spaces](https://www.accessibility.com/blog/recruiting-accessibility-testers-with-disabilities) for accessibility. I would like to expand my testing by employing users of assistive technology. Surveying students would be very valuable information, but asking students about their experience could send conflicting messages about whether should be using AI or not, given the response to AI’s emergence from some instructors. However, gathering more data about who can and cannot use AI tools with their required technology would only benefit the overall conversation around AI.
+
+AI is not going away. AI may not be what we think it is. However, AI is potentially a revolution in computing, education, business, culture, etc. However, a revolution that reinforces pre-existing biases and excludes many is not progress. Consider not just how a new tool can be used, but who will and won’t be able to use it.
+
+---
+
+## Appendix
+
+FAST testing rubric
+
+| Score | Function | Appearance | Structure | Text Equivalents | AT Experience |
+| --- | --- | --- | --- | --- | --- |
+| 3 | No functional issues. | No issues with colour, font, or alignment. | No structural issues/proper use of headings, landmarks, etc. | All non-text elements have proper text equivalent. | Multiple ATs work without issue. |
+| 2 | Minor issues that do not break user experience. | Minor issues with appearance other than colour. | No major structural issues and/or generally good use of structure. | Most non-text elements have proper text equivalent. | Some ATs work without issue, or multiple ATs work with minor issues. |
+| 1 | Major issues that hinder user experience. | Significant issues, including colour issues, impact appearance. | Bare or improper structure. | Few non-text elements have proper text equivalent. | Many ATs do not work. |
+| 0 | Unusable by variable input methods. | The appearance excludes many users. | No useful structure present. | No non-text elements have proper text equivalent. | Not usable with most ATs. |
+
+Scores are summed and the numerical value is converted to a level of concern:
+
+<table>
+  <tr>
+    <th scope="row">Overall Score</th>
+    <td>0-7</td>
+    <td>8-11</td>
+    <td>12-14</td>
+    <td>15</td>
+  </tr>
+  <tr>
+    <th scope="row">Concern</th>
+    <td><strong>Serious</strong></td>
+    <td><strong>Moderate</strong></td>
+    <td><strong>Minor</strong></td>
+    <td><strong>None</strong></td>
+  </tr>
+</table>
+
+[^1]: FAST is based on the same Web Content Accessibility Guidelines as the [W3C POUR (Perceivable, Operable, Understandable, Robust) criteria](https://www.w3.org/WAI/fundamentals/accessibility-principles/). I found, once expanded, FAST has more approachable language than POUR for people outside the digital accessibility community.
+[^2]: Generally, automated tests produce similar results. However, when conflicting results arise or a very large number of errors are detected, additional automated tests such as [ARC](https://chrome.google.com/webstore/detail/arc-toolkit/chdkkkccnlfncngelccgbgfmjebmkmce), [Firefox DevTools](https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/), and Tota11y (retired) are run.
+[^3]: Many of Riff bot’s barriers were caused by the Enchatted chat tool, a third-party chat interface used by Riff bot.

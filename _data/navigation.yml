@@ -1,9 +1,39 @@
+# Top menu, on every page
 main:
-  - title: "Posts"
-    url: /posts/
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
-  - title: "About"
-    url: /about/
+  - title: "About me"
+    url: /about-me/
+  - title: "Accessibility"
+    url: /accessibility/
+  - title: "Reflections"
+    url: /reflections/
+  - title: "AT user guides"
+    url: /assistivetech/
+
+# Left sidebar menus. A page shows one with, in its front matter:
+#   sidebar:
+#     nav: "about"
+about:
+  - title: "About me"
+    url: /about-me/
+    children:
+      - title: "Curriculum Vitae"
+        url: /about-me/curriculum-vitae/
+      - title: "Published Work"
+        url: /about-me/published-work/
+      - title: "Workshops and Presentations"
+        url: /about-me/workshop-presentations/
+      - title: "Now this, I like"
+        url: /about-me/now-this-i-like/
+
+accessibility:
+  - title: "Accessibility"
+    url: /accessibility/
+    children:
+      - title: "Accessibility of AI Interfaces"
+        url: /accessibility-of-ai-interfaces/
+      - title: "Alt Text Comparison"
+        url: /accessibility/alttext-comparison/
+      - title: "Better Links"
+        url: /accessibility/better-links/
+      - title: "Images with text overlay"
+        url: /accessibility/images-with-text-overlay/
