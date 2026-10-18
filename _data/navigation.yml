@@ -1,11 +1,11 @@
 # Top menu, on every page
 main:
-  - title: "About me"
+  - title: "Luke"
     url: /about-me/
-  - title: "Accessibility"
-    url: /accessibility/
-  - title: "Reflections"
+  - title: "Posts"
     url: /reflections/
+  - title: "Projects"
+    url: /accessibility/
   - title: "AT user guides"
     url: /assistivetech/
 
