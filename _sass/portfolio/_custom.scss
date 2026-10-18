@@ -455,24 +455,24 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
 // Home page (splash layout)
 // ==========================================================================
 
-// Soft banner: dark text on cream instead of white text on a strong colour
+// Banner: soft cream fading into the page background, dark text.
+// (home.md's overlay_color is still needed to switch the banner on;
+// the gradient here is drawn on top of it.)
 .page__hero--overlay {
-  border-bottom: 3px solid $heading-accent;
+  @if $theme-mode == dark {
+    background-image: linear-gradient(to bottom, #2d323c, $background-color);
+  } @else {
+    background-image: linear-gradient(to bottom, #f1ede4, $background-color);
+  }
 
   .page__title {
-    color: $heading-accent;       // burgundy 7.5:1 on the cream
+    color: $heading-accent;       // burgundy: 7.5:1 on the cream, 8.3:1 on the page
     text-shadow: none;
   }
 
   .page__lead {
-    color: $text-color;           // 7.2:1 on the cream
+    color: $text-color;           // 7.2:1 on the cream, 8.1:1 on the page
     text-shadow: none;
-  }
-}
-
-@if $theme-mode == dark {
-  .page__hero--overlay {
-    background-color: $footer-background-color !important;   // the cream would glare in dark mode
   }
 }
 
@@ -484,23 +484,25 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
   border-radius: $border-radius;
 }
 
-.home-intro .feature__item--left {
+.splash .feature__item--left .archive__item {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 1.5em;
+  float: none;
+  width: 100%;
+}
+
+.splash .feature__item--left .archive__item-teaser {
+  flex: 0 0 120px;                // logo size: change 120px to taste
+  width: 120px;
+  float: none;
   margin-bottom: 0;
+}
 
-  .archive__item-teaser {
-    flex: 0 0 140px;
-    width: auto;
-    float: none;
-  }
-
-  .archive__item-body {
-    flex: 1 1 16em;
-    width: auto;
-    float: none;
-    padding: 0;
-  }
+.splash .feature__item--left .archive__item-body {
+  flex: 1 1 16em;
+  width: auto;
+  float: none;
+  padding: 0;
 }
