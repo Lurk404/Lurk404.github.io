@@ -24,3 +24,7 @@ $code-background-color: #f3f2ef;
 $form-background-color: #f3f2ef;
 $footer-background-color: #f1f0ec;
 $hover-background-color: #f1f0ec;    // collapsible sections and buttons on hover
+
+// Layout: a wider content column than Minimal Mistakes' default
+$max-width: 1280;              // whole page, header and footer (default 1280px)
+$right-sidebar-width: 250px;     // space kept for "On this page" (default 300px)
