@@ -1,3 +1,6 @@
+---
+title: "Luke McKnight"
+permalink: /
 layout: splash
 excerpt: "Digital accessibility resources for students, educators, and everyone."
 header:
