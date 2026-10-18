@@ -466,7 +466,7 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
     background-image: linear-gradient(to bottom, #41282e, $background-color) !important;
   } @else {
     background-color: #f1ede4 !important;
-    background-image: linear-gradient(to bottom, #f1ede4 0%, #f1ede4 40%, $background-color 100%) !important; 
+    background-image: linear-gradient(to bottom, #D9D4BE 0%, #D9D4BE 40%, $background-color 100%) !important; 
   }
 
   .page__title {
