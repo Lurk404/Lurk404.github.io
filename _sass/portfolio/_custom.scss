@@ -516,3 +516,14 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
   padding: 0;
   background-color: transparent;
 }
+
+// Small LM logo before "Luke McKnight" in the header
+.site-title {
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-title__logo {
+  width: 2rem;                    // change both to resize
+  height: 2rem;
+}
