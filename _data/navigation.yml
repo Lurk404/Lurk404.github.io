@@ -6,8 +6,6 @@ main:
     url: /reflections/
   - title: "Projects"
     url: /accessibility/
-  - title: "AT user guides"
-    url: /assistivetech/
 
 # Left sidebar menus. A page shows one with, in its front matter:
 #   sidebar:
