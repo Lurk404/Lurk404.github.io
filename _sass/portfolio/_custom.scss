@@ -459,10 +459,14 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
 // (home.md's overlay_color is still needed to switch the banner on;
 // the gradient here is drawn on top of it.)
 .page__hero--overlay {
+  // !important: the theme writes the banner's background straight onto the
+  // element (from home.md's overlay_color), which would otherwise win
   @if $theme-mode == dark {
-    background-image: linear-gradient(to bottom, #41282e, $background-color);
+    background-color: #41282e !important;
+    background-image: linear-gradient(to bottom, #41282e, $background-color) !important;
   } @else {
-    background-image: linear-gradient(to bottom, #f1ede4, $background-color);
+    background-color: #f1ede4 !important;
+    background-image: linear-gradient(to bottom, #f1ede4, $background-color) !important;
   }
 
   .page__title {
