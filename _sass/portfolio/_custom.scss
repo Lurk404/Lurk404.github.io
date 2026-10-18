@@ -450,3 +450,69 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
     border-radius: $border-radius;
   }
 }
+
+// ==========================================================================
+// Home page (splash layout)
+// ==========================================================================
+
+// Banner: soft cream fading into the page background, dark text.
+// (home.md's overlay_color is still needed to switch the banner on;
+// the gradient here is drawn on top of it.)
+.page__hero--overlay {
+  // !important: the theme writes the banner's background straight onto the
+  // element (from home.md's overlay_color), which would otherwise win
+  @if $theme-mode == dark {
+    background-color: #41282e !important;
+    background-image: linear-gradient(to bottom, #41282e, $background-color) !important;
+  } @else {
+    background-color: #f1ede4 !important;
+    background-image: linear-gradient(to bottom, #f1ede4 0%, #f1ede4 40%, $background-color 100%) !important; 
+  }
+
+  .page__title {
+    color: $heading-accent;       // burgundy: 7.5:1 on the cream, 8.3:1 on the page
+    text-shadow: none;
+  }
+
+  .page__lead {
+    color: $text-color;           // 7.2:1 on the cream, 8.1:1 on the page
+    text-shadow: none;
+  }
+}
+
+// "About me" card: logo beside name, blurb and button
+.home-intro .feature__wrapper {
+  padding: 1.5em;
+  background-color: $footer-background-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+}
+
+.splash .feature__item--left .archive__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5em;
+  float: none;
+  width: 100%;
+}
+
+.splash .feature__item--left .archive__item-teaser {
+  flex: 0 0 120px;                // logo size: change 120px to taste
+  width: 120px;
+  float: none;
+  margin-bottom: 0;
+}
+
+.splash .feature__item--left .archive__item-body {
+  flex: 1 1 16em;
+  width: auto;
+  float: none;
+  padding: 0;
+}
+
+// The logo has its own colours and transparent corners: no white card behind it in dark mode
+.home-intro img {
+  padding: 0;
+  background-color: transparent;
+}
