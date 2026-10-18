@@ -460,7 +460,7 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
 // the gradient here is drawn on top of it.)
 .page__hero--overlay {
   @if $theme-mode == dark {
-    background-image: linear-gradient(to bottom, #2d323c, $background-color);
+    background-image: linear-gradient(to bottom, #41282e, $background-color);
   } @else {
     background-image: linear-gradient(to bottom, #f1ede4, $background-color);
   }
@@ -505,4 +505,10 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
   width: auto;
   float: none;
   padding: 0;
+}
+
+// The logo has its own colours and transparent corners: no white card behind it in dark mode
+.home-intro img {
+  padding: 0;
+  background-color: transparent;
 }
