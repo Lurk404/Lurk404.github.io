@@ -2,6 +2,8 @@
 main:
   - title: "Luke"
     url: /about-me/
+  - title: "Published"
+    url: /about-me/published-work/
   - title: "Reflections"
     url: /reflections/
   - title: "Projects"
