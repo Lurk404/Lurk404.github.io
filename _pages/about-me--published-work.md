@@ -19,7 +19,7 @@ A guide introducing concepts of digital accessibility (i.e., colour contrast and
 
 [Second edition of AT User Guides](https://lurk404.github.io/assistivetech/)
 
-<img src="/assets/images/wp/2024/06/AT-User-Guides-Cover.png" alt=Assistive Technology User Guides book cover" width="30%">
+<img src="/assets/images/wp/2024/06/AT-User-Guides-Cover.png" alt="Assistive Technology User Guides book cover" width="30%">
 
 [Assistive Technology User Guides](https://pressbooks.bccampus.ca/atuserguides/)
 
