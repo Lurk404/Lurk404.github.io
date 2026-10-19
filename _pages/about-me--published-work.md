@@ -8,30 +8,37 @@ last_modified_at: 2025-05-26
 
 ## Pressbooks
 
-[![Accessibility Handbook for Teaching and Learning book cover](/assets/images/wp/2024/06/Pressbooks-Cover-2.png)](https://pressbooks.bccampus.ca/accessibilityhandbook/)
+### Accessibility Handbook for Teaching and Learning
+<img src="/assets/images/wp/2024/06/Pressbooks-Cover-2.png" alt="Accessibility Handbook for Teaching and Learning book cover" width="30%">
 
 [Accessibility Handbook for Teaching Learning](https://pressbooks.bccampus.ca/accessibilityhandbook/)
 
 A guide introducing concepts of digital accessibility (i.e., colour contrast and alternative text) and provide detailed instructions to use the specific accessibility features of software (i.e., Making Accessible PowerPoint Presentations).
 
-[![Assistive Technology User Guides book cover](/assets/images/wp/2024/06/AT-User-Guides-Cover.png)](https://pressbooks.bccampus.ca/atuserguides/)
+### Assistive Technology User Guides
+
+[Second edition of AT User Guides](https://lurk404.github.io/assistivetech/)
+
+<img src="/assets/images/wp/2024/06/AT-User-Guides-Cover.png" alt=Assistive Technology User Guides book cover" width="30%">
 
 [Assistive Technology User Guides](https://pressbooks.bccampus.ca/atuserguides/)
 
 Explore this collection of guides to maximize the use of assistive technology.
 
-[Second edition of AT User Guides](https://lurk404.github.io/assistivetech/)
+### Digital Accessibility on Demand
 
-[![Digital Accessibility on Demand book cover](/assets/images/wp/2024/07/async-cover.png)](https://pressbooks.bccampus.ca/a11yondemand/)
+{: .note }
+This resource has been archived with the material incorporated into the Accessibility Handbook for Teaching and Learning
+
+<img src="/assets/images/wp/2024/07/async-cover.png" alt="Digital Accessibility on Demand book cover" width="30%">
 
 [Digital Accessibility On-Demand](https://pressbooks.bccampus.ca/a11yondemand/)
 
 Use this resource to find what you need, when you need it to create accessible content and improve existing material. Designed as a just-in-time resource to guide creators to the instructions they need to maximize accessibility and increase inclusivity.
 
-{: .note }
-This resource has been archived with the material incorporated into the Accessibility Handbook for Teaching and Learning
+### Academic Accommodation Fact Sheets
 
-<img src="/assets/images/wp/2024/07/Accommodation-Fact-Sheets-cover-image-1.png" alt="Academic Accommodation Fact Sheets" width="96">
+<img src="/assets/images/wp/2024/07/Accommodation-Fact-Sheets-cover-image-1.png" alt="Academic Accommodation Fact Sheets" width="30%">
 
 [Academic Accommodation Fact Sheets](https://pressbooks.bccampus.ca/accommodationguides/)
 
