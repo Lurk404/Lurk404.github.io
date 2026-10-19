@@ -42,14 +42,19 @@ Listen in to the Digital Learning Strategy forum vodcast from day 1 with hosts T
 
 The [Educational Technology Users Group](https://etug.ca/about-us/) organizes two workshops per year. The workshop themes change but the general focus is "current high-interest topics in educational technology, instructional design, and teaching and learning."
 
+### ETUG 2026
+[Accessibility Why](_pages/etug-2026.md)
+
+When a link says “click here” but you can’t see it, what does that mean? When digital content isn’t built with accessibility in mind, assistive technology users face a disorienting maze of cryptic navigation, impossible to discern colours, and hard to read text. This brief demonstration shows how common assistive technology can and cannot engage with inaccessible content. Understand how poor design doesn’t just create minor inconveniences or exclude a small, edge case of users. Accessibility matters, let’s find out why.
+
+<details markdown="1">
+<summary>Previous ETUG Events</summary>
+
 #### [ETUG Spring 2025](https://etug.ca/spring-2025-workshop-show-me-how-you-did-it-getting-back-to-hands-on-in-edtech-schedule/)
 
 [Digital Accessibility On-demand (video, 8:31)](https://media.bccampus.ca/media/9.%20Luke%20McKnight%20%7C%20Digital%20Accessibility%20On-demand%20(2025%20ETUG%20Spring%20Workshop)/0_qloadcbq)
 
 I attended ETUG Spring 2025 to present [Digital Accessibility On-demand](https://pressbooks.bccampus.ca/a11yondemand/), a Pressbook designed to direct authors to specific support when creating PowerPoint, Word, and Brightspace content. However, the BCcampus Pressbooks server was down at the time. As Digital Accessibility On-demand was created to be an asynchronous resource, demonstrating it was not necessary. I briefly introduced the resource, mentioned its open license and encouraged people to share and remix, and then solicited for collaborators that use other learning management systems (Canvas, Moodle, Blackboard, etc.) to add chapters on those tools. Hopefully this Pressbook could become a resource that helps everyone create more accessible content.
-
-<details markdown="1">
-<summary>Previous ETUG Events</summary>
 
 #### [ETUG Fall 2022](https://etug.ca/fall-workshop-2022-recordings-and-playlist/)
 
