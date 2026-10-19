@@ -25,7 +25,7 @@ feature_row:
 intro_row:
   - image_path: /assets/images/logo.png
     alt: ""                  # decorative: the name is right beside it
-    title: "Luke McKnight"
+    title: "Luke McKnight, MDes"
     excerpt: "Digital accessibility specialist and assistive technologist at Langara College in Vancouver."
     url: "/about-me/"
     btn_label: "About me"
