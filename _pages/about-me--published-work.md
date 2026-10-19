@@ -14,7 +14,7 @@ last_modified_at: 2025-05-26
 
 A guide introducing concepts of digital accessibility (i.e., colour contrast and alternative text) and provide detailed instructions to use the specific accessibility features of software (i.e., Making Accessible PowerPoint Presentations).
 
-[![Assistive Technology User Guides book cover](/assets/images/2024/06/AT-User-Guides-Cover.png)](https://pressbooks.bccampus.ca/atuserguides/)
+[![Assistive Technology User Guides book cover](/assets/images/wp/2024/06/AT-User-Guides-Cover.png)](https://pressbooks.bccampus.ca/atuserguides/)
 
 [Assistive Technology User Guides](https://pressbooks.bccampus.ca/atuserguides/)
 
@@ -31,7 +31,7 @@ Use this resource to find what you need, when you need it to create accessible c
 {: .note }
 This resource has been archived with the material incorporated into the Accessibility Handbook for Teaching and Learning
 
-[<img src="../assets/images/wp/2024/07/Accommodation-Fact-Sheets-cover-image-1.png" alt="Academic Accommodation Fact Sheets" width="96px">](https://pressbooks.bccampus.ca/accommodationguides/)
+<img src="../assets/images/wp/2024/07/Accommodation-Fact-Sheets-cover-image-1.png" alt="Academic Accommodation Fact Sheets" width="96px">
 
 [Academic Accommodation Fact Sheets](https://pressbooks.bccampus.ca/accommodationguides/)
 
