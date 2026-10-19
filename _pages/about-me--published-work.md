@@ -31,7 +31,7 @@ Use this resource to find what you need, when you need it to create accessible c
 {: .note }
 This resource has been archived with the material incorporated into the Accessibility Handbook for Teaching and Learning
 
-<img src="../assets/images/wp/2024/07/Accommodation-Fact-Sheets-cover-image-1.png" alt="Academic Accommodation Fact Sheets" width="96px">
+<img src="/assets/images/wp/2024/07/Accommodation-Fact-Sheets-cover-image-1.png" alt="Academic Accommodation Fact Sheets" width="96">
 
 [Academic Accommodation Fact Sheets](https://pressbooks.bccampus.ca/accommodationguides/)
 
