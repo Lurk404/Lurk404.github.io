@@ -11,7 +11,7 @@ feature_row:
     url: "/accessibility/"
     btn_label: "Explore accessibility"
     btn_class: "btn--primary"
-  - title: "Published work"
+  - title: "Published Work"
     excerpt: "Review my Pressbooks, articles, courses, and other content."
     url: "/about-me/published-work/"
     btn_label: "See published work"
