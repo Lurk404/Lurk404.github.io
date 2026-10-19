@@ -6,13 +6,13 @@ excerpt: "Digital accessibility resources for students, educators, and everyone.
 header:
   overlay_color: "#f1ede4"   # soft cream; styled in _custom.scss (search "Home page")
 feature_row:
-  - title: "Accessibility"
+  - title: "Accessibility Projects"
     excerpt: "Examples, comparisons, and research on accessible content."
     url: "/accessibility/"
     btn_label: "Explore accessibility"
     btn_class: "btn--primary"
   - title: "Published work"
-    excerpt: "Pressbooks, articles, and courses."
+    excerpt: "Review my Pressbooks, articles, courses, and other content."
     url: "/about-me/published-work/"
     btn_label: "See published work"
     btn_class: "btn--primary"
