@@ -2,7 +2,7 @@
 main:
   - title: "Luke"
     url: /about-me/
-  - title: "Posts"
+  - title: "Reflections"
     url: /reflections/
   - title: "Projects"
     url: /accessibility/
