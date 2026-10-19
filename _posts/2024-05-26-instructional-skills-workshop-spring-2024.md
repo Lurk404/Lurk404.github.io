@@ -1,7 +1,7 @@
 ---
 title: "Instructional Skills Workshop Spring 2024"
 date: 2024-05-26 12:25:00
-tags: ["Professional Development", "Reflection"]
+categories: [Workshop]
 last_modified_at: 2025-05-26
 ---
 

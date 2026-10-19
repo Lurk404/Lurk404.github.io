@@ -1,7 +1,7 @@
 ---
 title: "Accessibility Summer Camp 2025"
 date: 2025-06-17 18:59:33
-tags: ["Professional Development", "Reflection"]
+categories: [Conferences]
 ---
 
 Wichita State University hosts an annual [Accessibility Summer Camp](https://www.accessibilityict.org/) with a focus on digital accessibility in higher education and features a spectrum of presenters discussing technology, pedagogy, and disability.
