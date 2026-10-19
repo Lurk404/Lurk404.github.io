@@ -20,13 +20,18 @@ A guide introducing concepts of digital accessibility (i.e., colour contrast and
 
 Explore this collection of guides to maximize the use of assistive technology.
 
+[Second edition of AT User Guides](https://lurk404.github.io/assistivetech/)
+
 [![Digital Accessibility on Demand book cover](/assets/images/wp/2024/07/async-cover.png)](https://pressbooks.bccampus.ca/a11yondemand/)
 
 [Digital Accessibility On-Demand](https://pressbooks.bccampus.ca/a11yondemand/)
 
 Use this resource to find what you need, when you need it to create accessible content and improve existing material. Designed as a just-in-time resource to guide creators to the instructions they need to maximize accessibility and increase inclusivity.
 
-[![Academic Accommodation Fact Sheets](/assets/images/wp/2024/07/Accommodation-Fact-Sheets-cover-image-1.png)](https://pressbooks.bccampus.ca/accommodationguides/)
+{: .note }
+This resource has been archived with the material incorporated into the Accessibility Handbook for Teaching and Learning
+
+[<img src="../assets/images/wp/2024/07/Accommodation-Fact-Sheets-cover-image-1.png" alt="Academic Accommodation Fact Sheets" width="96px">](https://pressbooks.bccampus.ca/accommodationguides/)
 
 [Academic Accommodation Fact Sheets](https://pressbooks.bccampus.ca/accommodationguides/)
 
@@ -37,6 +42,8 @@ Brief guides to understand and implement academic accommodations in post-seconda
 ## Articles
 
 [Accessibility of AI Interfaces](/accessibility-of-ai-interfaces/), 2023. Summary of testing AI web interfaces for their compatibility with assistive technology. [Also available on Langara.ca](https://langara.ca/about-langara/academics/edtech/AI-Accessibility.html)
+
+[Lost in Translation](https://pressbooks.bccampus.ca/lostintranslation/chapter/title-page/): a study of disabled students use of technology and how to tangibly improve the student experience through inclusive design.
 
 ## Online Courses
 
