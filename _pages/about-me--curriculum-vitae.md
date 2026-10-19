@@ -14,7 +14,7 @@ Assistive Technologist, Langara College, March 2021-Present
 
 ## Education
 
-Master of Design, Inclusive Design, OCAD University, 2024-2026  
+Master of Design, Inclusive Design, OCAD University, 2026  
 Diploma, Library & Information Technology, Langara College, 2022  
 Bachelor of Arts, Political Science, University of Victoria, 2011
 

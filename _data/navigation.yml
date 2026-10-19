@@ -1,7 +1,9 @@
 # Top menu, on every page
 main:
-  - title: "Me"
+  - title: "Luke"
     url: /about-me/
+  - title: "Published"
+    url: /about-me/published-work/
   - title: "Reflections"
     url: /reflections/
 
