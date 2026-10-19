@@ -13,6 +13,8 @@ My name is Luke McKnight. I am a digital accessibility specialist, an IAAP certi
 
 [Curriculum Vitae](/about-me/curriculum-vitae/)
 
+[Accessibility Projects](/accessibility/)
+
 [Published Work](/about-me/published-work/)
 
 [Workshops and Presentations](/about-me/workshop-presentations/)
