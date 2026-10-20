@@ -22,6 +22,8 @@ about:
         url: /about-me/published-work/
       - title: "Workshops and Presentations"
         url: /about-me/workshop-presentations/
+      - title: "Luke"
+        url: /about-me/
 
 accessibility:
   - title: "Accessibility"
