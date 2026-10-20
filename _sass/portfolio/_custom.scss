@@ -237,52 +237,8 @@
   }
 }
 
-// The "On this page" popover, just above the buttons
-.page-toc {
-  position: fixed;
-  inset: auto 1rem 4.5rem auto;
-  width: 22rem;
-  max-width: calc(100vw - 2rem);
-  max-height: 70vh;
-  margin: 0;
-  padding: 0.75rem 1rem;
-  overflow: auto;
-  font-family: $global-font-family;
-  font-size: 0.875rem;
-  color: $text-color;
-  background-color: $background-color;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
-
-  ul {
-    margin: 0;
-    padding-inline-start: 1.25rem;
-  }
-
-  li {
-    margin: 0.25rem 0;
-  }
-}
-
-// Links in the popover (it sits in the footer, which greys out links)
-.page__footer .page-toc a {
-  color: $link-color;
-  text-decoration: underline;
-
-  &:hover {
-    color: $link-color-hover;
-  }
-}
-
-.page-toc-title {
-  margin: 0 0 0.5rem;
-  font-weight: 700;
-}
-
 @media print {
   .page-nav,
-  .page-toc,
   .masthead__tools {
     display: none !important;
   }
@@ -413,12 +369,6 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
     color-scheme: dark;
   }
 
-  // Shadows don't show on a dark page, so a lighter border marks the edges
-  .page-toc {
-    border-color: #59606c;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  }
-
   // Brand-coloured social icons (GitHub is near-black) vanish on dark
   .author__urls.social-icons i,
   .author__urls.social-icons .svg-inline--fa,
@@ -539,15 +489,22 @@ a.reversefootnote {
 // (script in _includes/page_nav_buttons.html)
 // ==========================================================================
 
+// Below 1024px the title bar holds the button, so the button supplies the
+// padding. Sized to match the desktop title bar: about 16px text, 42-44px tall.
+.toc .nav__title:has(.toc__toggle) {
+  padding: 0;
+  font-size: 1rem;
+}
+
 // The title becomes a full-width button below 1024px
 .toc__toggle {
   display: flex;
   align-items: center;
-  gap: 0.4em;
+  gap: 0.5em;
   width: 100%;
   min-height: 44px;                 // big enough to tap
   margin: 0;
-  padding: 0;
+  padding: 0.5rem 0.75rem;
   font: inherit;
   color: inherit;                   // white, from the theme's .nav__title
   text-align: start;
@@ -579,7 +536,7 @@ a.reversefootnote {
 
   &:focus-visible {
     outline: 3px solid #fff;
-    outline-offset: 2px;
+    outline-offset: -5px;
   }
 }
 
