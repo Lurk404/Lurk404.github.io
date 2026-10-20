@@ -533,3 +533,68 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
 a.reversefootnote {
   color: $muted-text-color;
 }
+
+// ==========================================================================
+// "On this page": collapsible on narrow screens
+// (script in _includes/page_nav_buttons.html)
+// ==========================================================================
+
+// The title becomes a full-width button below 1024px
+.toc__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  width: 100%;
+  min-height: 44px;                 // big enough to tap
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;                   // white, from the theme's .nav__title
+  text-align: start;
+  background: none;
+  border: 0;
+  cursor: pointer;
+
+  // Chevron: points down when closed, up when open
+  &::after {
+    content: "";
+    width: 0.5em;
+    height: 0.5em;
+    margin-inline: auto 0.35em;        // room so the turned chevron isn't clipped
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg) translateY(-25%);
+    transition: transform 0.15s;
+  }
+
+  &[aria-expanded="true"]::after {
+    transform: rotate(-135deg) translateY(-25%);
+  }
+
+  // Keyboard focus: white ring inside the grey title bar (the theme's
+  // default teal ring is hard to see on grey)
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+  }
+}
+
+// The theme's .toc__menu doesn't set display, but make sure [hidden] wins
+.toc__menu[hidden] {
+  display: none;
+}
+
+// Collapsed: round the bottom corners of the title bar too
+.toc--collapsed .nav__title {
+  border-radius: $border-radius;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toc__toggle::after {
+    transition: none;
+  }
+}
