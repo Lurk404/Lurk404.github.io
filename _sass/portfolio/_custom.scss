@@ -527,3 +527,9 @@ body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
   width: 2rem;                    // change both to resize
   height: 2rem;
 }
+
+// Footnotes: the theme greys them out (2.5:1); use the muted text colour instead
+.footnotes,
+a.reversefootnote {
+  color: $muted-text-color;
+}
