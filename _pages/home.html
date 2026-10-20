@@ -1,0 +1,75 @@
+---
+title: "Luke McKnight"
+permalink: /
+layout: splash
+excerpt: "Digital accessibility resources for students, educators, and everyone."
+header:
+  overlay_color: "#f1ede4"   # switches the banner on; its colours are in _custom.scss (search "Home page")
+---
+
+<!--
+  Home page, written in HTML. The banner above comes from the front matter
+  (title, excerpt, header). Everything below uses Minimal Mistakes' own
+  "feature row" classes, so it looks the same as the theme's built-in version.
+-->
+
+<!-- Three boxes: Accessibility, Published Work, Reflections -->
+<div class="feature__wrapper">
+
+  <div class="feature__item">
+    <div class="archive__item">
+      <div class="archive__item-body">
+        <h2 class="archive__item-title">Accessibility Projects</h2>
+        <div class="archive__item-excerpt">
+          <p>Examples, comparisons, and research on accessible content.</p>
+        </div>
+        <p><a href="{{ '/accessibility/' | relative_url }}" class="btn btn--primary">Explore accessibility</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature__item">
+    <div class="archive__item">
+      <div class="archive__item-body">
+        <h2 class="archive__item-title">Published Work</h2>
+        <div class="archive__item-excerpt">
+          <p>Review my Pressbooks, articles, courses, and other content.</p>
+        </div>
+        <p><a href="{{ '/about-me/published-work/' | relative_url }}" class="btn btn--primary">See published work</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature__item">
+    <div class="archive__item">
+      <div class="archive__item-body">
+        <h2 class="archive__item-title">Reflections</h2>
+        <div class="archive__item-excerpt">
+          <p>Thoughts on workshops, conferences, and professional development.</p>
+        </div>
+        <p><a href="{{ '/reflections/' | relative_url }}" class="btn btn--primary">Read reflections</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- "About me" card: logo beside name, blurb and button -->
+<div class="home-intro">
+  <div class="feature__wrapper">
+    <div class="feature__item--left">
+      <div class="archive__item">
+        <div class="archive__item-teaser">
+          <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="">
+        </div>
+        <div class="archive__item-body">
+          <h2 class="archive__item-title">Luke McKnight, MDes</h2>
+          <div class="archive__item-excerpt">
+            <p>Digital accessibility specialist and assistive technologist at Langara College in Vancouver.</p>
+          </div>
+          <p><a href="{{ '/about-me/' | relative_url }}" class="btn btn--primary">About me</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
