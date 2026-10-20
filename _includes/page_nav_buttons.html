@@ -1,91 +1,100 @@
 <!--
-  Floating "Back to top" and "On this page" buttons, bottom-right.
-  Included from footer/custom.html. Styles are in _sass/portfolio/_custom.scss
-  (search for "Floating"). Ported from the AT User Guides site.
+  Page navigation helpers. Included from footer/custom.html.
+  Styles are in _sass/portfolio/_custom.scss (search for "Floating" and
+  "On this page: collapsible").
 
-  - Without JavaScript, "Back to top" stays as a plain link at the end of the page.
-  - With JavaScript, the buttons float in the bottom-right corner once you scroll.
-  - "On this page" copies the page's own "On this page" box (Minimal Mistakes'
-    table of contents, turned on with toc: true) into a popover. It only shows
-    on narrower screens: on wide screens the box itself stays on the right
-    as you scroll, so the button would just repeat it.
+  1. Floating "Back to top" button, bottom-right.
+     - Without JavaScript, it stays as a plain link at the end of the page.
+     - With JavaScript, it floats in the bottom-right corner once you scroll.
+
+  2. Collapsible "On this page" box on narrow screens.
+     - Below 1024px (Minimal Mistakes' "large" breakpoint) the theme moves the
+       box to the top of the page, above the content. There, its title becomes
+       a button that shows or hides the list, and it starts collapsed.
+     - On wide screens the box sits on the right as usual, always open.
+     - Without JavaScript, the list is simply always shown.
 -->
 <div class="page-nav" id="page-nav">
   <a class="page-nav-button" href="#top">Back to top</a>
 </div>
 
 <script>
+  /* 1. Floating "Back to top" */
   (function () {
     var bar = document.getElementById('page-nav');
     if (!bar) return;
 
-    /* The page's "On this page" list */
-    var source = document.querySelector('.sidebar__right .toc__menu');
-    if (source && !source.querySelector('a')) source = null;
-
-    /* Wide screens: Minimal Mistakes keeps the box on screen (1024px matches
-       its "large" breakpoint), so the button is only needed below that. */
-    var wide = window.matchMedia('(min-width: 1024px)');
-    var tocButton = null;
-    var popover = null;
-
-    if (source && typeof HTMLElement.prototype.showPopover === 'function') {
-      popover = document.createElement('div');
-      popover.id = 'page-toc';
-      popover.className = 'page-toc';
-      popover.setAttribute('popover', '');
-
-      var nav = document.createElement('nav');
-      nav.setAttribute('aria-labelledby', 'page-toc-title');
-      var title = document.createElement('p');
-      title.id = 'page-toc-title';
-      title.className = 'page-toc-title';
-      title.textContent = 'On this page';
-      var list = source.cloneNode(true);
-      list.removeAttribute('class');
-      nav.appendChild(title);
-      nav.appendChild(list);
-      popover.appendChild(nav);
-
-      tocButton = document.createElement('button');
-      tocButton.type = 'button';
-      tocButton.className = 'page-nav-button';
-      tocButton.setAttribute('popovertarget', 'page-toc');
-      tocButton.textContent = 'On this page';
-
-      bar.insertBefore(tocButton, bar.firstChild);
-      bar.insertBefore(popover, tocButton.nextSibling);  /* right after the button in tab order */
-
-      /* Choosing a link closes the popover; the page then jumps to that section. */
-      popover.addEventListener('click', function (e) {
-        if (e.target.closest('a')) popover.hidePopover();
-      });
-    }
-
-    /* Float the bar, and show it only once you've scrolled down. */
     document.documentElement.classList.add('page-nav-floating');
 
-    /* On short screens (or at high zoom) the bar doesn't float: it stays at the
-       end of the page and is always shown. Must match the media query in _custom.scss. */
+    /* On short screens (or at high zoom) the button doesn't float: it stays at
+       the end of the page and is always shown. Must match the media query in _custom.scss. */
     var floats = window.matchMedia('(min-height: 30rem)');
 
     function update() {
-      if (tocButton) {
-        tocButton.hidden = wide.matches;
-        if (wide.matches && popover.matches(':popover-open')) popover.hidePopover();
-      }
-      var popoverOpen = popover && popover.matches(':popover-open');
-      var show = !floats.matches || window.scrollY > 0 || popoverOpen;
+      var show = !floats.matches || window.scrollY > 0;
       bar.classList.toggle('is-visible', show);
-      /* Hidden buttons shouldn't be reachable with Tab or by screen readers */
+      /* A hidden button shouldn't be reachable with Tab or by screen readers */
       if (show) bar.removeAttribute('inert'); else bar.setAttribute('inert', '');
     }
 
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     if (floats.addEventListener) floats.addEventListener('change', update);
-    if (wide.addEventListener) wide.addEventListener('change', update);
-    if (popover) popover.addEventListener('toggle', update);
     update();
+  })();
+
+  /* 2. Collapsible "On this page" on narrow screens */
+  (function () {
+    var toc = document.querySelector('.sidebar__right .toc');
+    if (!toc) return;
+    var title = toc.querySelector('.nav__title');
+    var menu = toc.querySelector('.toc__menu');
+    if (!title || !menu) return;
+
+    menu.id = menu.id || 'toc-menu';
+    var label = title.innerHTML;           /* the icon and "On this page" */
+
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'toc__toggle';
+    button.setAttribute('aria-controls', menu.id);
+    button.innerHTML = label;
+
+    var narrow = window.matchMedia('(max-width: 1023.98px)');
+    var open = false;                      /* starts collapsed on narrow screens */
+
+    function apply() {
+      if (narrow.matches) {
+        /* Heading keeps its level; the button goes inside it */
+        if (button.parentNode !== title) {
+          title.innerHTML = '';
+          title.appendChild(button);
+        }
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menu.hidden = !open;
+        toc.classList.toggle('toc--collapsed', !open);
+      } else {
+        /* Wide screens: plain heading, list always shown */
+        if (button.parentNode === title) title.innerHTML = label;
+        menu.hidden = false;
+        toc.classList.remove('toc--collapsed');
+      }
+    }
+
+    button.addEventListener('click', function () {
+      open = !open;
+      apply();
+    });
+
+    /* Choosing a link on a narrow screen closes the list again */
+    menu.addEventListener('click', function (e) {
+      if (narrow.matches && e.target.closest('a')) {
+        open = false;
+        apply();
+      }
+    });
+
+    if (narrow.addEventListener) narrow.addEventListener('change', apply);
+    apply();
   })();
 </script>
