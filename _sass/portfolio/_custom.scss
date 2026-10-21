@@ -284,9 +284,10 @@
 }
 
 .site-prefs .flc-slidingPanel-panel .site-prefs-toolbar {
+  max-width: $max-width;            // same width as the grid of cards below,
+  margin: 0 auto;                   // so the buttons line up with its right edge
   padding: 1rem 1rem 0;             // the cards below have 1rem padding on every side
 }
-
 
 // Panel headings keep the panel's own colour (not the burgundy H2)
 .site-prefs .fl-prefsEditor-panel h2 {
