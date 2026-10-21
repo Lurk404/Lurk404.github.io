@@ -31,5 +31,4 @@ accessibility:
         url: /accessibility/better-links/
       - title: "Images with text overlay"
         url: /accessibility/images-with-text-overlay/
-      - title: "AT User Guides"
-        url: https://lurk404.github.io/assistivetech/
+        
