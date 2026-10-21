@@ -155,7 +155,8 @@
 
 // "Back to top" sits in the footer, where Minimal Mistakes makes links grey
 // and underlines them on hover. Keep it looking like the other buttons.
-.page__footer .page-nav .page-nav-button {
+.page__footer .page-nav .page-nav-button,
+.sidebar__right .page-nav .page-nav-button {
   color: #fff;
   text-decoration: none;
 
@@ -228,6 +229,27 @@
   .page-nav-floating .page__footer footer {
     padding-bottom: 5rem;
   }
+}
+
+// Wide screens (script in page_nav_buttons.html decides which applies):
+// - page-nav--sidebar: inside the right-hand column, 1rem below "On this page"
+// - page-nav--column: floating at the bottom, lined up with that column
+//   (the script sets its left edge)
+@media (min-height: 30rem) {
+  .page-nav-floating .page-nav.page-nav--sidebar {
+    position: static;
+    margin: 1rem 0 0;
+  }
+
+  .page-nav-floating .page-nav.page-nav--column {
+    right: auto;
+  }
+}
+
+// The "On this page" list scrolls when it's taller than the screen; leave room
+// for the button below it
+.sidebar__right.sticky:has(.page-nav--sidebar) .toc .toc__menu {
+  max-height: calc(100vh - 7em - 4rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
