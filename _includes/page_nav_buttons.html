@@ -3,9 +3,15 @@
   Styles are in _sass/portfolio/_custom.scss (search for "Floating" and
   "On this page: collapsible").
 
-  1. Floating "Back to top" button, bottom-right.
+  1. "Back to top" button. It appears once you scroll.
+     - Wide screens (1024px and up), page with an "On this page" box: it sits
+       in the right-hand column, just below the box, and stays there as the
+       box sticks to the top of the screen.
+     - Wide screens, page without an "On this page" box: it floats at the
+       bottom of the screen, lined up with the right-hand column.
+     - Narrow screens, and pages without that column (like the home page):
+       it floats in the bottom-right corner.
      - Without JavaScript, it stays as a plain link at the end of the page.
-     - With JavaScript, it floats in the bottom-right corner once you scroll.
 
   2. Collapsible "On this page" box on narrow screens.
      - Below 1024px (Minimal Mistakes' "large" breakpoint) the theme moves the
@@ -19,16 +25,56 @@
 </div>
 
 <script>
-  /* 1. Floating "Back to top" */
+  /* 1. "Back to top" */
   (function () {
     var bar = document.getElementById('page-nav');
     if (!bar) return;
 
     document.documentElement.classList.add('page-nav-floating');
 
+    var home = bar.parentNode;              /* where it starts: the footer */
+    var homeNext = bar.nextSibling;
+    var page = document.querySelector('.layout--single .page');
+    var sidebar = document.querySelector('.sidebar__right');
+
+    /* Wide screens: Minimal Mistakes' "large" breakpoint, where the
+       right-hand column appears */
+    var wide = window.matchMedia('(min-width: 1024px)');
+
     /* On short screens (or at high zoom) the button doesn't float: it stays at
        the end of the page and is always shown. Must match the media query in _custom.scss. */
     var floats = window.matchMedia('(min-height: 30rem)');
+
+    function tocShown() {
+      return sidebar && getComputedStyle(sidebar).display !== 'none';
+    }
+
+    function place() {
+      bar.classList.remove('page-nav--sidebar', 'page-nav--column');
+      bar.style.left = '';
+
+      if (wide.matches && floats.matches && tocShown()) {
+        /* Below the "On this page" box */
+        if (bar.parentNode !== sidebar) sidebar.appendChild(bar);
+        bar.classList.add('page-nav--sidebar');
+        return;
+      }
+
+      /* Everywhere else it floats, so it lives back in the footer */
+      if (bar.parentNode !== home) home.insertBefore(bar, homeNext);
+
+      if (wide.matches && page) {
+        /* Line it up with the right-hand column: the page reserves that
+           column as padding on its right-hand side */
+        var rect = page.getBoundingClientRect();
+        var column = parseFloat(getComputedStyle(page).paddingRight) || 0;
+        var gap = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+        if (column > 0) {
+          bar.style.left = (rect.right - column + gap) + 'px';
+          bar.classList.add('page-nav--column');
+        }
+      }
+    }
 
     function update() {
       var show = !floats.matches || window.scrollY > 0;
@@ -37,10 +83,13 @@
       if (show) bar.removeAttribute('inert'); else bar.setAttribute('inert', '');
     }
 
+    function both() { place(); update(); }
+
     window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    if (floats.addEventListener) floats.addEventListener('change', update);
-    update();
+    window.addEventListener('resize', both);
+    if (floats.addEventListener) floats.addEventListener('change', both);
+    if (wide.addEventListener) wide.addEventListener('change', both);
+    both();
   })();
 
   /* 2. Collapsible "On this page" on narrow screens */
