@@ -18,8 +18,6 @@ about:
     children:
       - title: "Luke"
         url: /about-me/
-      - title: "Curriculum Vitae"
-        url: /about-me/curriculum-vitae/
       - title: "Published Work"
         url: /about-me/published-work/
       - title: "Workshops and Presentations"
