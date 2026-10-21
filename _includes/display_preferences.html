@@ -1,7 +1,7 @@
 <!--
-  Display preferences (Fluid Infusion UI Options): a "Show preferences" button in
-  the header, and a panel that opens just below the header. The top of the panel
-  has the light/dark toggle (_includes/theme_toggle.html) and "Reset".
+  Display preferences (Fluid Infusion UI Options): the "Show preferences" button
+  in the header, and the script that starts the panel. The container and the
+  panel itself (with Dark/Light and Reset at its top) are in masthead.html.
   Included from masthead.html. Styles and the Infusion script are loaded in
   head/custom.html; the layout is in _sass/portfolio/_custom.scss (search for
   "Display preferences"). The Infusion files are in assets/infusion/.
@@ -13,13 +13,13 @@
   - Text-to-speech uses the voices built into the reader's browser. When it's on,
     a play button appears at the top of the page and reads the page content
     (not the menus or footer).
-  - Infusion needs the buttons and the panel inside one container, so the script
-    below wraps the whole header in that container and adds the panel after it.
   - The panels themselves are only downloaded the first time someone opens
     the panel ("lazyLoad").
   - "Reset" only resets the display preferences, not light/dark. Infusion hides
     it until the panel opens.
-  - If Infusion doesn't load, the light/dark toggle stays in the header instead
+  - "Show preferences" is shown as soon as the page starts drawing, so it
+    doesn't pop in late and shift the header. If Infusion then doesn't load, the
+    script hides it again and moves the light/dark toggle into the header
     (without "Reset"), so dark mode still works.
   - The buttons stay hidden if JavaScript is off, since they can't work without it.
   - Button wording: screen readers hear "Show preferences" / "Hide preferences"
@@ -28,46 +28,27 @@
 -->
 <button type="button" class="page-nav-button flc-slidingPanel-toggleButton" hidden>+ Show preferences</button>
 
-<!-- Hidden until the script below moves it into the top of the panel -->
-<div class="site-prefs-toolbar" id="site-prefs-toolbar" hidden>
-  {% include theme_toggle.html %}
-  <button type="button" class="page-nav-button flc-prefsEditor-reset" aria-label="Reset preferences">Reset</button>
-</div>
-
 <script>
   (function () {
+    /* Show the button now, while the header is being drawn (see the note above) */
+    var toggle = document.querySelector('.masthead .flc-slidingPanel-toggleButton');
+    if (toggle) toggle.hidden = false;
+
     function start() {
-      var header = document.querySelector('.masthead');
-      var toggle = header && header.querySelector('.flc-slidingPanel-toggleButton');
-      var toolbar = document.getElementById('site-prefs-toolbar');
-      if (!header || !toggle || !toolbar || !window.fluid || !fluid.uiOptions) {
-        /* Infusion didn't load: leave the light/dark toggle in the header,
-           and remove "Reset", which can't work without Infusion */
-        var reset = toolbar && toolbar.querySelector('.flc-prefsEditor-reset');
-        if (reset) reset.remove();
-        if (toolbar) toolbar.hidden = false;
+      var prefs = document.getElementById('site-prefs');
+      if (!toggle || !prefs || !window.fluid || !fluid.uiOptions) {
+        /* Infusion didn't load: hide "Show preferences", and move the light/dark
+           toggle into the header without "Reset", which can't work without Infusion */
+        if (toggle) toggle.hidden = true;
+        var toolbar = document.getElementById('site-prefs-toolbar');
+        var tools = document.querySelector('.masthead__tools');
+        if (toolbar && tools) {
+          var reset = toolbar.querySelector('.flc-prefsEditor-reset');
+          if (reset) reset.remove();
+          tools.appendChild(toolbar);
+        }
         return;
       }
-
-      /* Container: wraps the header, with the panel right after it */
-      var prefs = document.createElement('div');
-      prefs.id = 'site-prefs';
-      prefs.className = 'site-prefs flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel';
-      var panel = document.createElement('div');
-      panel.className = 'flc-slidingPanel-panel';
-      /* Start closed. Infusion closes the panel when it starts, but with a
-         sliding animation, a moment after the page appears, so without this
-         the open panel would flash on screen and then slide shut. */
-      panel.style.display = 'none';
-
-      header.parentNode.insertBefore(prefs, header);
-      prefs.appendChild(header);
-      prefs.appendChild(panel);
-      /* Light/dark and Reset go at the top of the panel. Infusion adds the
-         preference cards after them when the panel first opens. */
-      panel.appendChild(toolbar);
-      toolbar.hidden = false;
-      toggle.hidden = false;
 
       /* Text-to-speech: read the page content, with the play button at the top.
          Pages without .page__content (like the home page list) get no play button. */

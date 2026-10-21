@@ -1,8 +1,14 @@
 {%- comment -%}
   Copy of Minimal Mistakes' header (_includes/masthead.html, version 4.28.1),
-  with one addition: the "masthead__tools" box at the end, holding
-  "+ Show preferences". (Dark/Light and Reset are at the top of the panel it
-  opens: see _includes/display_preferences.html.) Styles are in
+  with additions for the display preferences (Fluid Infusion UI Options):
+  - The "masthead__tools" box at the end, holding "+ Show preferences".
+  - A container around the whole header, and the preferences panel after the
+    header, with Dark/Light and Reset at its top. Infusion needs the button and
+    the panel inside one container. They're written here rather than added by
+    the script, because moving the header on page load would restart Minimal
+    Mistakes' fade-in, making the header blink.
+  - The panel starts closed (style="display: none"). Infusion slides it open.
+  See _includes/display_preferences.html for the script. Styles are in
   _sass/portfolio/_custom.scss (search for "Header").
   If you update the theme version in _config.yml, compare this file with the
   theme's new masthead.html.
@@ -10,6 +16,7 @@
 {% assign locale = include.locale | default: site.locale %}
 {% capture logo_path %}{{ site.logo }}{% endcapture %}
 
+<div id="site-prefs" class="site-prefs flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
@@ -50,4 +57,11 @@
       {% include display_preferences.html %}
     </div>
   </div>
+</div>
+<div class="flc-slidingPanel-panel" style="display: none">
+  <div class="site-prefs-toolbar" id="site-prefs-toolbar">
+    {% include theme_toggle.html %}
+    <button type="button" class="page-nav-button flc-prefsEditor-reset" aria-label="Reset preferences">Reset</button>
+  </div>
+</div>
 </div>
