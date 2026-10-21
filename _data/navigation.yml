@@ -2,12 +2,8 @@
 main:
   - title: "Luke"
     url: /about-me/
-  - title: "Published"
-    url: /about-me/published-work/
-  - title: "Reflections"
+  - title: "Thoughts"
     url: /reflections/
-  - title: "Workshops and Presentations"
-    url: /about-me/workshop-presentations/
 
 # Left sidebar menus. A page shows one with, in its front matter:
 #   sidebar:
