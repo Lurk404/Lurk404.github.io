@@ -6,6 +6,8 @@ main:
     url: /about-me/published-work/
   - title: "Reflections"
     url: /reflections/
+  - title: "Workshops and Presentations"
+    url: /about-me/workshop-presentations/
 
 # Left sidebar menus. A page shows one with, in its front matter:
 #   sidebar:
@@ -14,16 +16,14 @@ about:
   - title: "About me"
     url: /about-me/
     children:
+      - title: "Luke"
+        url: /about-me/
       - title: "Curriculum Vitae"
         url: /about-me/curriculum-vitae/
-      - title: "Accessibility Projects"
-        url: /accessibility/
       - title: "Published Work"
         url: /about-me/published-work/
       - title: "Workshops and Presentations"
         url: /about-me/workshop-presentations/
-      - title: "Luke"
-        url: /about-me/
 
 accessibility:
   - title: "Accessibility"
