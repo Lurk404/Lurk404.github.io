@@ -27,3 +27,9 @@ $hover-background-color: #f1f0ec;    // collapsible sections and buttons on hove
 
 // Layout: a wider content column than Minimal Mistakes' default
 $right-sidebar-width: 260px;     // space kept for "On this page" (default 300px)
+
+
+// No fade-in when a page loads (Minimal Mistakes fades the header, banner,
+// content and footer in; on this site that showed as a haze a moment after
+// the page appeared)
+$intro-transition: none;
