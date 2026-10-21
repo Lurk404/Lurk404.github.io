@@ -289,6 +289,21 @@
   padding: 1rem 1rem 0;             // the cards below have 1rem padding on every side
 }
 
+// Light/dark and Reset sit inside the preferences panel, which Infusion keeps
+// out of the contrast themes by switching off the theme's colour variables
+// there. Infusion's rule for every button on the page still reaches these two,
+// though, so they'd lose their background and take the theme's text colour.
+// Keep the site's own button colours. More specific than Infusion's rule,
+// which also uses !important.
+.site-prefs .site-prefs-toolbar .page-nav-button {
+  color: #fff !important;
+  background-color: $primary-color !important;
+
+  &:hover {
+    background-color: mix(#000, $primary-color, 20%) !important;
+  }
+}
+
 // Panel headings keep the panel's own colour (not the burgundy H2)
 .site-prefs .fl-prefsEditor-panel h2 {
   color: inherit;
