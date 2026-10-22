@@ -1,81 +1,49 @@
-// Extra styles for the portfolio, loaded after Minimal Mistakes.
-// Built twice: once with the light colours (main.css) and once with the dark
-// colours (main-dark.css). $theme-mode says which one this is.
-// Most of this comes from the AT User Guides site (Lurk404/assistivetech).
+// The site's own styles, loaded after Minimal Mistakes (see _site.scss).
+// Built twice: with the light colours (main.css) and the dark ones
+// (main-dark.css). $theme-mode says which one this is.
+// Scripts for the parts below are in assets/js/site.js.
 
 // ==========================================================================
-// Headings: burgundy H2 and H4 in page content
+// Basics
 // ==========================================================================
+
+// Anything marked hidden stays hidden, even if a rule below gives it a display
+[hidden] {
+  display: none !important;
+}
+
+// Buttons that need JavaScript are hidden when it's off
+// (Minimal Mistakes swaps "no-js" for "js" on the page when it's on)
+.no-js .js-only {
+  display: none !important;
+}
+
+// Burgundy H2 and H4 in page content
 .page__content h2,
 .page__content h4 {
   color: $heading-accent;
 }
 
+// Footnotes: the theme greys them out (2.5:1); use the muted text colour instead
+.footnotes,
+a.reversefootnote {
+  color: $muted-text-color;
+}
+
 // "On this page" box: turned on for every page in _config.yml, but hidden
-// when a page has no headings to list (otherwise it shows an empty box)
+// when a page has no headings to list (otherwise it shows an empty box).
+// To only show it on longer pages, see _maintenance/on-this-page.md.
 .sidebar__right:not(:has(.toc__menu a)) {
   display: none;
 }
 
-// ==========================================================================
-// "Images with text overlay" demo: numbered steps as real text on top of a
-// screenshot. Each step's position is set on the page (style="left: …; top: …").
-// ==========================================================================
-.text-overlay-demo {
-  margin: 1.5em 0;
-
-  #employeePreview {
-    position: relative;
-    display: inline-block;
-    max-width: 100%;
-  }
-
-  #employeePreview img {
-    display: block;
-  }
-
-  [id^="employeePreviewStep"] {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    gap: 0.4em;
-    min-width: 10em;
-    max-width: 55%;
-    padding: 0.3em 0.6em;
-    font-size: 0.8em;
-    line-height: 1.3;
-    color: #1d1d1d;                 // 15:1 on the yellow
-    background-color: #fff3b0;
-    border: 2px solid #1d1d1d;
-    border-radius: $border-radius;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  }
-
-  [id^="employeePreviewStep"] a {
-    color: #1d1d1d;
-  }
-
-  .stepNumber {
-    display: inline-flex;
-    flex: none;
-    align-items: center;
-    justify-content: center;
-    width: 1.6em;
-    height: 1.6em;
-    font-weight: 700;
-    color: #fff;
-    background-color: #951525;      // logo burgundy, 8.9:1 with white
-    border-radius: 50%;
-  }
-
-  // Small screens: the steps would cover the screenshot, so list them above it
-  @media (max-width: 600px) {
-    [id^="employeePreviewStep"] {
-      position: static;
-      max-width: none;
-      margin-bottom: 0.5em;
-    }
-  }
+// Links that open in a new tab: small superscript icon in the link colour
+.ext-link-icon {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin-left: 0.15em;
+  vertical-align: super;
 }
 
 // ==========================================================================
@@ -84,45 +52,60 @@
 // ==========================================================================
 .page__content details {
   margin: 0.75rem 0;
+  padding: 0 1rem;
   border: 1px solid $border-color;
   border-radius: $border-radius;
-  padding: 0 1rem;
-}
 
-.page__content details > summary {
-  margin: 0 -1rem;
-  padding: 0.75rem 1rem;
-  font-weight: 600;
-  color: $text-color;
-  cursor: pointer;
-}
+  details {
+    border-style: dashed;           // sections inside sections
+  }
 
-.page__content details[open] > summary {
-  margin-bottom: 1rem;
-  border-bottom: 1px solid $border-color;
-}
+  > summary {
+    margin: 0 -1rem;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: $text-color;
+    cursor: pointer;
 
-.page__content details > summary:hover {
-  background-color: $hover-background-color;
-}
+    &:hover {
+      background-color: $hover-background-color;
+    }
 
-.page__content details > summary:focus-visible {
-  outline: 3px solid $focus-color;
-  outline-offset: 2px;
-}
+    &:focus-visible {
+      outline: 3px solid $focus-color;
+      outline-offset: 2px;
+    }
+  }
 
-// Collapsible sections inside collapsible sections
-.page__content details details {
-  border-style: dashed;
+  &[open] > summary {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $border-color;
+  }
 }
 
 // ==========================================================================
-// Buttons: "Back to top", "On this page", Show preferences, Dark/Light, Reset
+// Buttons: "Back to top", Show preferences, Dark/Light, Reset
 // ==========================================================================
+
+// White on grey: 6.3:1 in light mode, 10.3:1 in dark mode.
+// $flag is "!important" where another stylesheet's rule must be beaten.
+@mixin button-colours($flag: "") {
+  color: #fff #{$flag};
+  background-color: $primary-color #{$flag};
+  text-decoration: none;
+
+  &:hover,
+  &:visited:hover {
+    color: #fff #{$flag};
+    background-color: $button-hover-color #{$flag};
+    text-decoration: none;
+  }
+}
+
 .page-nav-button {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;                  // taller than the theme's own buttons, so they're easy to tap
+  min-height: 44px;                  // taller than the theme's buttons, so they're easy to tap
   margin: 0;
   padding: 0.5em 1em;
   font-family: $sans-serif;
@@ -130,46 +113,34 @@
   font-weight: bold;
   line-height: 1.2;
   white-space: nowrap;
-  text-decoration: none;
   cursor: pointer;
-  color: #fff;                       // 6.3:1 light mode, 10.3:1 dark mode
-  background-color: $primary-color;
   border: 0;
   border-radius: $border-radius;
-
-  &:hover,
-  &:visited:hover {
-    color: #fff;
-    background-color: mix(#000, $primary-color, 20%);
-  }
+  @include button-colours;
 
   &:focus-visible {
     outline: 3px solid $focus-color;
     outline-offset: 2px;
   }
-
-  &[hidden] {
-    display: none;
-  }
 }
 
-// "Back to top" sits in the footer, where Minimal Mistakes makes links grey
-// and underlines them on hover. Keep it looking like the other buttons.
-.page__footer .page-nav .page-nav-button,
-.sidebar__right .page-nav .page-nav-button {
-  color: #fff;
-  text-decoration: none;
+// "Back to top" in the footer or sidebar, where the theme greys links and
+// underlines them on hover
+.page__footer .page-nav-button,
+.sidebar__right .page-nav-button {
+  @include button-colours;
+}
 
-  &:hover {
-    color: #fff;
-    text-decoration: none;
-  }
+// Dark/Light and Reset sit in the preferences panel, which Infusion keeps out
+// of the contrast themes. Infusion's !important rule for every button still
+// reaches them, though, so restate the site's colours more specifically.
+.site-prefs .site-prefs-toolbar .page-nav-button {
+  @include button-colours("!important");
 }
 
 // ==========================================================================
-// Header: the menu on the left, the buttons on the right.
-// On narrow screens the buttons drop onto their own row under the menu.
-// (Markup in _includes/masthead.html)
+// Header: the menu on the left, the buttons on the right. On narrow screens
+// the buttons drop onto their own row. (Markup in _includes/masthead.html)
 // ==========================================================================
 .masthead__inner-wrap {
   flex-wrap: wrap;
@@ -192,9 +163,19 @@
   margin-inline-start: auto;
 }
 
+// Small LM logo before "Luke McKnight"
+.site-title {
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-title__logo {
+  width: 2rem;                      // change both to resize
+  height: 2rem;
+}
+
 // ==========================================================================
-// Floating "Back to top" and "On this page" buttons
-// (markup and script in _includes/page_nav_buttons.html)
+// "Back to top": floating once you scroll
 // ==========================================================================
 .page-nav {
   display: flex;
@@ -203,367 +184,70 @@
   margin: 1rem 0;
 }
 
-// Float in the bottom-right corner, but only when the screen is tall enough.
-// On short screens or at high zoom the buttons stay at the end of the page.
-// (The 30rem must match the script in page_nav_buttons.html.)
+// Floats only when the screen is tall enough; on short screens or at high
+// zoom it stays at the end of the page. (30rem must match assets/js/site.js.)
+// page-nav-floating is added by the script, so without it nothing floats.
 @media (min-height: 30rem) {
-  .page-nav-floating .page-nav {
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    z-index: 30;
-    margin: 0;
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(0.5rem);
-    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-  }
+  .page-nav-floating {
+    .page-nav {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 30;
+      margin: 0;
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(0.5rem);
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
 
-  .page-nav-floating .page-nav.is-visible {
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-  }
+      &.is-visible {
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+      }
 
-  // Room at the bottom so the buttons never cover the footer text
-  .page-nav-floating .page__footer footer {
-    padding-bottom: 5rem;
+      // Wide screens, below "On this page" in the right-hand column
+      &.page-nav--sidebar {
+        position: static;
+        margin: 1rem 0 0;
+      }
+
+      // Wide screens, no "On this page": lined up with that column
+      // (the script sets its left edge)
+      &.page-nav--column {
+        right: auto;
+      }
+    }
+
+    // Room at the bottom so the button never covers the footer text
+    .page__footer footer {
+      padding-bottom: 5rem;
+    }
   }
 }
 
-// Wide screens (script in page_nav_buttons.html decides which applies):
-// - page-nav--sidebar: inside the right-hand column, 1rem below "On this page"
-// - page-nav--column: floating at the bottom, lined up with that column
-//   (the script sets its left edge)
-@media (min-height: 30rem) {
-  .page-nav-floating .page-nav.page-nav--sidebar {
-    position: static;
-    margin: 1rem 0 0;
-  }
-
-  .page-nav-floating .page-nav.page-nav--column {
-    right: auto;
-  }
-}
-
-// The "On this page" list scrolls when it's taller than the screen; leave room
-// for the button below it
+// The "On this page" list scrolls when it's taller than the screen; leave
+// room for the button below it
 .sidebar__right.sticky:has(.page-nav--sidebar) .toc .toc__menu {
   max-height: calc(100vh - 7em - 4rem);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .page-nav {
-    transition: none !important;
-    transform: none !important;
-  }
-}
-
-@media print {
-  .page-nav,
-  .masthead__tools {
-    display: none !important;
-  }
-}
-
 // ==========================================================================
-// Display preferences (Fluid Infusion UI Options)
-// Markup and script in _includes/display_preferences.html. Infusion's own
-// styles (assets/infusion/) draw the panels; these fit them into the site.
+// "On this page": collapsible below 1024px, where its title becomes a
+// full-width button (sized like the wide-screen title bar: 16px text,
+// about 44px tall)
 // ==========================================================================
-
-// The container Infusion needs around the header and the panel. It should add
-// nothing of its own (Infusion would give it a taupe background and a border).
-.site-prefs.fl-prefsEditor-separatedPanel {
-  display: block;
-  background-color: transparent;
-  border-bottom: 0;
-}
-
-.site-prefs .flc-slidingPanel-panel {
-  border-bottom: 1px solid $border-color;
-}
-
-// The background goes on the whole panel, so the light/dark and Reset row
-// shares it.
-.site-prefs .flc-slidingPanel-panel,
-.site-prefs .fl-prefsEditor {
-  background-color: $footer-background-color;   // Infusion's default is a taupe
-}
-
-// Light/dark and Reset, in a row at the top of the open panel, above the
-// preference cards. If Infusion doesn't load, the row stays in the header.
-.site-prefs-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.5rem;
-
-  &[hidden] {
-    display: none;                  // hidden until the script places it
-  }
-}
-
-.site-prefs .flc-slidingPanel-panel .site-prefs-toolbar {
-  max-width: $max-width;            // same width as the grid of cards below,
-  margin: 0 auto;                   // so the buttons line up with its right edge
-  padding: 1rem 1rem 0;             // the cards below have 1rem padding on every side
-}
-
-// Light/dark and Reset sit inside the preferences panel, which Infusion keeps
-// out of the contrast themes by switching off the theme's colour variables
-// there. Infusion's rule for every button on the page still reaches these two,
-// though, so they'd lose their background and take the theme's text colour.
-// Keep the site's own button colours. More specific than Infusion's rule,
-// which also uses !important.
-.site-prefs .site-prefs-toolbar .page-nav-button {
-  color: #fff !important;
-  background-color: $primary-color !important;
-
-  &:hover {
-    background-color: mix(#000, $primary-color, 20%) !important;
-  }
-}
-
-// Panel headings keep the panel's own colour (not the burgundy H2)
-.site-prefs .fl-prefsEditor-panel h2 {
-  color: inherit;
-}
-
-// On wider screens the panels wrap into a grid, so all of them are visible
-// at once. On phones Infusion's own one-panel-at-a-time layout stays.
-@media screen and (min-width: 40em) {
-  .site-prefs.fl-prefsEditor-separatedPanel .fl-prefsEditor {
-    overflow-x: visible;
-  }
-
-  .site-prefs.fl-prefsEditor-separatedPanel .fl-prefsEditor-panels {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-    gap: 1rem;
-    max-width: $max-width;
-    margin: 0 auto;
-    padding: 1rem;
-  }
-
-  .site-prefs.fl-prefsEditor-separatedPanel .fl-prefsEditor-panels .fl-prefsEditor-panel {
-    display: block;
-    min-width: 0;
-    padding: 1rem;
-  }
-
-  .site-prefs.fl-prefsEditor-separatedPanel .fl-prefsEditor-panels .fl-prefsEditor-panel h2 {
-    height: auto;
-    min-height: 0;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .site-prefs.fl-prefsEditor-separatedPanel .fl-prefsEditor-panels .fl-prefsEditor-panel h2 .fl-heading-text {
-    text-align: left;
-  }
-
-  // Contrast swatches wrap onto a second row instead of spilling out of the card
-  .site-prefs .fl-prefsEditor .fl-choices {
-    flex-wrap: wrap;
-    row-gap: 1.75rem;
-  }
-}
-
-@media print {
-  .site-prefs-toolbar,
-  .site-prefs .flc-slidingPanel-panel {
-    display: none !important;
-  }
-}
-
-// Line spacing. Infusion sets the reader's line spacing on <body>, but
-// headings have their own fixed line height. Scale those by the reader's
-// choice too (--fl-lineSpace-factor, e.g. 1.5).
-body.fl-lineSpace-enabled .page__content {
-  h1, h2, h3, h4, h5, h6 {
-    line-height: calc(1.2 * var(--fl-lineSpace-factor, 1)) !important;
-  }
-}
-
-// Text-to-speech play button, at the top of the page content
-.page__inner-wrap > .fl-orator-controller {
-  margin-bottom: 1rem;
-}
-
-// Extra contrast theme: dark brown on sand. Its name is in
-// assets/display-preferences/contrast.json; Infusion's styles do the rest.
-// Contrast ratios against the sand background (#f9f5e9):
-// text 14.5:1, links 8.1:1, greyed-out text 6.6:1.
-.fl-theme-sand {
-  --_fl-fgColor: #2b2118;
-  --_fl-bgColor: #f9f5e9;
-  --_fl-linkFgColor: #0b4a8b;
-  --_fl-linkBgColor: #f9f5e9;
-  --_fl-disabledFgColor: #5e564a;
-  --_fl-disabledBgColor: #f9f5e9;
-  --_fl-selectedFgColor: #f9f5e9;
-  --_fl-selectedBgColor: #2b2118;
-  --_fl-buttonFgColor: #2b2118;
-  --_fl-buttonBgColor: #efe7d3;
-}
-
-// Contrast themes: Infusion recolours everything, including the burgundy
-// headings. Images get a white card so black-on-transparent logos stay visible.
-body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default) {
-  .page__content img {
-    padding: 0.25rem;
-    background-color: #fff !important;
-    border-radius: $border-radius;
-  }
-}
-
-// ==========================================================================
-// Dark mode only
-// ==========================================================================
-@if $theme-mode == dark {
-
-  // Tell the browser the page is dark, so its own parts (scrollbars,
-  // the details arrow, form fields) switch to dark versions too.
-  :root {
-    color-scheme: dark;
-  }
-
-  // Brand-coloured social icons (GitHub is near-black) vanish on dark
-  .author__urls.social-icons i,
-  .author__urls.social-icons .svg-inline--fa,
-  .page__footer-follow .social-icons i,
-  .page__footer-follow .social-icons .svg-inline--fa {
-    color: inherit;
-  }
-
-  // Search icon and menu toggle use the primary colour, too dark here
-  .search__toggle {
-    color: $text-color;
-
-    &:hover {
-      color: $heading-accent;
-    }
-  }
-
-  .greedy-nav .navicon,
-  .greedy-nav .navicon:before,
-  .greedy-nav .navicon:after {
-    background: $text-color;
-  }
-
-  // Images: logos and icons that are black on a see-through background
-  // would vanish on a dark page, so every image sits on a white card.
-  .page__content img {
-    padding: 0.25rem;
-    background-color: #fff;
-    border-radius: $border-radius;
-  }
-}
-
-// ==========================================================================
-// Home page (splash layout)
-// ==========================================================================
-
-// Banner: soft cream fading into the page background, dark text.
-// (home.md's overlay_color is still needed to switch the banner on;
-// the gradient here is drawn on top of it.)
-.page__hero--overlay {
-  // !important: the theme writes the banner's background straight onto the
-  // element (from home.md's overlay_color), which would otherwise win
-  @if $theme-mode == dark {
-    background-color: #41282e !important;
-    background-image: linear-gradient(to bottom, #41282e, $background-color) !important;
-  } @else {
-    background-color: #f1ede4 !important;
-    background-image: linear-gradient(to bottom, #f1ede4 0%, #f1ede4 40%, $background-color 100%) !important; 
-  }
-
-  .page__title {
-    color: $heading-accent;       // burgundy: 7.5:1 on the cream, 8.3:1 on the page
-    text-shadow: none;
-  }
-
-  .page__lead {
-    color: $text-color;           // 7.2:1 on the cream, 8.1:1 on the page
-    text-shadow: none;
-  }
-}
-
-// "About me" card: logo beside name, blurb and button
-.home-intro .feature__wrapper {
-  padding: 1.5em;
-  background-color: $footer-background-color;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-}
-
-.splash .feature__item--left .archive__item {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.5em;
-  float: none;
-  width: 100%;
-}
-
-.splash .feature__item--left .archive__item-teaser {
-  flex: 0 0 120px;                // logo size: change 120px to taste
-  width: 120px;
-  float: none;
-  margin-bottom: 0;
-}
-
-.splash .feature__item--left .archive__item-body {
-  flex: 1 1 16em;
-  width: auto;
-  float: none;
-  padding: 0;
-}
-
-// The logo has its own colours and transparent corners: no white card behind it in dark mode
-.home-intro img {
-  padding: 0;
-  background-color: transparent;
-}
-
-// Small LM logo before "Luke McKnight" in the header
-.site-title {
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.site-title__logo {
-  width: 2rem;                    // change both to resize
-  height: 2rem;
-}
-
-// Footnotes: the theme greys them out (2.5:1); use the muted text colour instead
-.footnotes,
-a.reversefootnote {
-  color: $muted-text-color;
-}
-
-// ==========================================================================
-// "On this page": collapsible on narrow screens
-// (script in _includes/page_nav_buttons.html)
-// ==========================================================================
-
-// Below 1024px the title bar holds the button, so the button supplies the
-// padding. Sized to match the desktop title bar: about 16px text, 42-44px tall.
 .toc .nav__title:has(.toc__toggle) {
-  padding: 0;
+  padding: 0;                       // the button supplies it
   font-size: 1rem;
 }
 
-// The title becomes a full-width button below 1024px
 .toc__toggle {
   display: flex;
   align-items: center;
   gap: 0.5em;
   width: 100%;
-  min-height: 44px;                 // big enough to tap
+  min-height: 44px;
   margin: 0;
   padding: 0.5rem 0.75rem;
   font: inherit;
@@ -578,7 +262,7 @@ a.reversefootnote {
     content: "";
     width: 0.5em;
     height: 0.5em;
-    margin-inline: auto 0.35em;        // room so the turned chevron isn't clipped
+    margin-inline: auto 0.35em;     // room so the turned chevron isn't clipped
     border-right: 2px solid currentColor;
     border-bottom: 2px solid currentColor;
     transform: rotate(45deg) translateY(-25%);
@@ -589,8 +273,7 @@ a.reversefootnote {
     transform: rotate(-135deg) translateY(-25%);
   }
 
-  // Keyboard focus: white ring inside the grey title bar (the theme's
-  // default teal ring is hard to see on grey)
+  // White ring inside the grey title bar (the theme's teal one is hard to see)
   &:focus {
     outline: none;
   }
@@ -601,18 +284,364 @@ a.reversefootnote {
   }
 }
 
-// The theme's .toc__menu doesn't set display, but make sure [hidden] wins
-.toc__menu[hidden] {
-  display: none;
-}
-
 // Collapsed: round the bottom corners of the title bar too
 .toc--collapsed .nav__title {
   border-radius: $border-radius;
 }
 
+// ==========================================================================
+// Display preferences (Fluid Infusion UI Options)
+// Infusion's own styles (assets/infusion/) draw the panels; these fit them
+// into the site.
+// ==========================================================================
+
+// The container Infusion needs around the header and the panel adds nothing
+// of its own (Infusion would give it a taupe background and a border)
+.site-prefs.fl-prefsEditor-separatedPanel {
+  display: block;
+  background-color: transparent;
+  border-bottom: 0;
+}
+
+.site-prefs .flc-slidingPanel-panel {
+  border-bottom: 1px solid $border-color;
+}
+
+// One background for the whole panel, including the Dark/Light and Reset row
+.site-prefs .flc-slidingPanel-panel,
+.site-prefs .fl-prefsEditor {
+  background-color: $footer-background-color;
+}
+
+// The row at the top of the open panel: Previous / Next on the left,
+// Dark/Light and Reset on the right. On narrow screens Dark/Light and Reset
+// drop onto a second line. If Infusion doesn't load, Dark/Light moves into
+// the header on its own (the rest is removed).
+.site-prefs-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+
+  .site-prefs .flc-slidingPanel-panel & {
+    max-width: $max-width;          // lines up with the edges of the cards below,
+    margin: 0 auto;
+    padding: 1rem 1rem 0;           // which have 1rem around them
+  }
+}
+
+.site-prefs-pager,
+.site-prefs-toolbar__end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-prefs-toolbar__end {
+  margin-inline-start: auto;        // stays on the right, even on its own line
+}
+
+// "1–3 of 8" between Previous and Next. Its colour is set here because it
+// would otherwise inherit a contrast theme's text colour (yellow, say) while
+// the panel behind it keeps the site's own background.
+.site-prefs-pager__status {
+  min-width: 4.5em;
+  color: $text-color;
+  font-family: $sans-serif;
+  font-size: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+// At either end, Previous or Next is faded and does nothing, but stays
+// reachable with Tab (aria-disabled rather than disabled)
+.site-prefs .site-prefs-toolbar .page-nav-button[aria-disabled="true"] {
+  cursor: default;
+  opacity: 0.45;
+
+  &:hover {
+    background-color: $primary-color !important;
+  }
+}
+
+// Panel headings keep the panel's own colour (not the burgundy H2). The
+// "text style" heading is a <label>, which the theme colours separately
+// (light grey in dark mode, nearly invisible on the white card).
+.site-prefs .fl-prefsEditor-panel h2,
+.site-prefs .fl-prefsEditor-panel h2 label {
+  color: inherit;
+}
+
+// --------------------------------------------------------------------------
+// Settings cards in one row, at every screen size: as many as fit (up to 3,
+// fewer on narrower screens or with bigger text), and the rest a scroll
+// away. assets/js/site.js works out how many fit (--per-view) and runs
+// Previous / Next. Swiping and trackpad scrolling also work, and the cards
+// snap into place. The scrollbar is hidden; Previous / Next replace it.
+// --------------------------------------------------------------------------
+.site-prefs.fl-prefsEditor-separatedPanel {
+  .fl-prefsEditor {
+    position: relative;             // so the script can measure where each card starts
+    min-width: 0;
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0;                     // the theme pads every form; the row has its own
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1rem;    // matches the padding below
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .fl-prefsEditor-panels {
+    --per-view: 1;                  // the script replaces this with what fits
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 1rem;
+    white-space: normal;
+
+    @media (min-width: 40em) { --per-view: 2; }
+    @media (min-width: 64em) { --per-view: 3; }
+
+    .fl-prefsEditor-panel {
+      display: block;
+      flex: 0 0 calc((100% - (var(--per-view) - 1) * 1rem) / var(--per-view));
+      min-width: 0;
+      scroll-snap-align: start;
+    }
+
+    // Infusion's ‹ › on phones work by clicking the heading, which a keyboard
+    // can't do; Previous / Next replace them. The heading stays centred.
+    .fl-prefsEditor-panel h2 {
+      justify-content: center;
+    }
+
+    .fl-prefsEditor-panel h2::before,
+    .fl-prefsEditor-panel h2::after {
+      content: none;
+    }
+  }
+}
+
+// Wider screens: smaller card headings, on the left. (Phones keep Infusion's
+// centred headings and shorter cards.)
+@media screen and (min-width: 40em) {
+  .site-prefs.fl-prefsEditor-separatedPanel {
+    .fl-prefsEditor-panels {
+      .fl-prefsEditor-panel {
+        padding: 1rem;
+      }
+
+      .fl-prefsEditor-panel h2 {
+        justify-content: flex-start;
+        height: auto;
+        min-height: 0;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+
+        .fl-heading-text {
+          text-align: left;
+        }
+      }
+    }
+
+    // Contrast swatches wrap onto a second row instead of spilling out
+    .fl-prefsEditor .fl-choices {
+      flex-wrap: wrap;
+      row-gap: 1.75rem;
+    }
+  }
+}
+
+// Line spacing: Infusion sets the reader's choice on <body>, but headings
+// have their own fixed line height, so scale those too
+body.fl-lineSpace-enabled .page__content {
+  h1, h2, h3, h4, h5, h6 {
+    line-height: calc(1.2 * var(--fl-lineSpace-factor, 1)) !important;
+  }
+}
+
+// Text-to-speech play button, at the top of the page content
+.page__inner-wrap > .fl-orator-controller {
+  margin-bottom: 1rem;
+}
+
+// Extra contrast theme: dark brown on sand. Its name is in
+// assets/display-preferences/contrast.json; Infusion's styles do the rest.
+// Against the sand (#f9f5e9): text 14.5:1, links 8.1:1, greyed-out text 6.6:1.
+.fl-theme-sand {
+  --_fl-fgColor: #2b2118;
+  --_fl-bgColor: #f9f5e9;
+  --_fl-linkFgColor: #0b4a8b;
+  --_fl-linkBgColor: #f9f5e9;
+  --_fl-disabledFgColor: #5e564a;
+  --_fl-disabledBgColor: #f9f5e9;
+  --_fl-selectedFgColor: #f9f5e9;
+  --_fl-selectedBgColor: #2b2118;
+  --_fl-buttonFgColor: #2b2118;
+  --_fl-buttonBgColor: #efe7d3;
+}
+
+// ==========================================================================
+// Images on a white card, so logos and icons that are black on a see-through
+// background stay visible: always in dark mode, and in any contrast theme
+// (which recolours everything)
+// ==========================================================================
+// (The contrast-theme selector has to outweigh Infusion's own !important rule.)
+$image-card: "#{$fl-contrast-theme} .page__content img";
+@if $theme-mode == dark {
+  $image-card: "#{$image-card}, .page__content img" !global;
+}
+
+#{$image-card} {
+  padding: 0.25rem;
+  background-color: #fff !important;
+  border-radius: $border-radius;
+}
+
+// ==========================================================================
+// Dark mode only
+// ==========================================================================
+@if $theme-mode == dark {
+  // The browser's own parts (scrollbars, the details arrow, form fields)
+  // switch to their dark versions too
+  :root {
+    color-scheme: dark;
+  }
+
+  // Brand-coloured social icons (GitHub is near-black) vanish on dark
+  .author__urls.social-icons,
+  .page__footer-follow .social-icons {
+    i, .svg-inline--fa {
+      color: inherit;
+    }
+  }
+
+  // Search icon and menu toggle use the primary colour, too dark here
+  .search__toggle {
+    color: $text-color;
+
+    &:hover {
+      color: $heading-accent;
+    }
+  }
+
+  .greedy-nav .navicon {
+    &, &::before, &::after {
+      background: $text-color;
+    }
+  }
+}
+
+// ==========================================================================
+// Home page banner (splash layout): soft cream fading into the page, dark text.
+// home.md's overlay_color is still needed to switch the banner on; the
+// gradient here goes on top of it.
+// ==========================================================================
+$hero-colour: if($theme-mode == dark, #41282e, #f1ede4);
+$hero-solid-to: if($theme-mode == dark, 0%, 40%);     // how far down it stays solid before fading
+
+.page__hero--overlay {
+  // !important: the theme writes the banner colour straight onto the element
+  background-color: $hero-colour !important;
+  background-image: linear-gradient(to bottom, $hero-colour $hero-solid-to, $background-color) !important;
+
+  .page__title {
+    color: $heading-accent;         // burgundy: 7.5:1 on the cream, 8.3:1 on the page
+    text-shadow: none;
+  }
+
+  .page__lead {
+    color: $text-color;             // 7.2:1 on the cream, 8.1:1 on the page
+    text-shadow: none;
+  }
+}
+
+// ==========================================================================
+// "Images with text overlay" demo: numbered steps as real text on top of a
+// screenshot. Each step's position is set on the page (style="left: …; top: …").
+// ==========================================================================
+.text-overlay-demo {
+  margin: 1.5em 0;
+
+  #employeePreview {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+
+    img {
+      display: block;
+    }
+  }
+
+  [id^="employeePreviewStep"] {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    min-width: 10em;
+    max-width: 55%;
+    padding: 0.3em 0.6em;
+    font-size: 0.8em;
+    line-height: 1.3;
+    color: #1d1d1d;                 // 15:1 on the yellow
+    background-color: #fff3b0;
+    border: 2px solid #1d1d1d;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+
+    a {
+      color: #1d1d1d;
+    }
+
+    // Small screens: the steps would cover the screenshot, so list them above it
+    @media (max-width: 600px) {
+      position: static;
+      max-width: none;
+      margin-bottom: 0.5em;
+    }
+  }
+
+  .stepNumber {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 1.6em;
+    height: 1.6em;
+    font-weight: 700;
+    color: #fff;
+    background-color: #951525;      // logo burgundy, 8.9:1 with white
+    border-radius: 50%;
+  }
+}
+
+// ==========================================================================
+// Reduced motion and printing
+// ==========================================================================
 @media (prefers-reduced-motion: reduce) {
+  .page-nav,
   .toc__toggle::after {
-    transition: none;
+    transition: none !important;
+  }
+
+  .page-nav {
+    transform: none !important;
+  }
+}
+
+@media print {
+  .page-nav,
+  .masthead__tools,
+  .site-prefs .flc-slidingPanel-panel {
+    display: none !important;
   }
 }
