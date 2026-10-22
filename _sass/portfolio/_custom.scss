@@ -313,50 +313,135 @@ a.reversefootnote {
   background-color: $footer-background-color;
 }
 
-// Dark/Light and Reset: a row at the top of the open panel. If Infusion
-// doesn't load, the row moves into the header instead.
+// The row at the top of the open panel: Previous / Next on the left,
+// Dark/Light and Reset on the right. On narrow screens Dark/Light and Reset
+// drop onto a second line. If Infusion doesn't load, Dark/Light moves into
+// the header on its own (the rest is removed).
 .site-prefs-toolbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
-  gap: 0.5rem;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
 
   .site-prefs .flc-slidingPanel-panel & {
-    max-width: $max-width;          // lines up with the right edge of the cards below,
+    max-width: $max-width;          // lines up with the edges of the cards below,
     margin: 0 auto;
-    padding: 1rem 1rem 0;           // which have 1rem padding on every side
+    padding: 1rem 1rem 0;           // which have 1rem around them
   }
 }
 
-// Panel headings keep the panel's own colour (not the burgundy H2)
-.site-prefs .fl-prefsEditor-panel h2 {
+.site-prefs-pager,
+.site-prefs-toolbar__end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-prefs-toolbar__end {
+  margin-inline-start: auto;        // stays on the right, even on its own line
+}
+
+// "1–3 of 8" between Previous and Next. Its colour is set here because it
+// would otherwise inherit a contrast theme's text colour (yellow, say) while
+// the panel behind it keeps the site's own background.
+.site-prefs-pager__status {
+  min-width: 4.5em;
+  color: $text-color;
+  font-family: $sans-serif;
+  font-size: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+// At either end, Previous or Next is faded and does nothing, but stays
+// reachable with Tab (aria-disabled rather than disabled)
+.site-prefs .site-prefs-toolbar .page-nav-button[aria-disabled="true"] {
+  cursor: default;
+  opacity: 0.45;
+
+  &:hover {
+    background-color: $primary-color !important;
+  }
+}
+
+// Panel headings keep the panel's own colour (not the burgundy H2). The
+// "text style" heading is a <label>, which the theme colours separately
+// (light grey in dark mode, nearly invisible on the white card).
+.site-prefs .fl-prefsEditor-panel h2,
+.site-prefs .fl-prefsEditor-panel h2 label {
   color: inherit;
 }
 
-// Wider screens: the panels wrap into a grid, all visible at once. Phones
-// keep Infusion's one-panel-at-a-time layout.
-@media screen and (min-width: 40em) {
-  .site-prefs.fl-prefsEditor-separatedPanel {
-    .fl-prefsEditor {
-      overflow-x: visible;
+// --------------------------------------------------------------------------
+// Settings cards in one row, at every screen size: as many as fit (up to 3,
+// fewer on narrower screens or with bigger text), and the rest a scroll
+// away. assets/js/site.js works out how many fit (--per-view) and runs
+// Previous / Next. Swiping and trackpad scrolling also work, and the cards
+// snap into place. The scrollbar is hidden; Previous / Next replace it.
+// --------------------------------------------------------------------------
+.site-prefs.fl-prefsEditor-separatedPanel {
+  .fl-prefsEditor {
+    position: relative;             // so the script can measure where each card starts
+    min-width: 0;
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0;                     // the theme pads every form; the row has its own
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1rem;    // matches the padding below
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .fl-prefsEditor-panels {
+    --per-view: 1;                  // the script replaces this with what fits
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 1rem;
+    white-space: normal;
+
+    @media (min-width: 40em) { --per-view: 2; }
+    @media (min-width: 64em) { --per-view: 3; }
+
+    .fl-prefsEditor-panel {
+      display: block;
+      flex: 0 0 calc((100% - (var(--per-view) - 1) * 1rem) / var(--per-view));
+      min-width: 0;
+      scroll-snap-align: start;
     }
 
-    .fl-prefsEditor-panels {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-      gap: 1rem;
-      max-width: $max-width;
-      margin: 0 auto;
-      padding: 1rem;
+    // Infusion's ‹ › on phones work by clicking the heading, which a keyboard
+    // can't do; Previous / Next replace them. The heading stays centred.
+    .fl-prefsEditor-panel h2 {
+      justify-content: center;
+    }
 
+    .fl-prefsEditor-panel h2::before,
+    .fl-prefsEditor-panel h2::after {
+      content: none;
+    }
+  }
+}
+
+// Wider screens: smaller card headings, on the left. (Phones keep Infusion's
+// centred headings and shorter cards.)
+@media screen and (min-width: 40em) {
+  .site-prefs.fl-prefsEditor-separatedPanel {
+    .fl-prefsEditor-panels {
       .fl-prefsEditor-panel {
-        display: block;
-        min-width: 0;
         padding: 1rem;
       }
 
       .fl-prefsEditor-panel h2 {
+        justify-content: flex-start;
         height: auto;
         min-height: 0;
         margin-bottom: 1rem;

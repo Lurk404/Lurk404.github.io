@@ -11,8 +11,10 @@
   - The small logo before the site title.
   - "+ Show preferences" at the end of the header.
   - The panel after the header, closed at first (Infusion slides it open), with
-    Dark/Light and Reset at its top. If Infusion doesn't load, those two move
-    into the header without Reset (see assets/js/site.js).
+    a row at its top: Previous / Next on the left, to move through the settings
+    cards (they sit in one row), and Dark/Light and Reset on the right. If
+    Infusion doesn't load, Dark/Light moves into the header on its own (see
+    assets/js/site.js).
   The script that runs all this is assets/js/site.js; the styles are in
   _sass/portfolio/_custom.scss ("Header" and "Display preferences").
 
@@ -21,6 +23,9 @@
     without the + and −, matching what's on screen ("click Show preferences").
   - Dark/Light names the mode it switches to; screen readers hear "Switch to
     dark mode", which still contains the visible word ("click Dark").
+  - Previous / Next: screen readers hear "Previous settings" / "Next settings",
+    which start with the visible word ("click Next"); the ‹ › are hidden from
+    them. After a press they also hear which settings are now showing.
   - js-only: hidden when JavaScript is off, since these can't work without it.
 {%- endcomment -%}
 {% assign locale = include.locale | default: site.locale %}
@@ -70,8 +75,16 @@
 </div>
 <div class="flc-slidingPanel-panel" style="display: none">
   <div class="site-prefs-toolbar" id="site-prefs-toolbar">
-    <button type="button" class="page-nav-button js-only js-theme-toggle">Dark</button>
-    <button type="button" class="page-nav-button flc-prefsEditor-reset" aria-label="Reset preferences">Reset</button>
+    <div class="site-prefs-pager" id="site-prefs-pager" hidden>
+      <button type="button" class="page-nav-button site-prefs-pager__prev" aria-disabled="true"><span aria-hidden="true">‹</span>&nbsp;Previous<span class="visually-hidden"> settings</span></button>
+      <span class="site-prefs-pager__status"></span>
+      <button type="button" class="page-nav-button site-prefs-pager__next">Next<span class="visually-hidden"> settings</span>&nbsp;<span aria-hidden="true">›</span></button>
+      <span class="visually-hidden site-prefs-pager__live" role="status"></span>
+    </div>
+    <div class="site-prefs-toolbar__end">
+      <button type="button" class="page-nav-button js-only js-theme-toggle">Dark</button>
+      <button type="button" class="page-nav-button flc-prefsEditor-reset" aria-label="Reset preferences">Reset</button>
+    </div>
   </div>
 </div>
 </div>

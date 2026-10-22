@@ -27,8 +27,123 @@
        the top of the page and reads the page content, not menus or footer.
      - The panels are only downloaded the first time someone opens them.
      - Reset only resets display preferences, not light/dark.
+     - The settings cards sit in one row: as many as fit (up to 3), with
+       Previous / Next to move through the rest (see settingsPager below).
      ====================================================================== */
   var prefs = document.getElementById('site-prefs');
+
+  /* Previous / Next for the settings cards (buttons in masthead.html, layout
+     in _custom.scss, "Settings cards in one row").
+     - Shows as many cards as fit at least 15rem wide, up to 3. Bigger text
+       (the Text size setting) means fewer cards per view.
+     - Previous / Next move a whole view at a time. At either end the button
+       stays focusable but does nothing (aria-disabled), so keyboard focus
+       isn't lost.
+     - Tabbing into a card that's out of view scrolls it into view (the
+       browser does this), so every setting is reachable with Tab alone.
+     - Swiping or trackpad scrolling works too; the cards snap into place.
+     - After a press, screen readers hear which settings are showing. */
+  function settingsPager() {
+    var pager = document.getElementById('site-prefs-pager');
+    var scroller = prefs.querySelector('.flc-prefsEditor-scrollContainer');
+    var list = scroller && scroller.querySelector('.fl-prefsEditor-panels');
+    var cards = list ? list.querySelectorAll('.fl-prefsEditor-panel') : [];
+    if (!pager || !cards.length) return;
+
+    var prev = pager.querySelector('.site-prefs-pager__prev');
+    var next = pager.querySelector('.site-prefs-pager__next');
+    var status = pager.querySelector('.site-prefs-pager__status');
+    var live = pager.querySelector('.site-prefs-pager__live');
+    var total = cards.length;
+    var perView = 1;
+
+    if (scroller.id) {
+      prev.setAttribute('aria-controls', scroller.id);
+      next.setAttribute('aria-controls', scroller.id);
+    }
+
+    function px(el, prop) { return parseFloat(getComputedStyle(el)[prop]) || 0; }
+
+    /* How many cards fit, at the current text size */
+    function fit() {
+      var gap = px(list, 'columnGap');
+      var room = list.clientWidth - px(list, 'paddingLeft') - px(list, 'paddingRight');
+      var min = 15 * px(document.documentElement, 'fontSize');
+      perView = Math.max(1, Math.min(3, Math.floor((room + gap) / (min + gap))));
+      list.style.setProperty('--per-view', perView);
+    }
+
+    /* Where each card starts, measured from the first card */
+    function start(i) { return cards[i].offsetLeft - cards[0].offsetLeft; }
+
+    /* The first card in view: the one whose start is closest */
+    function first() {
+      var best = 0;
+      for (var i = 1; i < total; i++) {
+        if (Math.abs(start(i) - scroller.scrollLeft) < Math.abs(start(best) - scroller.scrollLeft)) best = i;
+      }
+      return best;
+    }
+
+    function describe(f) {
+      var last = Math.min(f + perView, total);
+      return (perView === 1 || f + 1 === last ? (f + 1) : (f + 1) + '–' + last) + ' of ' + total;
+    }
+
+    function update() {
+      var f = first();
+      status.textContent = describe(f);
+      prev.setAttribute('aria-disabled', String(f <= 0));
+      next.setAttribute('aria-disabled', String(f + perView >= total));
+    }
+
+    function go(direction) {
+      var button = direction < 0 ? prev : next;
+      if (button.getAttribute('aria-disabled') === 'true') return;
+      var target = Math.max(0, Math.min(total - perView, first() + direction * perView));
+      var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      scroller.scrollTo({ left: start(target), behavior: smooth ? 'smooth' : 'auto' });
+      live.textContent = 'Showing settings ' + describe(target).replace('–', ' to ');
+    }
+
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+
+    /* Tabbing into a card that's partly or wholly out of view: the browser
+       only scrolls far enough to show the focused control, so line up the
+       whole card instead (and keep "1–3 of 8" right) */
+    scroller.addEventListener('focusin', function (e) {
+      var card = e.target.closest('.fl-prefsEditor-panel');
+      if (!card) return;
+      var i = Array.prototype.indexOf.call(cards, card);
+      var box = card.getBoundingClientRect();
+      var view = scroller.getBoundingClientRect();
+      var pad = px(list, 'paddingLeft');
+      var target = null;
+      if (box.left < view.left + pad - 1) target = i;
+      else if (box.right > view.right - pad + 1) target = i - perView + 1;
+      if (target !== null) {
+        scroller.scrollLeft = start(Math.max(0, Math.min(total - perView, target)));
+      }
+      update();
+    });
+
+    var queued = false;
+    scroller.addEventListener('scroll', function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; update(); });
+    }, { passive: true });
+
+    /* Work it out again when the row changes width (the panel opening, the
+       window resizing) or the Text size setting changes (it's set on <html>) */
+    function refit() { fit(); update(); }
+    new ResizeObserver(refit).observe(scroller);
+    new MutationObserver(refit).observe(document.documentElement, { attributes: true, attributeFilter: ['style', 'class'] });
+
+    pager.hidden = false;
+    refit();
+  }
 
   if (prefs && window.fluid && fluid.uiOptions) {
     /* Text-to-speech: read the page content, play button at the top. Pages
@@ -55,6 +170,17 @@
         }
       }
     });
+
+    /* Infusion scrolls back to the first card on Reset, but measures from the
+       edge of the page rather than the row of cards, so with the row centred
+       on wide screens it lands in the wrong place. Measure from the first
+       card instead. */
+    fluid.prefs.arrowScrolling.scrollToPanel = function (that, index) {
+      var cards = that.locate('panels');
+      var scroller = that.locate('scrollContainer')[0];
+      var card = cards[index || 0];
+      if (scroller && card && card.offsetWidth) scroller.scrollLeft = card.offsetLeft - cards[0].offsetLeft;
+    };
 
     fluid.uiOptions(prefs, {
       preferences: [
@@ -87,6 +213,9 @@
           }
         }
       },
+      listeners: {
+        onPrefsEditorReady: settingsPager   /* the cards are drawn (first time the panel opens) */
+      },
       prefsEditorLoader: {
         lazyLoad: true,
         slidingPanel: {
@@ -102,14 +231,14 @@
     });
   } else {
     /* Infusion didn't load: hide "Show preferences", and move Dark/Light into
-       the header without Reset (Reset can't work without Infusion) */
+       the header on its own (Previous / Next and Reset can't work without
+       Infusion) */
     var showPrefs = document.querySelector('.flc-slidingPanel-toggleButton');
     var toolbar = document.getElementById('site-prefs-toolbar');
     var tools = document.querySelector('.masthead__tools');
     if (showPrefs) showPrefs.hidden = true;
     if (toolbar && tools) {
-      var reset = toolbar.querySelector('.flc-prefsEditor-reset');
-      if (reset) reset.remove();
+      toolbar.querySelectorAll('#site-prefs-pager, .flc-prefsEditor-reset').forEach(function (el) { el.remove(); });
       tools.appendChild(toolbar);
     }
   }
