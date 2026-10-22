@@ -1,23 +1,24 @@
-<!--
+{%- comment -%}
   Extra things for every page's <head>. Minimal Mistakes includes this file
   right after its own stylesheet link.
--->
-
-<!-- Browser tab and home-screen icons (the LM logo) -->
+{%- endcomment -%}
 <link rel="icon" type="image/png" sizes="48x48" href="{{ '/assets/images/favicon-48.png' | relative_url }}">
 <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
 
+{%- comment -%}
+  Light/dark mode. There are two stylesheets: main.css (light, the theme's
+  link just above) and main-dark.css (dark, written in by this script). The one
+  not in use has media="not all", so switching is instant. A saved choice is
+  applied here, before the page is drawn, so dark-mode readers never see a
+  flash of the light colours. document.write is deliberate: a stylesheet
+  written into the page this way holds back drawing until it has loaded, which
+  one added any other way doesn't. The button is in masthead.html and its
+  script in assets/js/site.js.
+{%- endcomment %}
 <script>
-  /* Light/dark mode. The site has two stylesheets: main.css (light) and
-     main-dark.css (dark). Both are loaded; the one not in use has
-     media="not all", so switching is instant. If the reader chose dark on an
-     earlier visit, dark is switched on here, before the page is drawn, so they
-     don't see a flash of the light colours. The button is in
-     _includes/theme_toggle.html. */
   (function () {
     var dark = false;
     try { dark = localStorage.getItem('theme') === 'dark'; } catch (e) {}
-
     var light = document.querySelector('link[rel="stylesheet"][href$="/assets/css/main.css"]');
     if (light) {
       light.id = 'theme-light';
@@ -28,51 +29,13 @@
   })();
 </script>
 
-<script>
-  /* Open collapsed sections (<details>) when a link points to one.
-     Works for links to the section's id, or to anything inside it,
-     from the same page or another page. Also opens any sections it is nested in. */
-  (function () {
-    function openTarget() {
-      var id = decodeURIComponent(location.hash.slice(1));
-      if (!id) return;
-      var target = document.getElementById(id);
-      if (!target) return;
-
-      var opened = false;
-      var section = target.tagName === 'DETAILS' ? target : target.closest('details');
-      while (section) {
-        if (!section.open) {
-          section.open = true;
-          opened = true;
-        }
-        section = section.parentElement ? section.parentElement.closest('details') : null;
-      }
-      if (opened) target.scrollIntoView();
-    }
-
-    document.addEventListener('DOMContentLoaded', openTarget);
-    window.addEventListener('hashchange', openTarget);
-
-    /* Clicking a link to the section you're already on (for example after
-       closing it) doesn't change the address, so check again after any click. */
-    document.addEventListener('click', function (e) {
-      var link = e.target.closest('a[href*="#"]');
-      if (link && link.pathname === location.pathname) setTimeout(openTarget, 0);
-    });
-  })();
-</script>
-
 {%- comment -%}
-  Display preferences (Fluid Infusion UI Options): styles.
-  The Infusion script itself loads at the end of the page (footer/custom.html).
-  The buttons, the panel and the script that starts it are in
-  _includes/display_preferences.html. The files are in assets/infusion/
-  (see the README.txt there).
+  Display preferences (Fluid Infusion UI Options): styles. The script loads at
+  the end of the page (footer/custom.html). Files are in assets/infusion/.
 {%- endcomment -%}
-{%- assign infusion = '/assets/infusion' | relative_url %}
-<link rel="stylesheet" href="{{ infusion }}/src/framework/core/css/fluid.css">
-<link rel="stylesheet" href="{{ infusion }}/src/framework/preferences/css/Enactors.css">
-<link rel="stylesheet" href="{{ infusion }}/src/framework/preferences/css/PrefsEditor.css">
-<link rel="stylesheet" href="{{ infusion }}/src/framework/preferences/css/SeparatedPanelPrefsEditor.css">
-<link rel="stylesheet" href="{{ infusion }}/src/components/orator/css/Orator.css">
+{%- assign infusion = '/assets/infusion/src' | relative_url %}
+<link rel="stylesheet" href="{{ infusion }}/framework/core/css/fluid.css">
+<link rel="stylesheet" href="{{ infusion }}/framework/preferences/css/Enactors.css">
+<link rel="stylesheet" href="{{ infusion }}/framework/preferences/css/PrefsEditor.css">
+<link rel="stylesheet" href="{{ infusion }}/framework/preferences/css/SeparatedPanelPrefsEditor.css">
+<link rel="stylesheet" href="{{ infusion }}/components/orator/css/Orator.css">

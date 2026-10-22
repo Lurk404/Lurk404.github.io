@@ -1,6 +1,6 @@
-// Dark colours, used when a reader picks "Dark".
-// Same names as _palette-light.scss. Contrast ratios are against the dark
-// page background (#22262e).
+// Dark colours, used when a reader picks "Dark". Same names as
+// _palette-light.scss. Contrast ratios are against the dark page background
+// (#22262e).
 
 $theme-mode: dark;
 
@@ -12,11 +12,6 @@ $primary-color: #3b414c;             // "On this page" header, buttons, quote ba
 
 $link-color: #7cc4dd;                // 7.8:1
 $link-color-hover: #a9dbec;
-$link-color-visited: $link-color;
-$focus-color: $link-color;
-
-$masthead-link-color: $text-color;
-$masthead-link-color-hover: $heading-accent;
 
 $border-color: #3b414c;
 $code-background-color: #1b1e25;
@@ -24,12 +19,3 @@ $code-background-color-dark: #181b21;
 $form-background-color: #1b1e25;
 $footer-background-color: #1b1e25;
 $hover-background-color: #2d323c;
-
-// Layout: a wider content column than Minimal Mistakes' default
-$right-sidebar-width: 260px;     // space kept for "On this page" (default 300px)
-
-
-// No fade-in when a page loads (Minimal Mistakes fades the header, banner,
-// content and footer in; on this site that showed as a haze a moment after
-// the page appeared)
-$intro-transition: none;

@@ -1,6 +1,6 @@
-// Light colours (the default).
-// These replace Minimal Mistakes' own colour settings, so every part of the
-// theme (menus, buttons, footer, "On this page" box) picks them up.
+// Light colours (the default). These replace Minimal Mistakes' own colour
+// settings, so every part of the theme (menus, buttons, footer, "On this
+// page" box) picks them up. Same names as _palette-dark.scss.
 // Contrast ratios are against the page background (#fbfaf8).
 
 $theme-mode: light;
@@ -13,23 +13,9 @@ $primary-color: #5c6166;             // "On this page" header, buttons, quote ba
 
 $link-color: #2f6f80;                // teal, 5.4:1
 $link-color-hover: #1f4f5c;
-$link-color-visited: $link-color;    // Minimal Mistakes lightens visited links, which drops the contrast
-$focus-color: $link-color;
-
-$masthead-link-color: $text-color;
-$masthead-link-color-hover: $heading-accent;
 
 $border-color: #e2e1dd;
 $code-background-color: #f3f2ef;
 $form-background-color: #f3f2ef;
 $footer-background-color: #f1f0ec;
 $hover-background-color: #f1f0ec;    // collapsible sections and buttons on hover
-
-// Layout: a wider content column than Minimal Mistakes' default
-$right-sidebar-width: 260px;     // space kept for "On this page" (default 300px)
-
-
-// No fade-in when a page loads (Minimal Mistakes fades the header, banner,
-// content and footer in; on this site that showed as a haze a moment after
-// the page appeared)
-$intro-transition: none;
