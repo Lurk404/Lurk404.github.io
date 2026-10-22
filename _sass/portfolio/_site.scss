@@ -1,0 +1,21 @@
+// Everything after the colours, shared by main.scss (light) and
+// main-dark.scss (dark). Each of those sets the colours first, then imports
+// this, so the whole theme is built twice: once in each set of colours.
+
+// Settings that are the same in light and dark. These replace Minimal
+// Mistakes' own, so they must come before the theme.
+$link-color-visited: $link-color;    // the theme lightens visited links, which drops the contrast
+$focus-color: $link-color;
+$masthead-link-color: $text-color;
+$masthead-link-color-hover: $heading-accent;
+$right-sidebar-width: 260px;         // room for "On this page" (theme default 300px), so the content column is wider
+$intro-transition: none;             // no fade-in on page load (it showed as a haze a moment after the page appeared)
+
+@import "minimal-mistakes";          // the theme
+
+// Used by the site's own styles below
+$button-hover-color: mix(#000, $primary-color, 20%);
+$fl-contrast-theme: 'body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default)';  // a display-preferences contrast theme is on
+
+@import "custom";
+@import "callouts";

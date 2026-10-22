@@ -9,93 +9,62 @@ description: >-
 url: "https://lurk404.github.io"
 baseurl: ""
 locale: en-CA
+timezone: America/Vancouver
 github_username: Lurk404
 search: true
 breadcrumbs: true          # "Home / About me / Curriculum Vitae" above each page title
-
-# Logo: shown when a link to the site is shared (Teams, social media)
-og_image: /assets/images/social-preview.png
+og_image: /assets/images/social-preview.png   # shown when a link is shared (Teams, social media)
 
 # Theme: Minimal Mistakes, pinned to a release so updates don't change the site
 # unexpectedly. _includes/masthead.html is a copy of this version's header.
 remote_theme: mmistakes/minimal-mistakes@4.28.1
 minimal_mistakes_skin: default   # colours come from _sass/portfolio/ instead
-markdown: kramdown
 
 # Reflections keep the same addresses they had on WordPress
 permalink: /:year/:month/:day/:title/
-timezone: America/Vancouver
 
-include:
-  - _pages
-
-# Files that stay in the repository but are not part of the website
-exclude:
-  - README.md
-  - Gemfile
-  - Gemfile.lock
-  - _maintenance
+include: [_pages]
+# Kept in the repository but not published. (Folders starting with _ that
+# Jekyll doesn't know, like _maintenance, are skipped automatically.)
+exclude: [README.md, Gemfile, Gemfile.lock]
 
 plugins:
   - jekyll-remote-theme
-  - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-gist
   - jekyll-feed
-  - jemoji
-  - jekyll-include-cache
+  - jekyll-include-cache   # Minimal Mistakes needs this
 
-# Left sidebar on every page
+# GitHub and LinkedIn icons: in the left sidebar and in the footer
 author:
   name: "Luke McKnight"
   avatar: "/assets/images/logo.png"
   bio: "Digital accessibility specialist and assistive technologist."
   location: "Vancouver, BC"
-  links:
+  links: &social-links
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Lurk404"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/lukemcknight/"
-
 footer:
-  links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/Lurk404"
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/lukemcknight/"
+  links: *social-links
 
+# Front matter every page and reflection gets unless it sets its own.
+# "toc" is the "On this page" box; it's hidden on pages with no headings.
 defaults:
-  # Reflections (_posts)
-  - scope:
-      path: ""
-      type: posts
-    values:
+  - scope: { path: "_pages", type: pages }
+    values: &page-defaults
       layout: single
       author_profile: true
-      toc: true            # "On this page" box; hidden when a post has no headings
+      toc: true
       toc_sticky: true
-      toc_label: "On this page"
+  - scope: { path: "", type: posts }
+    values:
+      <<: *page-defaults
       read_time: true
       share: false
       related: true
-  # Pages (_pages)
-  - scope:
-      path: "_pages"
-      type: pages
-    values:
-      layout: single
-      author_profile: true
-      toc: true            # "On this page" box; hidden when a page has no headings
-      toc_sticky: true
-      toc_label: "On this page"
 
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
+category_archive: { type: liquid, path: /categories/ }
+tag_archive:      { type: liquid, path: /tags/ }

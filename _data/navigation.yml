@@ -33,4 +33,5 @@ accessibility:
         url: /accessibility/better-links/
       - title: "Images with text overlay"
         url: /accessibility/images-with-text-overlay/
-        
+      - title: "Home"
+        url: /

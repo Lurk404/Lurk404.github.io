@@ -1,0 +1,92 @@
+// ==========================================================================
+// Callouts: Note, Tip, Warning
+// The same look as the AT User Guides site (Just the Docs callouts), so the
+// two sites match. In HTML pages:
+//
+//   <p class="note">One paragraph.</p>
+//
+//   <blockquote class="tip">
+//     <p>First paragraph.</p>
+//     <p>Second paragraph.</p>
+//   </blockquote>
+//
+//   <blockquote class="warning-title">
+//     <p>Your own title</p>
+//     <p>Text.</p>
+//   </blockquote>
+//
+// In Markdown pages, {: .note } on the line above a paragraph still works.
+// Contrast ratios are for the small title text: light mode against #fbfaf8,
+// dark mode against #22262e.
+// ==========================================================================
+
+// title: the built-in title; color: title and left bar; border: the other sides
+$callouts: (
+  "note":    (title: "Note",    color: #183385, border: #2c84fa),   // 10.9:1
+  "tip":     (title: "Tip",     color: #026e57, border: #41d693),   //  6.0:1
+  "warning": (title: "Warning", color: #c42727, border: #f77e7e)    //  5.5:1 (darker than the AT guides' #dd2e2e, which is 4.5:1)
+);
+
+@if $theme-mode == dark {
+  $callouts: (
+    "note":    (title: "Note",    color: #6aa8fb),   // 6.2:1
+    "tip":     (title: "Tip",     color: #41d693),   // 8.1:1
+    "warning": (title: "Warning", color: #f77e7e)    // 6.0:1
+  ) !global;
+}
+
+@mixin callout-title($color) {
+  display: block;
+  padding-bottom: 0.125rem;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $color;
+}
+
+@each $name, $c in $callouts {
+  $color: map-get($c, color);
+  $plain: "p.#{$name}, blockquote.#{$name}";      // built-in title
+  $titled: "blockquote.#{$name}-title";           // own title: its first paragraph
+
+  #{$plain}, #{$titled} {
+    margin: 1.5em 0;
+    padding: 0.8rem;
+    font-style: normal;
+    border: 1px solid map-get($c, border) or rgba($color, 0.45);
+    border-left: 4px solid $color;
+    border-radius: $border-radius;
+
+    @if $theme-mode == dark {
+      background-color: rgba($color, 0.06);
+    } @else {
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  // No extra space at the edges of a blockquote callout
+  blockquote.#{$name}, #{$titled} {
+    > p:first-child { margin-top: 0; }
+    > p:last-child  { margin-bottom: 0; }
+  }
+
+  #{$plain} {
+    &::before {
+      content: map-get($c, title);
+      @include callout-title($color);
+    }
+  }
+
+  #{$titled} > p:first-child {
+    margin: 0;
+    @include callout-title($color);
+
+    + p { margin-top: 0; }
+  }
+
+  // Contrast themes (display preferences): titles use the theme's text colour
+  #{$fl-contrast-theme} {
+    #{$plain} { &::before { color: var(--fl-fgColor) !important; } }
+    #{$titled} > p:first-child { color: var(--fl-fgColor) !important; }
+  }
+}
