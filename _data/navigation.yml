@@ -22,7 +22,7 @@ about:
         url: /
 
 accessibility:
-  - title: "Accessibility"
+  - title: "Accessibility Projects"
     url: /accessibility/
     children:
       - title: "Accessibility of AI Interfaces"
