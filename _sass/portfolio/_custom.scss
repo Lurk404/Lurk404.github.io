@@ -461,6 +461,21 @@ a.reversefootnote {
   }
 }
 
+// Phones: the ten contrast swatches in two rows of five, so none run off the
+// edge of the card. (The row gap leaves room for the arrow above the chosen one.)
+@media screen and (max-width: 39.99em) {
+  .site-prefs.fl-prefsEditor-separatedPanel .fl-prefsEditor .fl-choices {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    justify-content: center;
+    gap: 1.75rem 5px;
+
+    .fl-choice label {
+      margin-right: 0;              // the grid gap spaces them instead
+    }
+  }
+}
+
 // Line spacing: Infusion sets the reader's choice on <body>, but headings
 // have their own fixed line height, so scale those too
 body.fl-lineSpace-enabled .page__content {
