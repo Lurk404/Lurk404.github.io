@@ -18,6 +18,8 @@ about:
         url: /about-me/published-work/
       - title: "Workshops and Presentations"
         url: /about-me/workshop-presentations/
+      - title: "Home"
+        url: /
 
 accessibility:
   - title: "Accessibility"
