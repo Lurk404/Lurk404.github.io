@@ -160,8 +160,6 @@
     var bar = document.getElementById('page-nav');
     if (!bar) return;
 
-    document.documentElement.classList.add('page-nav-floating');
-
     var home = bar.parentNode;              /* where it starts: the footer */
     var homeNext = bar.nextSibling;
     var page = document.querySelector('.layout--single .page');
@@ -206,7 +204,15 @@
     window.addEventListener('resize', both);
     floats.addEventListener('change', both);
     wide.addEventListener('change', both);
+
+    /* Start floating with the fade switched off, so the button (already drawn
+       at the end of the page by now) disappears at once instead of fading
+       out on every page load. The fade comes back for scrolling. */
+    bar.style.transition = 'none';
+    document.documentElement.classList.add('page-nav-floating');
     both();
+    void bar.offsetWidth;                   /* apply that state now, before the fade returns */
+    bar.style.transition = '';
   })();
 
   /* ======================================================================
