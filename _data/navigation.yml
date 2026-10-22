@@ -33,5 +33,7 @@ accessibility:
         url: /accessibility/better-links/
       - title: "Images with text overlay"
         url: /accessibility/images-with-text-overlay/
+      - title: "Adaptive WYSIWYG Editor"
+        url: /accessilibty-wysiwyg/
       - title: "Home"
         url: /
