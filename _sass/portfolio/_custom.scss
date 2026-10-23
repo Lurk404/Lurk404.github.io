@@ -138,6 +138,11 @@ a.reversefootnote {
   @include button-colours("!important");
 }
 
+// The theme's buttons (home page): same invisible border, for the contrast themes
+.btn {
+  border: 2px solid transparent;
+}
+
 // ==========================================================================
 // Header: the menu on the left, the buttons on the right. On narrow screens
 // the buttons drop onto their own row. (Markup in _includes/masthead.html)
