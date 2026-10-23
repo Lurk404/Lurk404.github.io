@@ -314,9 +314,10 @@ a.reversefootnote {
 }
 
 // The row at the top of the open panel: Previous / Next on the left,
-// Dark/Light and Reset on the right. On narrow screens Dark/Light and Reset
-// drop onto a second line. If Infusion doesn't load, Dark/Light moves into
-// the header on its own (the rest is removed).
+// Dark/Light and Reset on the right, all on one line down to about 360px
+// wide. Narrower than that (or zoomed in), Dark/Light and Reset drop onto a
+// second line, lined up on the left like the first. If Infusion doesn't load,
+// Dark/Light moves into the header on its own (the rest is removed).
 .site-prefs-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -339,20 +340,30 @@ a.reversefootnote {
   gap: 0.5rem;
 }
 
-.site-prefs-toolbar__end {
-  margin-inline-start: auto;        // stays on the right, even on its own line
-}
-
 // "1–3 of 8" between Previous and Next. Its colour is set here because it
 // would otherwise inherit a contrast theme's text colour (yellow, say) while
 // the panel behind it keeps the site's own background.
 .site-prefs-pager__status {
-  min-width: 4.5em;
+  min-width: 4em;
   color: $text-color;
   font-family: $sans-serif;
   font-size: 0.8rem;
   text-align: center;
   white-space: nowrap;
+}
+
+// Previous / Next: square buttons with a large ‹ / › (an SVG, so it's the same
+// in every font). Their names, "Previous" and "Next", are hidden text.
+.site-prefs-pager__prev,
+.site-prefs-pager__next {
+  justify-content: center;
+  min-width: 44px;                  // square, and big enough to tap
+  padding: 0;                       // the same height as Dark and Reset
+}
+
+.site-prefs-pager__icon {
+  width: 1.5em;
+  height: 1.5em;
 }
 
 // At either end, Previous or Next is faded and does nothing, but stays
