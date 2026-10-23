@@ -114,7 +114,7 @@ a.reversefootnote {
   line-height: 1.2;
   white-space: nowrap;
   cursor: pointer;
-  border: 0;
+  border: 2px solid transparent;     // invisible normally; drawn in contrast themes and Windows High Contrast
   border-radius: $border-radius;
   @include button-colours;
 
