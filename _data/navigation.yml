@@ -12,13 +12,11 @@ about:
   - title: "About me"
     url: /about-me/
     children:
-      - title: "Luke"
-        url: /about-me/
       - title: "Published Work"
         url: /about-me/published-work/
       - title: "Workshops and Presentations"
         url: /about-me/workshop-presentations/
-      - title: "Home"
+      - title: "Return to Homepage"
         url: /
 
 accessibility:
@@ -35,5 +33,5 @@ accessibility:
         url: /accessibility/images-with-text-overlay/
       - title: "Adaptive WYSIWYG Editor"
         url: /accessibility/wysiwyg/
-      - title: "Home"
+      - title: "Return to Homepage"
         url: /
