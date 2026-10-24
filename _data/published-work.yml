@@ -21,16 +21,24 @@ books:
     link: https://pressbooks.bccampus.ca/accessibilityhandbook/
     cover: /assets/images/wp/2024/06/Pressbooks-Cover-2.png
     role: "Author"
-    years: "2020; second edition in progress"
+    years: "2023"
     excerpt: "Digital accessibility concepts, such as colour contrast and alt text, with step-by-step instructions for everyday software. Copied 12 times by at least seven organizations, including eCampusOntario and Minnesota State."
 
   - id: at-user-guides
     title: "Assistive Technology User Guides"
     link: https://lurk404.github.io/assistivetech/
+    new_tab: true
     cover: /assets/images/wp/2024/06/AT-User-Guides-Cover.png
     role: "Author"
-    years: "Second edition"
+    years: "Second edition, 2026"
     excerpt: "Guides to getting the most out of assistive technology. The second edition has moved from Pressbooks to its own website."
+
+  - id: lost-in-translation
+    title: "Lost in Translation"
+    link: https://pressbooks.bccampus.ca/lostintranslation/chapter/title-page/
+    role: "Author"
+    years: "2026"
+    excerpt: "A study of how disabled students use technology, and how inclusive design can tangibly improve their experience."
 
   - id: accommodation-fact-sheets
     title: "Academic Accommodation Fact Sheets"
@@ -39,22 +47,7 @@ books:
     role: "Author"
     excerpt: "Brief guides to understanding and implementing academic accommodations in post-secondary institutions."
 
-  - id: digital-accessibility-on-demand
-    title: "Digital Accessibility On-demand"
-    link: https://pressbooks.bccampus.ca/a11yondemand/
-    cover: /assets/images/wp/2024/07/async-cover.png
-    role: "Author"
-    years: "Archived"
-    excerpt: "A just-in-time guide that sends content creators straight to the instructions they need. Its material is now part of the Accessibility Handbook."
-
 more:
-  - id: lost-in-translation
-    title: "Lost in Translation"
-    link: https://pressbooks.bccampus.ca/lostintranslation/chapter/title-page/
-    role: "Author"
-    years: "2026"
-    excerpt: "A study of how disabled students use technology, and how inclusive design can tangibly improve their experience."
-
   - id: quick-start-guides
     title: "Quick Start Guides for EdTech Tools"
     link: https://pressbooks.bccampus.ca/langaraquickguides/
@@ -72,6 +65,14 @@ more:
     link: https://pressbooks.bccampus.ca/qafod/
     role: "Contributor"
     excerpt: "A framework for quality assurance in online course delivery."
+
+  - id: digital-accessibility-on-demand
+    title: "Digital Accessibility On-demand"
+    link: https://pressbooks.bccampus.ca/a11yondemand/
+    cover: /assets/images/wp/2024/07/async-cover.png
+    role: "Author"
+    years: "Archived"
+    excerpt: "A just-in-time guide that sends content creators straight to the instructions they need. Its material is now part of the Accessibility Handbook."
 
   - id: accessibility-of-ai
     title: "Accessibility of AI Interfaces"
