@@ -4,9 +4,8 @@
 
 title: Luke McKnight
 description: >-
-  Learning technology, accessible content, and open resources for
-  post-secondary education, from Luke McKnight, digital accessibility
-  specialist.
+  Digital accessibility resources for students, educators, and everyone,
+  from Luke McKnight, digital accessibility specialist.
 url: "https://lurk404.github.io"
 baseurl: ""
 locale: en-CA
@@ -34,21 +33,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-include-cache   # Minimal Mistakes needs this
-  - jekyll-redirect-from   # old addresses forward to new ones (redirect_from: in a page's front matter)
-
-# Collections: groups of pages that share a folder and a list page.
-# Each file in the folder becomes one page; its file name is its address.
-#   _portfolio/  ->  /work/<file name>/      (listed on /work/ and, if
-#                                             featured: true, on the home page)
-#   _writing/    ->  /writing/<file name>/   (listed on /writing/)
-# How to add one: _maintenance/work-and-writing.md
-collections:
-  portfolio:
-    output: true
-    permalink: /work/:path/
-  writing:
-    output: true
-    permalink: /writing/:path/
 
 # GitHub and LinkedIn icons: in the left sidebar and in the footer
 author:
@@ -81,13 +65,6 @@ defaults:
       read_time: true
       share: false
       related: true
-  # Projects and books: laid out like the other pages
-  - scope: { path: "", type: portfolio }
-    values:
-      <<: *page-defaults
-  - scope: { path: "", type: writing }
-    values:
-      <<: *page-defaults
 
 category_archive: { type: liquid, path: /categories/ }
 tag_archive:      { type: liquid, path: /tags/ }

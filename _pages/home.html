@@ -2,39 +2,40 @@
 title: "Luke McKnight"
 permalink: /
 layout: splash
-excerpt: "Learning technology, accessible content, and open resources for post-secondary education."
+excerpt: "Digital accessibility resources for students, educators, and everyone."
 header:
   overlay_color: "#f1ede4"   # switches the banner on; its colours are in _custom.scss (search "Home page")
 ---
 
 <!--
   Home page, written in HTML. The banner above comes from the front matter
-  (title, excerpt, header).
-  - Selected work: every project in _portfolio/ with "featured: true",
-    in "order:" order. Keep it to three.
-  - The boxes underneath use Minimal Mistakes' own "feature row" classes.
+  (title, excerpt, header). Everything below uses Minimal Mistakes' own
+  "feature row" classes, so it looks the same as the theme's built-in version.
 -->
 
-<p>I'm an assistive technologist and digital accessibility specialist at Langara College in Vancouver. I build tools and templates for the college's learning management system, run services that students and instructors rely on, and write open guides to accessible content. <a href="{{ '/about-me/' | relative_url }}">More about me</a>.</p>
-
-<h2 id="selected-work">Selected work</h2>
-
-{% assign featured = site.portfolio | where: "featured", true | sort: "order" %}
-{% include card-grid.html items=featured heading="h3" %}
-
-<p class="card-grid-more"><a href="{{ '/work/' | relative_url }}">See all work</a></p>
-
-<!-- Three boxes: Writing, Talks and teaching, Thoughts -->
+<!-- Three boxes: Accessibility, Published Work, Reflections -->
 <div class="feature__wrapper">
 
+    <div class="feature__item">
+    <div class="archive__item">
+      <div class="archive__item-body">
+        <h2 class="archive__item-title">Luke McKnight, MDes</h2>
+        <div class="archive__item-excerpt">
+          <p>Digital accessibility specialist and assistive technologist at Langara College in Vancouver.</p>
+        </div>
+          <p><a href="{{ '/about-me/' | relative_url }}" class="btn btn--primary">Luke</a></p>
+      </div>
+    </div>
+  </div>
+  
   <div class="feature__item">
     <div class="archive__item">
       <div class="archive__item-body">
-        <h2 class="archive__item-title">Writing</h2>
+        <h2 class="archive__item-title">Published Work</h2>
         <div class="archive__item-excerpt">
-          <p>Open textbooks and guides on accessibility, including a handbook copied and adapted by institutions across North America.</p>
+          <p>Consider my Pressbooks, articles, and other content.</p>
         </div>
-        <p><a href="{{ '/writing/' | relative_url }}" class="btn btn--primary">Read my writing</a></p>
+        <p><a href="{{ '/about-me/published-work/' | relative_url }}" class="btn btn--primary">View published work</a></p>
       </div>
     </div>
   </div>
@@ -42,23 +43,35 @@ header:
   <div class="feature__item">
     <div class="archive__item">
       <div class="archive__item-body">
-        <h2 class="archive__item-title">Talks and teaching</h2>
+        <h2 class="archive__item-title">Workshops, Presentations</h2>
         <div class="archive__item-excerpt">
-          <p>Accessibility workshops, faculty course design sessions, and conference talks, with recordings.</p>
+          <p>Workshops and presentations I have facilitated and delivered.</p>
         </div>
-        <p><a href="{{ '/talks/' | relative_url }}" class="btn btn--primary">See talks and teaching</a></p>
+        <p><a href="{{ '/about-me/workshop-presentations/' | relative_url }}" class="btn btn--primary">View past offerings</a></p>
+      </div>
+    </div>
+  </div>
+  
+    <div class="feature__item">
+    <div class="archive__item">
+      <div class="archive__item-body">
+        <h2 class="archive__item-title">Accessibility Projects</h2>
+        <div class="archive__item-excerpt">
+          <p>Examples, comparisons, and research on accessible content.</p>
+        </div>
+        <p><a href="{{ '/accessibility/' | relative_url }}" class="btn btn--primary">Explore projects</a></p>
       </div>
     </div>
   </div>
 
-  <div class="feature__item">
+   <div class="feature__item">
     <div class="archive__item">
       <div class="archive__item-body">
-        <h2 class="archive__item-title">Thoughts</h2>
+        <h2 class="archive__item-title">Reflections</h2>
         <div class="archive__item-excerpt">
-          <p>Reflections on workshops, conferences, and professional development.</p>
+          <p>Thoughts on workshops, conferences, and professional development.</p>
         </div>
-        <p><a href="{{ '/reflections/' | relative_url }}" class="btn btn--primary">Read my thoughts</a></p>
+        <p><a href="{{ '/reflections/' | relative_url }}" class="btn btn--primary">Read reflections</a></p>
       </div>
     </div>
   </div>

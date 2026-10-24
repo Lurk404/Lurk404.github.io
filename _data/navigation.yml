@@ -1,15 +1,9 @@
 # Top menu, on every page
 main:
-  - title: "Work"
-    url: /work/
-  - title: "Writing"
-    url: /writing/
-  - title: "Talks"
-    url: /talks/
+  - title: "Luke"
+    url: /about-me/
   - title: "Thoughts"
     url: /reflections/
-  - title: "About"
-    url: /about-me/
 
 # Left sidebar menus. A page shows one with, in its front matter:
 #   sidebar:
@@ -18,27 +12,26 @@ about:
   - title: "About me"
     url: /about-me/
     children:
-      - title: "Work"
-        url: /work/
-      - title: "Writing"
-        url: /writing/
-      - title: "Talks and teaching"
-        url: /talks/
-      - title: "Thoughts"
-        url: /reflections/
+      - title: "Published Work"
+        url: /about-me/published-work/
+      - title: "Workshops and Presentations"
+        url: /about-me/workshop-presentations/
+      - title: "Return to Homepage"
+        url: /
 
-# On the demonstration pages (listed at the bottom of /work/)
 accessibility:
-  - title: "Accessibility demonstrations"
-    url: /work/#demonstrations
+  - title: "Accessibility Projects"
+    url: /accessibility/
     children:
-      - title: "Alt text comparison"
+      - title: "Accessibility of AI Interfaces"
+        url: /accessibility-of-ai-interfaces/
+      - title: "Alt Text Comparison"
         url: /accessibility/alttext-comparison/
-      - title: "Better links"
+      - title: "Better Links"
         url: /accessibility/better-links/
       - title: "Images with text overlay"
         url: /accessibility/images-with-text-overlay/
-      - title: "Accessibility Why (ETUG 2026)"
-        url: /about-me/workshop-presentations/etug-2026/
-      - title: "All work"
-        url: /work/
+      - title: "Adaptive WYSIWYG Editor"
+        url: /accessibility/wysiwyg/
+      - title: "Return to Homepage"
+        url: /
