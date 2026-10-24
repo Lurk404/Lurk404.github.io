@@ -1,0 +1,42 @@
+{%- comment -%}
+  A grid of cards, one per project or book. Used on the home page, /work/
+  and /writing/. Styles: _sass/portfolio/_custom.scss, "Cards".
+
+    {% include card-grid.html items=some_list heading="h3" %}
+
+  items    the projects or books to show, already sorted
+  heading  the heading level for each card's title (default h2). Use one
+           level below the heading the grid sits under.
+  covers   add covers=true for book covers: the whole cover shows, in
+           book proportions (3:4), instead of a short strip
+
+  Each card shows, from the item's front matter:
+    header.teaser   image at the top (optional). Its alt text is empty
+                    because the title below says the same thing.
+    title           linked to the item's own page. The whole card is
+                    clickable, but only the title is a link, so screen
+                    readers hear each card once.
+    role, years     one small line (optional)
+    excerpt         one or two sentences
+  The theme's own cards (archive-single.html) aren't used: they fix the
+  title at h2, hide the excerpt on phones and crop tall images.
+{%- endcomment -%}
+{%- assign h = include.heading | default: "h2" -%}
+<ul class="card-grid{% if include.covers %} card-grid--covers{% endif %}" role="list">
+  {%- for item in include.items %}
+  <li class="card">
+    {%- if item.header.teaser %}
+    <div class="card__image"><img src="{{ item.header.teaser | relative_url }}" alt="" loading="lazy"></div>
+    {%- endif %}
+    <div class="card__body">
+      <{{ h }} class="card__title"><a class="card__link" href="{{ item.url | relative_url }}">{{ item.title }}</a></{{ h }}>
+      {%- if item.role or item.years %}
+      <p class="card__meta">{{ item.role }}{% if item.role and item.years %} · {% endif %}{{ item.years }}</p>
+      {%- endif %}
+      {%- if item.excerpt %}
+      <p class="card__excerpt">{{ item.excerpt | markdownify | strip_html | strip }}</p>
+      {%- endif %}
+    </div>
+  </li>
+  {%- endfor %}
+</ul>

@@ -1,0 +1,31 @@
+---
+title: "Writing"
+permalink: /writing/
+layout: archive
+excerpt: "Open textbooks, guides, newsletters, and articles on accessibility and learning technology."
+redirect_from: /about-me/published-work/
+last_modified_at: 2026-10-24
+---
+
+<!--
+  Everything here comes from the _writing/ folder, in the order set by
+  "order:" in each file's front matter. Anything with a cover image
+  (header: teaser:) goes under Books; the rest go under the second heading.
+  To add one, see _maintenance/work-and-writing.md.
+-->
+
+<p>Open textbooks and guides I've written for instructors, staff, and students, plus newsletters and articles.</p>
+
+{% assign writing = site.writing | sort: "order" %}
+{% assign books = writing | where_exp: "item", "item.header.teaser != nil" %}
+{% assign others = writing | where_exp: "item", "item.header.teaser == nil" %}
+
+<h2 id="books">Books</h2>
+
+{% include card-grid.html items=books heading="h3" covers=true %}
+
+<h2 id="more">More books, newsletters, and articles</h2>
+
+{% include card-grid.html items=others heading="h3" %}
+
+<p>All of my books, and the ones I've contributed to, are also listed in my <a href="https://pressbooks.bccampus.ca/catalog/lmcknight">Pressbooks catalogue</a>.</p>
