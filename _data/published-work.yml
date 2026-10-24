@@ -63,13 +63,12 @@ more:
   - id: quality-assurance-framework
     title: "Quality Assurance Framework for Online Delivery"
     link: https://pressbooks.bccampus.ca/qafod/
-    role: "Contributor"
+    role: "Contributor and designer"
     excerpt: "A framework for quality assurance in online course delivery."
 
   - id: digital-accessibility-on-demand
     title: "Digital Accessibility On-demand"
     link: https://pressbooks.bccampus.ca/a11yondemand/
-    cover: /assets/images/wp/2024/07/async-cover.png
     role: "Author"
     years: "Archived"
     excerpt: "A just-in-time guide that sends content creators straight to the instructions they need. Its material is now part of the Accessibility Handbook."
