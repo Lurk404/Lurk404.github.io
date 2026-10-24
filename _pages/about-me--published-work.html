@@ -3,71 +3,29 @@ title: "Published Work"
 permalink: /about-me/published-work/
 sidebar:
   nav: "about"
-last_modified_at: 2025-05-26
+last_modified_at: 2026-10-24
 ---
 
 <!--
   Written in HTML. Every heading has its own id: "On this page" only lists
   headings that have one.
+
+  The cards come from _data/published-work.yml, in the order listed there.
+  Each card links straight to the resource. To add, remove or reorder one,
+  edit that file; this page doesn't need to change.
 -->
 
-<h2 id="pressbooks">Pressbooks</h2>
+<p>Open textbooks, guides, newsletters, and articles. Each card links straight to the resource.</p>
 
-<h3 id="accessibility-handbook">Accessibility Handbook for Teaching and Learning</h3>
+<h2 id="pressbooks">Books</h2>
 
-<img src="{{ '/assets/images/wp/2024/06/Pressbooks-Cover-2.png' | relative_url }}" alt="Accessibility Handbook for Teaching and Learning book cover" width="30%">
+{% include card-grid.html items=site.data.published-work.books heading="h3" covers=true %}
 
-<p><a href="https://pressbooks.bccampus.ca/accessibilityhandbook/">Accessibility Handbook for Teaching and Learning</a></p>
+<h2 id="articles">More books, newsletters, and articles</h2>
 
-<p>A guide introducing concepts of digital accessibility (i.e., colour contrast and alternative text) and provide detailed instructions to use the specific accessibility features of software (i.e., Making Accessible PowerPoint Presentations).</p>
+{% include card-grid.html items=site.data.published-work.more heading="h3" %}
 
-<h3 id="at-user-guides">Assistive Technology User Guides</h3>
-
-<p class="tip"><a href="https://lurk404.github.io/assistivetech/" target="_blank">Second edition of AT User Guides</a></p>
-
-<img src="{{ '/assets/images/wp/2024/06/AT-User-Guides-Cover.png' | relative_url }}" alt="Assistive Technology User Guides book cover" width="30%">
-
-<p><a href="https://pressbooks.bccampus.ca/atuserguides/">Assistive Technology User Guides</a></p>
-
-<p>Explore this collection of guides to maximize the use of assistive technology.</p>
-
-<h3 id="accommodation-fact-sheets">Academic Accommodation Fact Sheets</h3>
-
-<img src="{{ '/assets/images/wp/2024/07/Accommodation-Fact-Sheets-cover-image-1.png' | relative_url }}" alt="Academic Accommodation Fact Sheets book cover" width="30%">
-
-<p><a href="https://pressbooks.bccampus.ca/accommodationguides/">Academic Accommodation Fact Sheets</a></p>
-
-<p>Brief guides to understand and implement academic accommodations in post-secondary institutions.</p>
-
-<h3 id="digital-accessibility-on-demand">Digital Accessibility on Demand</h3>
-
-<p class="note">This resource has been archived with the material incorporated into the <a href="/#accessibility-handbook">Accessibility Handbook for Teaching and Learning.</a></p>
-
-<p><a href="https://pressbooks.bccampus.ca/a11yondemand/">Digital Accessibility On-Demand</a></p>
-
-<p>Use this resource to find what you need, when you need it to create accessible content and improve existing material. Designed as a just-in-time resource to guide creators to the instructions they need to maximize accessibility and increase inclusivity.</p>
-
-<h3>Additional Books and Guides</h3>
-
-<p><a href="https://pressbooks.bccampus.ca/qafod/" target="_blank">Quality Assurance Framework for Online Delivery</a>.</p>
-
-<p><a href="https://pressbooks.bccampus.ca/langaraquickguides/" target="_blank">Quick Start Guides for EdTech Tools</a>.</p>
-
-<p><a href="https://pressbooks.bccampus.ca/thewire/" target="_blank">The Wire: EdTech News</a>.</p>
-
-<p><a href="https://pressbooks.bccampus.ca/catalog/lmcknight">Pressbooks catalogue</a> of my books and books I have contributed to.</p>
-
-<h2 id="articles">Articles</h2>
-
-<h3 id="accessibility-of-ai"> Accessibility of AI Interfaces</h3>
-
-<p><a href="{{ '/accessibility-of-ai-interfaces/' | relative_url }}">Accessibility of AI Interfaces</a>, 2023. Summary of testing AI web interfaces for their compatibility with assistive technology.
-
-<p class="warning">Given the rate of change in AI, this article may be significantly out of date and may contain inaccuracies.</p>
-
-  <h3 id="lost-in-translation">Lost in Translation</h3>
-
-<p><a href="https://pressbooks.bccampus.ca/lostintranslation/chapter/title-page/">Lost in Translation</a>, 2026: a study of disabled students use of technology and how to tangibly improve the student experience through inclusive design.</p>
+<p>All of my books, and the ones I've contributed to, are also listed in my <a href="https://pressbooks.bccampus.ca/catalog/lmcknight">Pressbooks catalogue</a>.</p>
 
 <h2 id="online-courses">Online Courses</h2>
 

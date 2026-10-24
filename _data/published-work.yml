@@ -1,0 +1,81 @@
+# Cards on the Published Work page (_pages/about-me--published-work.html).
+# Each card links straight to the resource; there are no separate pages.
+#
+#   id       anchor for the card, so /about-me/published-work/#<id> still
+#            jumps to it (keep these if they already exist; links elsewhere
+#            may use them)
+#   title    the card's heading and link text
+#   link     where the card goes: a full address, or /a-page-on-this-site/
+#   cover    book cover image (optional, 3:4 portrait). Its alt text is empty
+#            because the title below it names the book.
+#   role     who I was on it (optional, shown small)
+#   years    when (optional, shown after the role)
+#   excerpt  one or two sentences
+#
+# books: the cards with covers. more: everything else. Cards appear in
+# the order listed here.
+
+books:
+  - id: accessibility-handbook
+    title: "Accessibility Handbook for Teaching and Learning"
+    link: https://pressbooks.bccampus.ca/accessibilityhandbook/
+    cover: /assets/images/wp/2024/06/Pressbooks-Cover-2.png
+    role: "Author"
+    years: "2020; second edition in progress"
+    excerpt: "Digital accessibility concepts, such as colour contrast and alt text, with step-by-step instructions for everyday software. Copied 12 times by at least seven organizations, including eCampusOntario and Minnesota State."
+
+  - id: at-user-guides
+    title: "Assistive Technology User Guides"
+    link: https://lurk404.github.io/assistivetech/
+    cover: /assets/images/wp/2024/06/AT-User-Guides-Cover.png
+    role: "Author"
+    years: "Second edition"
+    excerpt: "Guides to getting the most out of assistive technology. The second edition has moved from Pressbooks to its own website."
+
+  - id: accommodation-fact-sheets
+    title: "Academic Accommodation Fact Sheets"
+    link: https://pressbooks.bccampus.ca/accommodationguides/
+    cover: /assets/images/wp/2024/07/Accommodation-Fact-Sheets-cover-image-1.png
+    role: "Author"
+    excerpt: "Brief guides to understanding and implementing academic accommodations in post-secondary institutions."
+
+  - id: digital-accessibility-on-demand
+    title: "Digital Accessibility On-demand"
+    link: https://pressbooks.bccampus.ca/a11yondemand/
+    cover: /assets/images/wp/2024/07/async-cover.png
+    role: "Author"
+    years: "Archived"
+    excerpt: "A just-in-time guide that sends content creators straight to the instructions they need. Its material is now part of the Accessibility Handbook."
+
+more:
+  - id: lost-in-translation
+    title: "Lost in Translation"
+    link: https://pressbooks.bccampus.ca/lostintranslation/chapter/title-page/
+    role: "Author"
+    years: "2026"
+    excerpt: "A study of how disabled students use technology, and how inclusive design can tangibly improve their experience."
+
+  - id: quick-start-guides
+    title: "Quick Start Guides for EdTech Tools"
+    link: https://pressbooks.bccampus.ca/langaraquickguides/
+    role: "Co-author, designer, and publisher"
+    excerpt: "Short guides that get people started with the educational technology tools used at Langara."
+
+  - id: the-wire
+    title: "The Wire: EdTech News"
+    link: https://pressbooks.bccampus.ca/thewire/
+    role: "Co-author, editor, and designer"
+    excerpt: "The newsletter of Langara's Educational Technology department."
+
+  - id: quality-assurance-framework
+    title: "Quality Assurance Framework for Online Delivery"
+    link: https://pressbooks.bccampus.ca/qafod/
+    role: "Contributor"
+    excerpt: "A framework for quality assurance in online course delivery."
+
+  - id: accessibility-of-ai
+    title: "Accessibility of AI Interfaces"
+    link: /accessibility-of-ai-interfaces/
+    role: "Author"
+    years: "2023"
+    excerpt: "Original research testing how well AI chat interfaces work with screen readers and other assistive technology. Given how fast AI tools change, some findings may be out of date."

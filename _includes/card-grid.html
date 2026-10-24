@@ -1,0 +1,42 @@
+{%- comment -%}
+  A grid of cards, each linking straight to a resource. Used on the
+  Published Work page, with the cards listed in _data/published-work.yml.
+  Styles: _sass/portfolio/_custom.scss, "Cards".
+
+    {% include card-grid.html items=site.data.published-work.books heading="h3" covers=true %}
+
+  items    the cards to show, in order (see the data file for the fields)
+  heading  the heading level for each card's title (default h2). Use one
+           level below the heading the grid sits under.
+  covers   covers=true for book covers: narrower cards, and the whole
+           cover shown in book proportions (3:4)
+
+  The whole card is clickable, but only the title is a link, so screen
+  readers hear each card once. The cover's alt text is empty because the
+  title right below it names the book.
+{%- endcomment -%}
+{%- assign h = include.heading | default: "h2" -%}
+<ul class="card-grid{% if include.covers %} card-grid--covers{% endif %}" role="list">
+  {%- for item in include.items %}
+  {%- assign first = item.link | slice: 0 -%}
+  {%- if first == "/" -%}
+    {%- assign href = item.link | relative_url -%}
+  {%- else -%}
+    {%- assign href = item.link -%}
+  {%- endif %}
+  <li class="card"{% if item.id %} id="{{ item.id }}"{% endif %}>
+    {%- if item.cover %}
+    <div class="card__image"><img src="{{ item.cover | relative_url }}" alt="" loading="lazy"></div>
+    {%- endif %}
+    <div class="card__body">
+      <{{ h }} class="card__title"><a class="card__link" href="{{ href }}">{{ item.title }}</a></{{ h }}>
+      {%- if item.role or item.years %}
+      <p class="card__meta">{{ item.role }}{% if item.role and item.years %} · {% endif %}{{ item.years }}</p>
+      {%- endif %}
+      {%- if item.excerpt %}
+      <p class="card__excerpt">{{ item.excerpt }}</p>
+      {%- endif %}
+    </div>
+  </li>
+  {%- endfor %}
+</ul>
