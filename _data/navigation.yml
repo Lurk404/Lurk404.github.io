@@ -15,17 +15,19 @@ main:
 #   sidebar:
 #     nav: "about"
 about:
-  - title: "About me"
+  - title: "About Luke"
     url: /about-me/
     children:
-      - title: "Work"
-        url: /work/
-      - title: "Published Work"
+      - title: "What I have written"
         url: /published-work/
-      - title: "Talks and teaching"
+      - title: "What I have said"
         url: /workshops-presentations/
-      - title: "Return to Homepage"
-        url: /
+      - title: "What I have made"
+        url: /work/
+      - title: "What I have thought"
+        url: /reflections/
+  - title: "Return to Homepage"
+    url: /
 
 # On the demonstration pages (listed at the bottom of /work/) and the
 # Accessibility of AI Interfaces article
