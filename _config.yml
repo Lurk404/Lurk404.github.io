@@ -33,6 +33,15 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-include-cache   # Minimal Mistakes needs this
+  - jekyll-redirect-from   # old addresses forward to new ones (redirect_from: in a page's front matter)
+
+# Work: one page per project in the _portfolio/ folder, at /work/<file name>/,
+# all listed on /work/ (_pages/work.html). How to add one:
+# _maintenance/work.md
+collections:
+  portfolio:
+    output: true
+    permalink: /work/:path/
 
 # GitHub and LinkedIn icons: in the left sidebar and in the footer
 author:
@@ -65,6 +74,10 @@ defaults:
       read_time: true
       share: false
       related: true
+  # Projects: laid out like the other pages
+  - scope: { path: "", type: portfolio }
+    values:
+      <<: *page-defaults
 
 category_archive: { type: liquid, path: /categories/ }
 tag_archive:      { type: liquid, path: /tags/ }

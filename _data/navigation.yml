@@ -12,6 +12,8 @@ about:
   - title: "About me"
     url: /about-me/
     children:
+      - title: "Work"
+        url: /work/
       - title: "Published Work"
         url: /about-me/published-work/
       - title: "Talks and teaching"
@@ -19,19 +21,21 @@ about:
       - title: "Return to Homepage"
         url: /
 
+# On the demonstration pages (listed at the bottom of /work/) and the
+# Accessibility of AI Interfaces article
 accessibility:
-  - title: "Accessibility Projects"
-    url: /accessibility/
+  - title: "Accessibility demonstrations"
+    url: /work/#demonstrations
     children:
-      - title: "Accessibility of AI Interfaces"
-        url: /accessibility-of-ai-interfaces/
-      - title: "Alt Text Comparison"
+      - title: "Alt text comparison"
         url: /accessibility/alttext-comparison/
-      - title: "Better Links"
+      - title: "Better links"
         url: /accessibility/better-links/
       - title: "Images with text overlay"
         url: /accessibility/images-with-text-overlay/
-      - title: "Adaptive WYSIWYG Editor"
-        url: /accessibility/wysiwyg/
-      - title: "Return to Homepage"
-        url: /
+      - title: "Accessibility Why (ETUG 2026)"
+        url: /about-me/workshop-presentations/etug-2026/
+      - title: "Accessibility of AI Interfaces"
+        url: /accessibility-of-ai-interfaces/
+      - title: "All work"
+        url: /work/

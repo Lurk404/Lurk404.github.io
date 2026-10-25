@@ -1,6 +1,9 @@
 {%- comment -%}
-  A grid of cards, each linking straight to a resource. Used on the
-  Published Work page, with the cards listed in _data/published-work.yml.
+  A grid of cards. Used on two pages:
+  - Published Work: cards listed in _data/published-work.yml, each linking
+    straight to the resource (link:, cover:).
+  - Work: one card per project in _portfolio/, each linking to the
+    project's own page (its address, and header: teaser: for an image).
   Styles: _sass/portfolio/_custom.scss, "Cards".
 
     {% include card-grid.html items=site.data.published-work.books heading="h3" covers=true %}
@@ -24,15 +27,17 @@
 {%- assign h = include.heading | default: "h2" -%}
 <ul class="card-grid{% if include.covers %} card-grid--covers{% endif %}" role="list">
   {%- for item in include.items %}
-  {%- assign first = item.link | slice: 0 -%}
+  {%- assign target = item.link | default: item.url -%}
+  {%- assign first = target | slice: 0 -%}
   {%- if first == "/" -%}
-    {%- assign href = item.link | relative_url -%}
+    {%- assign href = target | relative_url -%}
   {%- else -%}
-    {%- assign href = item.link -%}
+    {%- assign href = target -%}
   {%- endif %}
+  {%- assign image = item.cover | default: item.header.teaser %}
   <li class="card"{% if item.id %} id="{{ item.id }}"{% endif %}>
-    {%- if item.cover %}
-    <div class="card__image"><img src="{{ item.cover | relative_url }}" alt="" loading="lazy"></div>
+    {%- if image %}
+    <div class="card__image"><img src="{{ image | relative_url }}" alt="" loading="lazy"></div>
     {%- endif %}
     <div class="card__body">
       <{{ h }} class="card__title"><a class="card__link" href="{{ href }}"{% if item.new_tab %} target="_blank"{% endif %}>{{ item.title }}</a></{{ h }}>
