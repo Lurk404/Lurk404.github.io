@@ -54,17 +54,24 @@ more:
     role: "Co-author, designer, and publisher"
     excerpt: "Short guides that get people started with the educational technology tools used at Langara."
 
+  - id: quality-assurance-framework
+    title: "Quality Assurance Framework for Online Delivery"
+    link: https://pressbooks.bccampus.ca/qafod/
+    role: "Contributor and designer"
+    excerpt: "A framework for quality assurance in online course delivery."
+
   - id: the-wire
     title: "The Wire: EdTech News"
     link: https://pressbooks.bccampus.ca/thewire/
     role: "Co-author, editor, and designer"
     excerpt: "The newsletter of Langara's Educational Technology department."
 
-  - id: quality-assurance-framework
-    title: "Quality Assurance Framework for Online Delivery"
-    link: https://pressbooks.bccampus.ca/qafod/
-    role: "Contributor and designer"
-    excerpt: "A framework for quality assurance in online course delivery."
+  - id: accessibility-of-ai
+    title: "Accessibility of AI Interfaces"
+    link: /accessibility-of-ai-interfaces/
+    role: "Author"
+    years: "2023"
+    excerpt: "Original research testing how well AI chat interfaces work with screen readers and other assistive technology. Given how fast AI tools change, some findings may be out of date."
 
   - id: digital-accessibility-on-demand
     title: "Digital Accessibility On-demand"
@@ -73,9 +80,3 @@ more:
     years: "Archived"
     excerpt: "A just-in-time guide that sends content creators straight to the instructions they need. Its material is now part of the Accessibility Handbook."
 
-  - id: accessibility-of-ai
-    title: "Accessibility of AI Interfaces"
-    link: /accessibility-of-ai-interfaces/
-    role: "Author"
-    years: "2023"
-    excerpt: "Original research testing how well AI chat interfaces work with screen readers and other assistive technology. Given how fast AI tools change, some findings may be out of date."
