@@ -3,7 +3,8 @@ title: "Adaptive WYSIWYG editor"
 excerpt: "A prototype editor that produces accessible content by default and helps authors build a reusable style sheet as they write."
 role: "Developer"
 years: "Prototype"
-order: 8
+featured: true
+order: 1
 redirect_from: /accessibility/wysiwyg/
 last_modified_at: 2026-10-24
 ---

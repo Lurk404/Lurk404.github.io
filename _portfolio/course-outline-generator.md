@@ -3,7 +3,7 @@ title: "Course Outline Generator"
 excerpt: "A form-based HTML and JavaScript tool that produces policy-aligned course outlines ready for Brightspace and the college website."
 role: "Project lead and developer"
 featured: true
-order: 1
+order: 3
 last_modified_at: 2026-10-24
 ---
 

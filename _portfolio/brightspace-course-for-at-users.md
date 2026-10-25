@@ -2,7 +2,8 @@
 title: "Brightspace course for assistive technology users"
 excerpt: "A Brightspace course that guides students who use assistive technology around the college's learning management system."
 role: "Course designer"
-order: 6
+featured: true
+order: 2
 last_modified_at: 2026-10-24
 ---
 
