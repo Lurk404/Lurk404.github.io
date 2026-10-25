@@ -47,3 +47,27 @@ accessibility:
         url: /accessibility-of-ai-interfaces/
       - title: "All work"
         url: /work/
+# On /work/ and every project page (_portfolio/). Add a line here when
+# you add a project, in the same order as "order:".
+work:
+  - title: "Projects"
+    url: /work/#projects
+    children:
+      - title: "Adaptive WYSIWYG editor"
+        url: /work/adaptive-wysiwyg-editor/
+      - title: "Brightspace course for AT users"
+        url: /work/brightspace-course-for-at-users/
+      - title: "Course Outline Generator"
+        url: /work/course-outline-generator/
+      - title: "Closed captioning service"
+        url: /work/closed-captioning-service/
+      - title: "EdTech student support"
+        url: /work/edtech-student-support/
+      - title: "Brightspace templates and widgets"
+        url: /work/brightspace-templates-and-widgets/
+      - title: "Digital Literacy Framework Mapper"
+        url: /work/digital-literacy-framework-mapper/
+      - title: "Student Learning Tools website"
+        url: /work/student-learning-tools-website/
+  - title: "Accessibility demonstrations"
+    url: /work/#demonstrations
