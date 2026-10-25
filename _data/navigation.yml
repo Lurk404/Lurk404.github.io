@@ -2,7 +2,13 @@
 main:
   - title: "Luke"
     url: /about-me/
-  - title: "Thoughts"
+  - title: "I wrote"
+    url: /about-me/published-work/
+  - title: "I said"
+    url: /about-me/workshop-presentations/
+  - title: "I made"
+    url: /work/
+  - title: "I thought"
     url: /reflections/
 
 # Left sidebar menus. A page shows one with, in its front matter:
