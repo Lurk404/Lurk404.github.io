@@ -3,9 +3,9 @@ main:
   - title: "Luke"
     url: /about-me/
   - title: "I wrote"
-    url: /about-me/published-work/
+    url: /published-work/
   - title: "I said"
-    url: /about-me/workshop-presentations/
+    url: /workshops-presentations/
   - title: "I made"
     url: /work/
   - title: "I thought"
@@ -21,9 +21,9 @@ about:
       - title: "Work"
         url: /work/
       - title: "Published Work"
-        url: /about-me/published-work/
+        url: /published-work/
       - title: "Talks and teaching"
-        url: /about-me/workshop-presentations/
+        url: /workshops-presentations/
       - title: "Return to Homepage"
         url: /
 
@@ -40,7 +40,7 @@ accessibility:
       - title: "Images with text overlay"
         url: /accessibility/images-with-text-overlay/
       - title: "Accessibility Why (ETUG 2026)"
-        url: /about-me/workshop-presentations/etug-2026/
+        url: /workshops-presentations/etug-2026/
       - title: "Accessibility of AI Interfaces"
         url: /accessibility-of-ai-interfaces/
       - title: "All work"

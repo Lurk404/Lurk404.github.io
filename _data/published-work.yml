@@ -1,9 +1,9 @@
-# Cards on the Published Work page (_pages/about-me--published-work.html).
+# Cards on the Published Work page (_pages/published-work.html).
 # Each card links straight to the resource; there are no separate pages.
 #
-#   id       anchor for the card, so /about-me/published-work/#<id> still
-#            jumps to it (keep these if they already exist; links elsewhere
-#            may use them)
+#   id       anchor for the card, so /published-work/#<id> jumps to it, as
+#            does the old /about-me/published-work/#<id> (keep these if they
+#            already exist; links elsewhere may use them)
 #   title    the card's heading and link text
 #   link     where the card goes: a full address, or /a-page-on-this-site/
 #   cover    book cover image (optional, 3:4 portrait). Its alt text is empty
