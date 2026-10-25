@@ -36,6 +36,7 @@ books:
   - id: lost-in-translation
     title: "Lost in Translation"
     link: https://pressbooks.bccampus.ca/lostintranslation/chapter/title-page/
+    cover: /assets/images/LostinTranslation_Cover.png
     role: "Author"
     years: "2026"
     excerpt: "A study of how disabled students use technology, and how inclusive design can tangibly improve their experience."
