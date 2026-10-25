@@ -12,24 +12,20 @@ last_modified_at: 2026-10-24
 <!--
   Projects come from the _portfolio/ folder, in the order set by "order:" in
   each file's front matter (1 first). To add one, see
-  _maintenance/work.md. The demonstrations below are ordinary
-  pages in _pages/, listed by hand.
+  _maintenance/work.md. Projects with status: "Demonstration" are listed
+  under Accessibility demonstrations instead of Projects.
 -->
 
 <p>Selected projects from my work in learning technology, accessibility, and student support at Langara College. Each one links to a short case study: what it was for, what I did, and what came of it.</p>
 
 <h2 id="projects">Projects</h2>
 
-{% assign projects = site.portfolio | sort: "order" %}
+{% assign projects = site.portfolio | where_exp: "p", "p.status != 'Demonstration'" | sort: "order" %}
 {% include card-grid.html items=projects heading="h3" %}
 
 <h2 id="demonstrations">Accessibility demonstrations</h2>
 
 <p>Short, practical examples I use in workshops to show how content works (or doesn't) with assistive technology.</p>
 
-<ul>
-  <li><a href="{{ '/accessibility/alttext-comparison/' | relative_url }}">Alt text comparison</a>: the same image with no alt text, unhelpful alt text, effective alt text, and a caption, plus a screen reader recording of all four.</li>
-  <li><a href="{{ '/accessibility/better-links/' | relative_url }}">Better links</a>: link text that works for a screen reader user, shown side by side with link text that doesn't.</li>
-  <li><a href="{{ '/accessibility/images-with-text-overlay/' | relative_url }}">Images with text overlay</a>: putting a screenshot's instructions on top of it as real text, instead of hiding them in alt text.</li>
-  <li><a href="{{ '/workshops-presentations/etug-2026/' | relative_url }}">Accessibility Why</a>: inaccessible colour, captions, alt text, and links, as an assistive technology user meets them (ETUG 2026).</li>
-</ul>
+{% assign demonstrations = site.portfolio | where: "status", "Demonstration" | sort: "order" %}
+{% include card-grid.html items=demonstrations heading="h3" %}

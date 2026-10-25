@@ -672,7 +672,8 @@ body.fl-lineSpace-enabled .page__content {
     "ongoing":     (#203d3a, #aee0d6, #4f9488),
     "complete":    (#263d27, #bfe3b6, #5f9a56),
     "on-hold":     (#45381f, #f3d59a, #a8833e),
-    "prototype":   (#382c48, #dccbf2, #8a6fb0)
+    "prototype":   (#382c48, #dccbf2, #8a6fb0),
+    "demonstration": (#44262f, #f4c3cf, #a35d70)
   ) !global;
   $status-other: (#2f343d, #e6e6e6, #7d838c) !global;
 } @else {
@@ -681,7 +682,8 @@ body.fl-lineSpace-enabled .page__content {
     "ongoing":     (#e2f1ee, #1c5a50, #7fbcb1),
     "complete":    (#e6f2e3, #2b5a24, #8dbf84),
     "on-hold":     (#fbeed6, #6a4508, #d9a95a),
-    "prototype":   (#efe8f6, #55327a, #ad94cf)
+    "prototype":   (#efe8f6, #55327a, #ad94cf),
+    "demonstration": (#f8e8ec, #7a2236, #d79aaa)
   ) !global;
   $status-other: (#efeeea, #494e52, #a9aaa8) !global;
 }
