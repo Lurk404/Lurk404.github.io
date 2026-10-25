@@ -656,6 +656,74 @@ body.fl-lineSpace-enabled .page__content {
   border-color: var(--fl-fgColor) !important;
 }
 
+
+// ==========================================================================
+// Project status pills: "In progress", "Complete", and so on
+// (markup in _includes/status-pill.html; set with status: in a project's
+// front matter). The word carries the meaning; the tint is extra.
+// Text contrast against its tint: 6.9:1 or more in light mode, 8:1 or more
+// in dark mode. Any other word gets the neutral grey pill.
+// ==========================================================================
+
+//                  tint      text      outline
+@if $theme-mode == dark {
+  $statuses: (
+    "in-progress": (#26364b, #bcd6f5, #5e86b8),
+    "ongoing":     (#203d3a, #aee0d6, #4f9488),
+    "complete":    (#263d27, #bfe3b6, #5f9a56),
+    "on-hold":     (#45381f, #f3d59a, #a8833e),
+    "prototype":   (#382c48, #dccbf2, #8a6fb0)
+  ) !global;
+  $status-other: (#2f343d, #e6e6e6, #7d838c) !global;
+} @else {
+  $statuses: (
+    "in-progress": (#e7eff9, #1d4877, #7fa6d4),
+    "ongoing":     (#e2f1ee, #1c5a50, #7fbcb1),
+    "complete":    (#e6f2e3, #2b5a24, #8dbf84),
+    "on-hold":     (#fbeed6, #6a4508, #d9a95a),
+    "prototype":   (#efe8f6, #55327a, #ad94cf)
+  ) !global;
+  $status-other: (#efeeea, #494e52, #a9aaa8) !global;
+}
+
+@mixin status-colours($c) {
+  color: nth($c, 2);
+  background-color: nth($c, 1);
+  border-color: nth($c, 3);
+}
+
+.status {
+  display: inline-block;
+  margin: 0 0.5em 0.25em 0;
+  padding: 0.1em 0.65em;
+  font-family: $sans-serif;
+  font-size: 0.75rem;
+  font-weight: bold;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border: 1px solid;                 // a real outline, so it shows in the contrast themes and Windows High Contrast
+  border-radius: 999px;
+  @include status-colours($status-other);
+}
+
+@each $name, $c in $statuses {
+  .status--#{$name} {
+    @include status-colours($c);
+  }
+}
+
+// On a card: the pill gets a line of its own, under the title
+.card .card__status {
+  margin: 0 0 0.35rem;
+  line-height: 1;
+
+  .status {
+    margin: 0;
+  }
+}
+
 // ==========================================================================
 // Talks and teaching page (_pages/workshops-presentations.html)
 // ==========================================================================

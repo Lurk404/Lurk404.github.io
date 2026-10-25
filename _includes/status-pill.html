@@ -1,0 +1,9 @@
+{%- comment -%}
+  A project's status as a small pill. Used by card-grid.html and page__meta.html.
+  The word comes from status: in the project's front matter. Its tint comes from
+  _sass/portfolio/_custom.scss ("Project status pills"): "In progress" becomes
+  the class status--in-progress, and so on. Any other word gets a grey pill.
+{%- endcomment -%}
+{%- if include.status -%}
+<span class="status status--{{ include.status | slugify }}"><span class="visually-hidden">Status: </span>{{ include.status }}</span>
+{%- endif -%}

@@ -4,6 +4,7 @@ excerpt: "A Brightspace course that guides students who use assistive technology
 role: "Course designer"
 featured: true
 order: 2
+status: "Ongoing"
 last_modified_at: 2026-10-24
 ---
 

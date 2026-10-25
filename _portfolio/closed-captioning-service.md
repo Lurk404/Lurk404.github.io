@@ -3,6 +3,7 @@ title: "Closed captioning service"
 excerpt: "Langara's closed captioning service, run end to end: 84 courses across 34 departments since 2021."
 role: "Service lead"
 years: "2021 to present"
+status: "Ongoing"
 order: 4
 last_modified_at: 2026-10-24
 ---

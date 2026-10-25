@@ -41,6 +41,9 @@
     {%- endif %}
     <div class="card__body">
       <{{ h }} class="card__title"><a class="card__link" href="{{ href }}"{% if item.new_tab %} target="_blank"{% endif %}>{{ item.title }}</a></{{ h }}>
+      {%- if item.status %}
+      <p class="card__status">{% include status-pill.html status=item.status %}</p>
+      {%- endif %}
       {%- if item.role or item.years %}
       <p class="card__meta">{{ item.role }}{% if item.role and item.years %} · {% endif %}{{ item.years }}</p>
       {%- endif %}
