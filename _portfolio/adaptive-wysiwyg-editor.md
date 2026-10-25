@@ -10,4 +10,4 @@ last_modified_at: 2026-10-24
 
 An attempt at a "what you see is what you get" (WYSIWYG) editor that creates accessible content and helps authors build a style sheet they can reuse.
 
-[Try the Adaptive WYSIWYG editor prototype](https://lurk404.github.io/wysiwyg/)
+<a href="https://lurk404.github.io/wysiwyg/" target="_blank">Try the Adaptive WYSIWYG editor prototype</a>
