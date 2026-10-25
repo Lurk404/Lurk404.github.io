@@ -645,6 +645,12 @@ body.fl-lineSpace-enabled .page__content {
   font-size: $type-size-6;
 }
 
+// Under a card grid: "See all work" on the home page
+.card-grid-more {
+  margin-top: -1rem;
+  font-family: $sans-serif;
+}
+
 // Contrast themes (display preferences): borders in the theme's text colour
 #{$fl-contrast-theme} .card {
   border-color: var(--fl-fgColor) !important;

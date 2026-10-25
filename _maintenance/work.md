@@ -19,7 +19,8 @@ title: "Course Outline Generator"
 excerpt: "One or two sentences. This is what the card shows."
 role: "Project lead and developer"   # optional, shown small on the card
 years: "2021 to present"             # optional, shown after the role
-order: 1                             # position on /work/ (1 comes first)
+featured: true                       # optional: also shows it on the home page
+order: 1                             # position on /work/ and the home page (1 comes first)
 header:
   teaser: /assets/images/work/course-outline-generator.png   # optional image
 last_modified_at: 2026-10-25
@@ -29,7 +30,9 @@ last_modified_at: 2026-10-25
 Then write the case study underneath in Markdown. A pattern that works: what it was for, what you did, and what came of it, each under a `##` heading.
 
 - **Always set `excerpt`.** Without it the card has no description.
-- **Give every project an `order`.** Projects are sorted by it.
+- **Give every project its own `order`.** Projects are sorted by it. A project without one goes first, and two with the same number can swap places between builds.
+- **Featured projects:** the home page's Selected work shows every project with `featured: true`, in `order` order. Nothing limits how many, so keep it to three for one tidy row.
+- **Opening a link in a new tab:** in Markdown, put `{:target="_blank"}` straight after the link, as in `[Try it](https://example.com){:target="_blank"}`. There's no need to switch to an HTML `<a>` tag. If you do write a heading in HTML, give it an `id` (`<h2 id="what-it-does">`), or it won't appear in "On this page".
 - **Don't add `tags:`.** The theme would link them to the Tags page, which only lists reflections, so the links would lead nowhere.
 - **Images (optional):** about 1000 × 600 pixels, the same shape for every project, with no text in the image. The card gives the image empty alt text because the title right below it names the project, so the image mustn't carry anything the title doesn't.
 
