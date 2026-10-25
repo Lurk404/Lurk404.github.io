@@ -1,0 +1,53 @@
+{%- comment -%}
+  A grid of cards. Used on two pages:
+  - Published Work: cards listed in _data/published-work.yml, each linking
+    straight to the resource (link:, cover:).
+  - Work: one card per project in _portfolio/, each linking to the
+    project's own page (its address, and header: teaser: for an image).
+  Styles: _sass/portfolio/_custom.scss, "Cards".
+
+    {% include card-grid.html items=site.data.published-work.books heading="h3" covers=true %}
+
+  items    the cards to show, in order (see the data file for the fields)
+  heading  the heading level for each card's title (default h2). Use one
+           level below the heading the grid sits under.
+  covers   covers=true for book covers: narrower cards, and the whole
+           cover shown in book proportions (3:4)
+
+  Links to other websites open in a new tab on their own (assets/js/site.js,
+  section 5). new_tab: true does the same for a link on lurk404.github.io,
+  such as the AT User Guides, which the script would otherwise treat as part
+  of this site. Either way, the script adds the new-tab icon and "(opens in
+  new tab)" for screen readers.
+
+  The whole card is clickable, but only the title is a link, so screen
+  readers hear each card once. The cover's alt text is empty because the
+  title right below it names the book.
+{%- endcomment -%}
+{%- assign h = include.heading | default: "h2" -%}
+<ul class="card-grid{% if include.covers %} card-grid--covers{% endif %}" role="list">
+  {%- for item in include.items %}
+  {%- assign target = item.link | default: item.url -%}
+  {%- assign first = target | slice: 0 -%}
+  {%- if first == "/" -%}
+    {%- assign href = target | relative_url -%}
+  {%- else -%}
+    {%- assign href = target -%}
+  {%- endif %}
+  {%- assign image = item.cover | default: item.header.teaser %}
+  <li class="card"{% if item.id %} id="{{ item.id }}"{% endif %}>
+    {%- if image %}
+    <div class="card__image"><img src="{{ image | relative_url }}" alt="" loading="lazy"></div>
+    {%- endif %}
+    <div class="card__body">
+      <{{ h }} class="card__title"><a class="card__link" href="{{ href }}"{% if item.new_tab %} target="_blank"{% endif %}>{{ item.title }}</a></{{ h }}>
+      {%- if item.role or item.years %}
+      <p class="card__meta">{{ item.role }}{% if item.role and item.years %} · {% endif %}{{ item.years }}</p>
+      {%- endif %}
+      {%- if item.excerpt %}
+      <p class="card__excerpt">{{ item.excerpt }}</p>
+      {%- endif %}
+    </div>
+  </li>
+  {%- endfor %}
+</ul>

@@ -1,0 +1,39 @@
+---
+title: "Published Work"
+permalink: /published-work/
+redirect_from: /about-me/published-work/   # its old address; old links still arrive here
+sidebar:
+  nav: "about"
+last_modified_at: 2026-10-24
+---
+
+<!--
+  Written in HTML. Every heading has its own id: "On this page" only lists
+  headings that have one.
+
+  The cards come from _data/published-work.yml, in the order listed there.
+  Each card links straight to the resource. To add, remove or reorder one,
+  edit that file; this page doesn't need to change.
+-->
+
+<p>Open textbooks, guides, newsletters, and articles. Each card links straight to the resource.</p>
+
+<h2 id="pressbooks">Books</h2>
+
+{% include card-grid.html items=site.data.published-work.books heading="h3" covers=true %}
+
+<h2 id="articles">More books, newsletters, and articles</h2>
+
+{% include card-grid.html items=site.data.published-work.more heading="h3" %}
+
+<p>All of my books, and the ones I've contributed to, are also listed in my <a href="https://pressbooks.bccampus.ca/catalog/lmcknight">Pressbooks catalogue</a>.</p>
+
+<h2 id="online-courses">Online Courses</h2>
+
+<p>Brightspace Course for AT Users. The following video is an overview of a Brightspace learning management system course build to guide users of assistive technology around the platform:</p>
+
+<div style="max-width:1080px">
+  <div style="position:relative;padding-bottom:66.118421052632%">
+    <iframe title="Video: Brightspace Course for AT Users" src="https://api.ca.kaltura.com/p/138/sp/13800/embedIframeJs/uiconf_id/23449468/partner_id/138?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_rfokt76n&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=0_1755i3w2" width="608" height="402" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{%- comment -%}
+  The page left at an old address (redirect_from: in a page's front matter).
+  It replaces jekyll-redirect-from's own version for one reason: that one
+  drops the part of a link after "#". With this one, an old link such as
+  /about-me/published-work/#accessibility-handbook still lands on that
+  card at /published-work/#accessibility-handbook.
+  Without JavaScript, the refresh line still sends people to the new page
+  (at the top), and the link below is there as a last resort.
+{%- endcomment -%}
+<!DOCTYPE html>
+<html lang="en-CA">
+  <meta charset="utf-8">
+  <title>Redirecting&hellip;</title>
+  <link rel="canonical" href="{{ page.redirect.to }}">
+  <script>location.replace("{{ page.redirect.to }}" + location.hash)</script>
+  <meta http-equiv="refresh" content="0; url={{ page.redirect.to }}">
+  <meta name="robots" content="noindex">
+  <h1>Redirecting&hellip;</h1>
+  <a href="{{ page.redirect.to }}">This page has moved. Go to its new address.</a>
+</html>

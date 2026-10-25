@@ -522,6 +522,164 @@ body.fl-lineSpace-enabled .page__content {
 }
 
 // ==========================================================================
+// Cards: the Published Work page (markup in _includes/card-grid.html,
+// content in _data/published-work.yml)
+// As many columns as fit at least 14rem wide (15rem for books), so
+// bigger text (display preferences, browser zoom) means fewer, wider cards
+// rather than squashed ones. Each card has a burgundy bar along the top.
+// unquote: GitHub Pages' Sass would otherwise try to work out min() itself
+// and fail on the mixed units.
+// ==========================================================================
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(unquote("min(14rem, 100%)"), 1fr));
+  gap: 1.5rem;
+  margin: 1rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+// Books: the cover sits beside the text rather than above it, so a cover
+// never fills a phone screen and the four books make a tidy 2 by 2 on wider
+// screens. The cover column is 38% of the card.
+.card-grid--covers {
+  grid-template-columns: repeat(auto-fill, minmax(unquote("min(15rem, 100%)"), 1fr));
+
+  .card {
+    flex-direction: row;
+  }
+
+  .card__image {
+    flex: 0 0 38%;
+  }
+}
+
+// ".card" in front of the rules below outweighs the theme's .page__content
+// rules for list items, headings, paragraphs and images
+.card {
+  position: relative;               // for the clickable area below
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  overflow: hidden;
+  background-color: $background-color;
+  border: 1px solid $border-color;
+  border-top: 4px solid $heading-accent;
+  border-radius: $border-radius;
+
+  &:hover {
+    border-color: $muted-text-color;
+    border-top-color: $heading-accent;
+  }
+
+  // Keyboard focus on the title link outlines the whole card (the link
+  // keeps its own outline too, for browsers without :has)
+  &:has(.card__link:focus-visible) {
+    outline: 3px solid $focus-color;
+    outline-offset: 2px;
+  }
+
+  // Jumping to a card by its #id (from an old link) highlights it
+  &:target {
+    outline: 3px solid $heading-accent;
+    outline-offset: 2px;
+  }
+}
+
+// The whole cover, in book proportions. No white card behind it in dark
+// mode (that's for logos and icons; see the next section).
+.card .card__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  background-color: transparent !important;
+  border-radius: 0;
+}
+
+.card-grid--covers .card__image img {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.card__body {
+  padding: 0.75rem 1rem 1rem;
+}
+
+// The theme's archive title font and size, without the H2 underline
+.card .card__title {
+  margin: 0 0 0.35rem;
+  padding: 0;
+  font-family: $sans-serif-narrow;
+  font-size: $type-size-5;
+  line-height: 1.3;
+  border-bottom: 0;
+}
+
+// The whole card is clickable: the title link's hit area stretches over it.
+// Only the title is a link, so screen readers announce each card once.
+.card .card__link {
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.card:hover .card__link {
+  text-decoration: underline;
+}
+
+.card .card__meta {
+  margin: 0 0 0.35rem;
+  font-family: $sans-serif;
+  font-size: $type-size-7;
+  color: $muted-text-color;
+}
+
+.card .card__excerpt {
+  margin: 0;
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+}
+
+// Under a card grid: "See all work" on the home page
+.card-grid-more {
+  margin-top: -1rem;
+  font-family: $sans-serif;
+}
+
+// Contrast themes (display preferences): borders in the theme's text colour
+#{$fl-contrast-theme} .card {
+  border-color: var(--fl-fgColor) !important;
+}
+
+// ==========================================================================
+// Talks and teaching page (_pages/workshops-presentations.html)
+// ==========================================================================
+// The "where and when" line under each talk's title
+.page__content .talk__meta {
+  margin: -0.5em 0 0.75em;
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+  color: $muted-text-color;
+}
+
+// Jumping to a talk by its #id (from an old link) leaves a little space
+// above it and marks it with a burgundy bar down the left
+.talk {
+  scroll-margin-top: 1.5rem;
+}
+
+.talk:target {
+  margin-inline-start: -1rem;
+  padding-inline-start: calc(1rem - 4px);
+  border-inline-start: 4px solid $heading-accent;
+}
+
+// ==========================================================================
 // Images on a white card, so logos and icons that are black on a see-through
 // background stay visible: always in dark mode, and in any contrast theme
 // (which recolours everything)
