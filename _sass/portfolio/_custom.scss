@@ -651,6 +651,29 @@ body.fl-lineSpace-enabled .page__content {
 }
 
 // ==========================================================================
+// Talks and teaching page (_pages/about-me--workshop-presentations.html)
+// ==========================================================================
+// The "where and when" line under each talk's title
+.page__content .talk__meta {
+  margin: -0.5em 0 0.75em;
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+  color: $muted-text-color;
+}
+
+// Jumping to a talk by its #id (from an old link) leaves a little space
+// above it and marks it with a burgundy bar down the left
+.talk {
+  scroll-margin-top: 1.5rem;
+}
+
+.talk:target {
+  margin-inline-start: -1rem;
+  padding-inline-start: calc(1rem - 4px);
+  border-inline-start: 4px solid $heading-accent;
+}
+
+// ==========================================================================
 // Images on a white card, so logos and icons that are black on a see-through
 // background stay visible: always in dark mode, and in any contrast theme
 // (which recolours everything)
