@@ -6,7 +6,7 @@ order: 7
 last_modified_at: 2026-10-24
 ---
 
-<h2>>What it does</h2>
+<h2>What it does</h2>
 
 Mapping course material to the BC Digital Literacy Framework by hand takes time. Two colleagues and I built a pair of tools to speed it up:
 
