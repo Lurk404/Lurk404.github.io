@@ -40,7 +40,7 @@ work:
         url: /work/adaptive-wysiwyg-editor/
       - title: "Brightspace course for AT users"
         url: /work/brightspace-course-for-at-users/
-      - title: "Course Outline Generator"
+      - title: "Course Syllabus Generator"
         url: /work/course-outline-generator/
       - title: "Closed captioning service"
         url: /work/closed-captioning-service/
@@ -50,8 +50,6 @@ work:
         url: /work/brightspace-templates-and-widgets/
       - title: "Digital Literacy Framework Mapper"
         url: /work/digital-literacy-framework-mapper/
-      - title: "Student Learning Tools website"
-        url: /work/student-learning-tools-website/
   - title: "Demonstrations"
     url: /work/#demonstrations
     children:
