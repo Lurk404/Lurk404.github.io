@@ -2,6 +2,7 @@
 title: "Brightspace templates and widgets"
 excerpt: "The template CSS and component library behind Langara's Brightspace courses, plus an instructor contact widget now used college-wide."
 role: "Developer and maintainer"
+years: "2021 to present"
 order: 6
 status: "Ongoing"
 last_modified_at: 2026-10-24

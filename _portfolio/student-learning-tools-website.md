@@ -2,6 +2,7 @@
 title: "Student Learning Tools website"
 excerpt: "A Drupal site migration I led from first content audit to go-live, and the web work for other teams that followed."
 role: "Project lead"
+years: "2025"
 order: 8
 status: "Complete"
 last_modified_at: 2026-10-24

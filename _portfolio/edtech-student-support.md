@@ -2,6 +2,7 @@
 title: "EdTech student support table"
 excerpt: "A drop-in tech support service for students that I proposed, designed, and run, with tracking that shows what students actually need."
 role: "Designer and lead"
+years: "2021 to present"
 order: 5
 status: "Ongoing"
 last_modified_at: 2026-10-24

@@ -2,6 +2,7 @@
 title: "Digital Literacy Framework Mapper and stamp generator"
 excerpt: "An AI agent and a small web tool that map learning material to the BC Digital Literacy Framework and label it consistently."
 role: "Co-developer"
+years: "2025"
 order: 7
 status: "Complete"
 last_modified_at: 2026-10-24
