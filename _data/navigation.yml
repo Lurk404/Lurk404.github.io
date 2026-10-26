@@ -52,7 +52,7 @@ work:
         url: /work/digital-literacy-framework-mapper/
       - title: "Student Learning Tools website"
         url: /work/student-learning-tools-website/
-  - title: "Accessibility demonstrations"
+  - title: "Demonstrations"
     url: /work/#demonstrations
     children:
       - title: "Alt text comparison"
