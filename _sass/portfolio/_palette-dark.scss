@@ -1,21 +1,21 @@
 // Dark colours, used when a reader picks "Dark". Same names as
-// _palette-light.scss. Contrast ratios are against the dark page background
-// (#22262e).
+// _palette-light.scss. Phosphor green and amber, like an old green-screen
+// terminal. Contrast ratios are against the dark page background (#0c0f0c).
 
 $theme-mode: dark;
 
-$background-color: #22262e;
-$text-color: #e6e6e6;                // body text, 12.2:1
-$muted-text-color: #b9bec4;          // dates, footer, captions: 8.1:1
-$heading-accent: #e9a3ad;            // dusty rose H2 and H4, 7.4:1 (burgundy turns muddy on dark)
-$primary-color: #3b414c;             // "On this page" header, buttons, quote bars
+$background-color: #0c0f0c;          // black with a hint of green
+$text-color: #d8e6d6;                // body text, 14.9:1
+$muted-text-color: #9fb39c;          // dates, footer, captions: 8.6:1
+$heading-accent: #4cf06a;            // phosphor green H2 and H4, menu hover: 12.8:1
+$primary-color: #2a3a2c;             // "On this page" header, buttons (white text 12.1:1), quote bars
 
-$link-color: #7cc4dd;                // 7.8:1
-$link-color-hover: #a9dbec;
+$link-color: #ffb547;                // amber, 11.0:1
+$link-color-hover: #ffd08a;          // 13.4:1
 
-$border-color: #3b414c;
-$code-background-color: #1b1e25;
-$code-background-color-dark: #181b21;
-$form-background-color: #1b1e25;
-$footer-background-color: #1b1e25;
-$hover-background-color: #2d323c;
+$border-color: #2f3d30;
+$code-background-color: #151b15;
+$code-background-color-dark: #111611;
+$form-background-color: #151b15;
+$footer-background-color: #111611;
+$hover-background-color: #1b241c;

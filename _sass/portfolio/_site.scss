@@ -14,8 +14,7 @@ $intro-transition: none;             // no fade-in on page load (it showed as a 
 @import "minimal-mistakes";          // the theme
 
 // Used by the site's own styles below
-$button-hover-color: mix(#000, $primary-color, 20%);
-$fl-contrast-theme: 'body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default)';  // a display-preferences contrast theme is on
+$button-hover-color: if($theme-mode == dark, mix(#fff, $primary-color, 12%), mix(#000, $primary-color, 20%));   // dark mode: lighter on hover, since darker would vanish into the page$fl-contrast-theme: 'body[class*="fl-theme"]:not(.fl-theme-prefsEditor-default)';  // a display-preferences contrast theme is on
 
 @import "custom";
 @import "callouts";

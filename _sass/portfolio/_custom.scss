@@ -798,6 +798,11 @@ $image-card: "#{$fl-contrast-theme} .page__content img";
       background: $text-color;
     }
   }
+  // The bar under a menu item on hover: green, like the text (the theme uses
+  // the primary colour, which barely shows on the dark page)
+  .greedy-nav .visible-links a::before {
+    background: $heading-accent;
+  }
 }
 
 // ==========================================================================
@@ -805,7 +810,7 @@ $image-card: "#{$fl-contrast-theme} .page__content img";
 // home.md's overlay_color is still needed to switch the banner on; the
 // gradient here goes on top of it.
 // ==========================================================================
-$hero-colour: if($theme-mode == dark, #41282e, #f1ede4);
+$hero-colour: if($theme-mode == dark, #16261a, #f1ede4);
 $hero-solid-to: if($theme-mode == dark, 0%, 40%);     // how far down it stays solid before fading
 
 .page__hero--overlay {
