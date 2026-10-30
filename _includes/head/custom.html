@@ -17,8 +17,11 @@
 {%- endcomment %}
 <script>
   (function () {
-    var dark = false;
-    try { dark = localStorage.getItem('theme') === 'dark'; } catch (e) {}
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    /* A choice made with the Dark/Light button wins; otherwise follow the
+       computer's light or dark setting */
+    var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
     var light = document.querySelector('link[rel="stylesheet"][href$="/assets/css/main.css"]');
     if (light) {
       light.id = 'theme-light';

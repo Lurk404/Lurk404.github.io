@@ -219,6 +219,7 @@
       prefsEditorLoader: {
         lazyLoad: true,
         slidingPanel: {
+          animationDurations: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? { show: 0, hide: 0 } : { show: 400, hide: 400 },
           strings: {
             showText: '+ Show preferences',
             hideText: '− Hide preferences',
@@ -266,8 +267,7 @@
       var isDark = document.documentElement.getAttribute('data-theme') !== 'dark';
       show(isDark);
       try {
-        if (isDark) localStorage.setItem('theme', 'dark');
-        else localStorage.removeItem('theme');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
       } catch (e) {}
     });
 
