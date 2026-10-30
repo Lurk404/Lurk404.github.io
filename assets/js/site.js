@@ -67,7 +67,12 @@
     /* How many cards fit, at the current text size */
     function fit() {
       var gap = px(list, 'columnGap');
-      var room = list.clientWidth - px(list, 'paddingLeft') - px(list, 'paddingRight');
+      /* While the panel is closed the row has no width, so use the width it
+         will have when it opens: the page's, up to the row's maximum. (Using
+         0 would squeeze in 1 card, and the panel would open to the wrong
+         height, then jump.) */
+      var width = list.clientWidth || Math.min(prefs.clientWidth, px(scroller, 'maxWidth') || Infinity);
+      var room = width - px(list, 'paddingLeft') - px(list, 'paddingRight');
       var min = 15 * px(document.documentElement, 'fontSize');
       perView = Math.max(1, Math.min(3, Math.floor((room + gap) / (min + gap))));
       list.style.setProperty('--per-view', perView);
@@ -139,6 +144,7 @@
        window resizing) or the Text size setting changes (it's set on <html>) */
     function refit() { fit(); update(); }
     new ResizeObserver(refit).observe(scroller);
+        window.addEventListener('resize', refit);   /* the window resized while the panel was closed */
     new MutationObserver(refit).observe(document.documentElement, { attributes: true, attributeFilter: ['style', 'class'] });
 
     pager.hidden = false;
@@ -146,6 +152,19 @@
   }
 
   if (prefs && window.fluid && fluid.uiOptions) {
+        /* The panel uses two fonts the rest of the site doesn't. Fetch them as
+       soon as someone heads for "Show preferences", so they've arrived before
+       the panel opens and don't change its height while it slides. */
+    var showButton = document.querySelector('.flc-slidingPanel-toggleButton');
+    if (showButton && document.fonts) {
+      var warmFonts = function () {
+        document.fonts.load('1em "Open Sans Variable"');
+        document.fonts.load('1em "PrefsFramework-Icons"');
+      };
+      ['pointerenter', 'focus', 'touchstart'].forEach(function (type) {
+        showButton.addEventListener(type, warmFonts, { once: true, passive: true });
+      });
+    }
     /* Text-to-speech: read the page content, play button at the top. Pages
        without .page__content (like the home page) get no play button. */
     var wrap = document.querySelector('.page__inner-wrap');
