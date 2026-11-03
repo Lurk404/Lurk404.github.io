@@ -278,7 +278,7 @@
       light.media = isDark ? 'not all' : 'all';
       document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
       var next = isDark ? 'Light' : 'Dark';
-      button.textContent = next;
+      (button.querySelector('.theme-toggle__label') || button).textContent = next;
       button.setAttribute('aria-label', 'Switch to ' + next.toLowerCase() + ' mode');
     }
 

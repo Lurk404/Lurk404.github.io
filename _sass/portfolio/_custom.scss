@@ -371,6 +371,17 @@ a.reversefootnote {
   height: 1.5em;
 }
 
+// Light/dark button: a half-filled circle before "Dark" or "Light"
+.js-theme-toggle {
+  gap: 0.4em;
+}
+
+.theme-toggle__icon {
+  width: 1.25em;
+  height: 1.25em;
+  flex: none;
+}
+
 // At either end, Previous or Next is faded and does nothing, but stays
 // reachable with Tab (aria-disabled rather than disabled)
 .site-prefs .site-prefs-toolbar .page-nav-button[aria-disabled="true"] {
