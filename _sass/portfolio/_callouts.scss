@@ -30,7 +30,7 @@ $callouts: (
 @if $theme-mode == dark {
   $callouts: (
     "note":    (title: "Note",    color: #6aa8fb),   // 6.2:1
-    "tip":     (title: "Tip",     color: #41d693),   // 8.1:1
+    "tip":     (title: "Tip",     color: #72c7a3),   // 8.1:1
     "warning": (title: "Warning", color: #f77e7e)    // 6.0:1
   ) !global;
 }
